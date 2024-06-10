@@ -1,0 +1,41 @@
+app:
+  enabled: true
+  debug: true
+  secret:
+    enabled: true
+  resources:
+    limits:
+      cpu: '2'
+      memory: 750Mi
+    requests:
+      cpu: '0.25'
+      memory: 750Mi
+  gcpProxy:
+    enabled: false
+  serviceAccount:
+    enabled: false
+config:
+  enabled: true
+  secretenabled: true
+  jobenabled: true
+name: telus-test-bpintegration
+ingress:
+  enabled: true
+  className: nginx
+  path: /test-bpintegration-app
+  pathType: Prefix
+  annotations:
+    nginx.ingress.kubernetes.io/server-snippet: |
+      location ~* /camunda {
+          deny all;
+          return 403;
+      }
+db:
+  enabled: true
+  job:
+    enabled: true
+    startupDelay: 0
+  secret:
+    enabled: true
+  configmap:
+    enabled: true

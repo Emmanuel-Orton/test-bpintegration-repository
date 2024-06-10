@@ -1,0 +1,36 @@
+{
+  "list": [
+    {
+      "id": "7289311",
+      "description": "Create wholesale product\n        WSO Monitor IT Services",
+      "type": "NEW",
+      "state": "Completed",
+      "user": "cr6i",
+      "userType": "user",
+      "orderDate": "2023-03-10T16:42:23Z",
+      "completionDate": "2023-03-10T16:47:08Z",
+      "billingAccount": "1192856951",
+      "productReferences": [
+        "560d7b6f-cbbc-4d78-9ee5-03d89b8e2649"
+      ]
+    }
+  ],
+  "paginationInformation": {
+    "pageSize": 50,
+    "totalNumberOfRecords": 1
+  },
+  "_links": {
+    "last": {
+      "templated": false,
+      "href": "/productOrdering/v1/productOrders?query=productReference%3A560d7b6f-cbbc-4d78-9ee5-03d89b8e2649+type%3A%22NEW%22&page=1"
+    },
+    "self": {
+      "templated": false,
+      "href": "/productOrdering/v1/productOrders?query=productReference%3A560d7b6f-cbbc-4d78-9ee5-03d89b8e2649+type%3A%22NEW%22&page=1"
+    },
+    "first": {
+      "templated": false,
+      "href": "/productOrdering/v1/productOrders?query=productReference%3A560d7b6f-cbbc-4d78-9ee5-03d89b8e2649+type%3A%22NEW%22&page=1"
+    }
+  }
+}

@@ -1,0 +1,354 @@
+{
+  "list": [
+    {
+      "id": "telus_assisted_sales_sow_creation_task_resolved_{{ tenant_ws_name | upper }}",
+      "targetSystem": "telus_assisted_sales_EVENTS_WS",
+      "targetResource": "/event/v1/sowCreationTaskResolved",
+      "eventName": "taskStateUpdated.v2",
+      "filters": [
+        {
+          "property": "event.current.taskDefinition",
+          "value": "TELUS_WS_SOW_CREATE",
+          "negate": false,
+          "regex": false
+        },
+        {
+          "property": "event.current.state",
+          "value": "Resolved",
+          "negate": false,
+          "regex": false
+        }
+      ]
+    },
+    {
+      "id": "assisted_sales_telus_ws_sow_review_taskResolved_v2_{{ tenant_ws_name | upper }}",
+      "eventName": "taskStateUpdated.v2",
+      "targetSystem": "telus_assisted_sales_EVENTS_WS",
+      "targetResource": "/event/v1/telusWsSowReviewTaskResolved",
+      "filters": [
+        {
+          "property": "event.current.taskDefinition",
+          "value": "TELUS_WS_SOW_REVIEW",
+          "negate": false,
+          "regex": false
+        },
+        {
+          "property": "event.current.state",
+          "value": "Resolved",
+          "negate": false,
+          "regex": false
+        }
+      ]
+    },
+    {
+      "id": "assisted_sales_telus_ws_sow_approve_taskResolved_v2_{{ tenant_ws_name | upper }}",
+      "eventName": "taskStateUpdated.v2",
+      "targetSystem": "telus_assisted_sales_EVENTS_WS",
+      "targetResource": "/event/v1/telusWsSowApproveTaskResolved",
+      "filters": [
+        {
+          "property": "event.current.taskDefinition",
+          "value": "TELUS_WS_SOW_APPROVE",
+          "negate": false,
+          "regex": false
+        },
+        {
+          "property": "event.current.state",
+          "value": "Resolved",
+          "negate": false,
+          "regex": false
+        }
+      ]
+    },
+    {
+      "id": "assisted_sales_sow_error_event_taskUpdated_v2_{{ tenant_ws_name | upper }}",
+      "eventName": "taskUpdated.v2",
+      "targetSystem": "telus_assisted_sales_EVENTS_WS",
+      "targetResource": "/event/v1/workflowErrorTaskResolved",
+      "filters": [
+        {
+          "property": "event.current.taskDefinition",
+          "value": "TELUS_SOW_WORKFLOW_ERROR",
+          "negate": false,
+          "regex": false
+        },{
+          "property": "event.current.state",
+          "value": "Resolved",
+          "negate": false,
+          "regex": false
+        },
+        {
+          "property": "event.current.resolutionAction",
+          "value": "retry",
+          "negate": false,
+          "regex": false
+        }
+      ]
+    },
+    {
+      "id": "assisted_sales_workflow_error_event_taskUpdated_v2_{{ tenant_ws_name | upper }}",
+      "eventName": "taskUpdated.v2",
+      "targetSystem": "telus_assisted_sales_EVENTS_WS",
+      "targetResource": "/event/v1/workflowErrorTaskResolved",
+      "filters": [
+        {
+          "property": "event.current.taskDefinition",
+          "value": "TELUS_WORKFLOW_ERROR",
+          "negate": false,
+          "regex": false
+        },{
+          "property": "event.current.state",
+          "value": "Resolved",
+          "negate": false,
+          "regex": false
+        },
+        {
+          "property": "event.current.resolutionAction",
+          "value": "retry",
+          "negate": false,
+          "regex": false
+        }
+      ]
+    },
+    {
+      "id": "assisted_sales_telus_ws_sow_update_taskResolved_v2_{{ tenant_ws_name | upper }}",
+      "eventName": "taskStateUpdated.v2",
+      "targetSystem": "telus_assisted_sales_EVENTS_WS",
+      "targetResource": "/event/v1/telusWsSowUpdateTaskResolved",
+      "filters": [
+        {
+          "property": "event.current.taskDefinition",
+          "value": "TELUS_WS_SOW_UPDATE",
+          "negate": false,
+          "regex": false
+        },
+        {
+          "property": "event.current.state",
+          "value": "Resolved",
+          "negate": false,
+          "regex": false
+        }
+      ]
+    },
+    {
+      "id": "assisted_sales_telus_ws_daf_review_taskResolved_v2_{{ tenant_ws_name | upper }}",
+      "eventName": "taskStateUpdated.v2",
+      "targetSystem": "telus_assisted_sales_EVENTS_WS",
+      "targetResource": "/event/v1/telusWsDafReviewTaskResolved",
+      "filters": [
+        {
+          "property": "event.current.taskDefinition",
+          "value": "TELUS_WS_DAF_REVIEW",
+          "negate": false,
+          "regex": false
+        },
+        {
+          "property": "event.current.state",
+          "value": "Resolved",
+          "negate": false,
+          "regex": false
+        }
+      ]
+    },
+    {
+      "id": "assisted_sales_telus_ws_daf_update_taskResolved_v2_{{ tenant_ws_name | upper }}",
+      "eventName": "taskStateUpdated.v2",
+      "targetSystem": "telus_assisted_sales_EVENTS_WS",
+      "targetResource": "/event/v1/telusWsDafUpdateTaskResolved",
+      "filters": [
+        {
+          "property": "event.current.taskDefinition",
+          "value": "TELUS_WS_DAF_UPDATE",
+          "negate": false,
+          "regex": false
+        },
+        {
+          "property": "event.current.state",
+          "value": "Resolved",
+          "negate": false,
+          "regex": false
+        }
+      ]
+    },
+    {
+      "id": "assisted_sales_telus_ws_daf_approve_taskResolved_v2_{{ tenant_ws_name | upper }}",
+      "eventName": "taskStateUpdated.v2",
+      "targetSystem": "telus_assisted_sales_EVENTS_WS",
+      "targetResource": "/event/v1/telusWsDafApproveTaskResolved",
+      "filters": [
+        {
+          "property": "event.current.taskDefinition",
+          "value": "TELUS_WS_DAF_APPROVE",
+          "negate": false,
+          "regex": false
+        },
+        {
+          "property": "event.current.state",
+          "value": "Resolved",
+          "negate": false,
+          "regex": false
+        }
+      ]
+    },
+    {
+      "id": "assisted_sales_telus_ws_daf_approve_taskUpdated_v2_{{ tenant_ws_name | upper }}",
+      "eventName": "taskUpdated.v2",
+      "targetSystem": "telus_assisted_sales_EVENTS_WS",
+      "targetResource": "/event/v1/telusWsDafApproveTaskUpdated",
+      "filters": [
+        {
+          "property": "event.current.taskDefinition",
+          "value": "TELUS_WS_DAF_APPROVE",
+          "negate": false,
+          "regex": false
+        },
+        {
+          "property": "event.current.state",
+          "value": "InProgress",
+          "negate": false,
+          "regex": false
+        }
+      ]
+    },
+    {
+      "id": "assisted_sales_telus_co_review_taskResolved_v2_{{ tenant_ws_name | upper }}",
+      "eventName": "taskStateUpdated.v2",
+      "targetSystem": "telus_assisted_sales_EVENTS_WS",
+      "targetResource": "/event/v1/telusWsCoReviewTaskResolved",
+      "filters": [
+        {
+          "property": "event.current.taskDefinition",
+          "value": "TELUS_WS_CO_REVIEW",
+          "negate": false,
+          "regex": false
+        },
+        {
+          "property": "event.current.state",
+          "value": "Resolved",
+          "negate": false,
+          "regex": false
+        }
+      ]
+    },
+    {
+      "id": "assisted_sales_telus_ws_co_partner_approve_taskResolved_v2_{{ tenant_ws_name | upper }}",
+      "eventName": "taskStateUpdated.v2",
+      "targetSystem": "telus_assisted_sales_EVENTS_WS",
+      "targetResource": "/event/v1/telusWsCoPartnerApproveTaskResolved",
+      "filters": [
+        {
+          "property": "event.current.taskDefinition",
+          "value": "TELUS_WS_CO_PARTNER_APPROVE",
+          "negate": false,
+          "regex": false
+        },
+        {
+          "property": "event.current.state",
+          "value": "Resolved",
+          "negate": false,
+          "regex": false
+        }
+      ]
+    },
+    {
+      "id": "assisted_sales_telus_ws_co_update_taskResolved_v2_{{ tenant_ws_name | upper }}",
+      "eventName": "taskStateUpdated.v2",
+      "targetSystem": "telus_assisted_sales_EVENTS_WS",
+      "targetResource": "/event/v1/telusWsCoUpdateTaskResolved",
+      "filters": [
+        {
+          "property": "event.current.taskDefinition",
+          "value": "TELUS_WS_CO_UPDATE",
+          "negate": false,
+          "regex": false
+        },
+        {
+          "property": "event.current.state",
+          "value": "Resolved",
+          "negate": false,
+          "regex": false
+        }
+      ]
+    },
+    {
+      "id": "assisted_sales_telus_ws_co_day2_review_taskResolved_v2_{{ tenant_ws_name | upper }}",
+      "eventName": "taskStateUpdated.v2",
+      "targetSystem": "telus_assisted_sales_EVENTS_WS",
+      "targetResource": "/event/v1/telusWsMoReviewTaskResolved",
+      "filters": [
+        {
+          "property": "event.current.taskDefinition",
+          "value": "TELUS_WS_CO_DAY2_REVIEW",
+          "negate": false,
+          "regex": false
+        },
+        {
+          "property": "event.current.state",
+          "value": "Resolved",
+          "negate": false,
+          "regex": false
+        }
+      ]
+    },
+    {
+      "id": "assisted_sales_telus_ws_co_day2_initiate_taskResolved_v2_{{ tenant_ws_name | upper }}",
+      "eventName": "taskStateUpdated.v2",
+      "targetSystem": "telus_assisted_sales_EVENTS_WS",
+      "targetResource": "/event/v1/telusWsMoInitiateTaskResolved",
+      "filters": [
+        {
+          "property": "event.current.taskDefinition",
+          "value": "TELUS_WS_CO_DAY2_INITIATE",
+          "negate": false,
+          "regex": false
+        },
+        {
+          "property": "event.current.state",
+          "value": "Resolved",
+          "negate": false,
+          "regex": false
+        }
+      ]
+    },
+    {
+      "id": "assisted_sales_telus_ws_co_day2_update_taskResolved_v2_{{ tenant_ws_name | upper }}",
+      "eventName": "taskStateUpdated.v2",
+      "targetSystem": "telus_assisted_sales_EVENTS_WS",
+      "targetResource": "/event/v1/telusWsMoUpdateTaskResolved",
+      "filters": [
+        {
+          "property": "event.current.taskDefinition",
+          "value": "TELUS_WS_CO_DAY2_UPDATE",
+          "negate": false,
+          "regex": false
+        },
+        {
+          "property": "event.current.state",
+          "value": "Resolved",
+          "negate": false,
+          "regex": false
+        }
+      ]
+    },
+    {
+      "id": "assisted_sales_telus_ws_co_day2_finalize_taskResolved_v2_{{ tenant_ws_name | upper }}",
+      "eventName": "taskStateUpdated.v2",
+      "targetSystem": "telus_assisted_sales_EVENTS_WS",
+      "targetResource": "/event/v1/telusWsMoFinalizeOrderWorkflow",
+      "filters": [
+        {
+          "property": "event.current.taskDefinition",
+          "value": "TELUS_WS_CO_DAY2_FINALIZE",
+          "negate": false,
+          "regex": false
+        },
+        {
+          "property": "event.current.state",
+          "value": "Resolved",
+          "negate": false,
+          "regex": false
+        }
+      ]
+    }
+  ]
+}

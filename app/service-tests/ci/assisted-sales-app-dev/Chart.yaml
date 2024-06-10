@@ -1,0 +1,8 @@
+apiVersion: v2
+description: Umbrella chart for dev deployment of a single application
+name: telus-test-bpintegration-dev
+version: 0.0.0
+dependencies:
+  - name: test-bpintegration-app
+    version: 0.0.0
+    repository: file://../../../ci/test-bpintegration-app

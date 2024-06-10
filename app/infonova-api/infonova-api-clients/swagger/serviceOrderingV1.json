@@ -1,0 +1,757 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Infonova API Swagger",
+    "version": ""
+  },
+  "host": "localhost:9700",
+  "basePath": "/r6-api",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+    "/{tenant}/serviceordering/v1/notification": {
+      "post": {
+        "tags": [
+          "Service Ordering v1"
+        ],
+        "summary": "POST /serviceordering/v1/notification",
+        "description": "POST /serviceordering/v1/notification",
+        "operationId": "postServiceorderingV1Notification",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ServiceorderingV1DomainServiceOrderingNotification"
+            }
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ServiceorderingV1DomainServiceOrderingNotification"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/serviceordering/v1/{id}": {
+      "get": {
+        "tags": [
+          "Service Ordering v1"
+        ],
+        "summary": "GET /serviceordering/v1/{id}",
+        "description": "GET /serviceordering/v1/{id}",
+        "operationId": "getServiceorderingV1Id",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ServiceorderingV1DomainServiceOrder"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "deprecated": true,
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ApiModelV1CommonsDomainDiscountTieringLevel": {
+      "type": "object",
+      "properties": {
+        "unitsMax": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "unitsMin": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "value": {
+          "type": "string",
+          "format": "number"
+        }
+      }
+    },
+    "ApiModelV1CommonsDomainFundReference": {
+      "type": "object",
+      "properties": {
+        "billingAccount": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "ApiModelV1CommonsDomainNote": {
+      "type": "object",
+      "properties": {
+        "author": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "ApiModelV1CommonsDomainOverrider": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "validityPeriod": {
+          "type": "string",
+          "format": "period"
+        }
+      }
+    },
+    "ApiModelV1CommonsDomainPrice": {
+      "type": "object",
+      "properties": {
+        "adHocPaymentRequired": {
+          "type": "boolean"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "overrider": {
+          "$ref": "#/definitions/ApiModelV1CommonsDomainOverrider"
+        },
+        "priceAdjustment": {
+          "$ref": "#/definitions/ApiModelV1CommonsDomainPriceAdjustment"
+        }
+      }
+    },
+    "ApiModelV1CommonsDomainPriceAdjustment": {
+      "type": "object",
+      "properties": {
+        "allowanceAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "billText": {
+          "type": "string"
+        },
+        "contractEndDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "discountTieringLevels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ApiModelV1CommonsDomainDiscountTieringLevel"
+          }
+        },
+        "flagFallAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "fund": {
+          "$ref": "#/definitions/ApiModelV1CommonsDomainFundReference"
+        },
+        "fundAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "invoiceText": {
+          "type": "string"
+        },
+        "loyaltyPoints": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "netCharge": {
+          "type": "string",
+          "format": "number"
+        },
+        "numberOfPayments": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "previousNetCharge": {
+          "type": "string",
+          "format": "number"
+        },
+        "terminationCharge": {
+          "type": "string",
+          "format": "number"
+        }
+      }
+    },
+    "ApiModelV1CommonsDomainRelatedOrder": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "relationType": {
+          "type": "string"
+        }
+      }
+    },
+    "ApiModelV1CommonsDomainRelatedParty": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        }
+      }
+    },
+    "CommonsDomainModelArgument": {
+      "type": "object",
+      "properties": {
+        "argument": {
+          "type": "string"
+        },
+        "argumentDescription": {
+          "type": "string"
+        },
+        "argumentKey": {
+          "type": "string"
+        },
+        "subMessages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelMessage"
+          }
+        }
+      }
+    },
+    "CommonsDomainModelLink": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string"
+        },
+        "templated": {
+          "type": "boolean"
+        }
+      }
+    },
+    "CommonsDomainModelMessage": {
+      "type": "object",
+      "properties": {
+        "args": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelArgument"
+          }
+        },
+        "key": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "messageTemplate": {
+          "type": "string"
+        }
+      }
+    },
+    "CommonsDomainModelMessageAware": {
+      "type": "object",
+      "properties": {
+        "logId": {
+          "type": "string"
+        },
+        "messages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelMessage"
+          }
+        }
+      }
+    },
+    "ServiceorderingV1DomainRelatedOrder": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/CommonsDomainModelLink"
+          }
+        },
+        "distance": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "id": {
+          "type": "string"
+        },
+        "involvement": {
+          "type": "string"
+        },
+        "orderType": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "tenant": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "ServiceorderingV1DomainRelatedOrderItem": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "relationType": {
+          "type": "string",
+          "enum": [
+            "dependency",
+            "reference"
+          ]
+        }
+      }
+    },
+    "ServiceorderingV1DomainService": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string"
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "barLevel": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "cancelable": {
+          "type": "boolean"
+        },
+        "changeable": {
+          "type": "boolean"
+        },
+        "href": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "name": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "relatedParties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ApiModelV1CommonsDomainRelatedParty"
+          }
+        },
+        "serviceCharacteristics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceorderingV1DomainServiceCharacteristic"
+          }
+        },
+        "serviceIdentifier": {
+          "type": "string"
+        },
+        "serviceRelationships": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceorderingV1DomainServiceRelationship"
+          }
+        },
+        "services": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceorderingV1DomainService"
+          }
+        }
+      }
+    },
+    "ServiceorderingV1DomainServiceCharacteristic": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string"
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "name": {
+          "type": "string"
+        },
+        "previousValue": {
+          "type": "string"
+        },
+        "prices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ApiModelV1CommonsDomainPrice"
+          }
+        },
+        "type": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "ServiceorderingV1DomainServiceOrder": {
+      "type": "object",
+      "properties": {
+        "cancelable": {
+          "type": "boolean"
+        },
+        "category": {
+          "type": "string"
+        },
+        "changeable": {
+          "type": "boolean"
+        },
+        "completionDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "expectedCompletionDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "externalId": {
+          "type": "string"
+        },
+        "externalOrderId": {
+          "type": "string"
+        },
+        "href": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ApiModelV1CommonsDomainNote"
+          }
+        },
+        "notificationContact": {
+          "type": "string"
+        },
+        "orderDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "orderItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceorderingV1DomainServiceOrderItem"
+          }
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "relatedObjects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceorderingV1DomainRelatedOrder"
+          }
+        },
+        "relatedOrder": {
+          "$ref": "#/definitions/ApiModelV1CommonsDomainRelatedOrder"
+        },
+        "relatedParentOrder": {
+          "$ref": "#/definitions/ApiModelV1CommonsDomainRelatedOrder"
+        },
+        "relatedParties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ApiModelV1CommonsDomainRelatedParty"
+          }
+        },
+        "requestedCompletionDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "requestedStartDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "state": {
+          "type": "string"
+        }
+      }
+    },
+    "ServiceorderingV1DomainServiceOrderItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "orderItemAction": {
+          "type": "string",
+          "enum": [
+            "create",
+            "modify",
+            "cancel"
+          ]
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "relatedOrderItem": {
+          "$ref": "#/definitions/ServiceorderingV1DomainRelatedOrderItem"
+        },
+        "service": {
+          "$ref": "#/definitions/ServiceorderingV1DomainService"
+        },
+        "state": {
+          "type": "string"
+        }
+      }
+    },
+    "ServiceorderingV1DomainServiceOrderingNotification": {
+      "type": "object",
+      "properties": {
+        "dateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "eventType": {
+          "type": "string",
+          "enum": [
+            "orderStateChangeNotification",
+            "orderValueChangeNotification",
+            "orderInformationRequiredNotification",
+            "orderInFlightStateChangeNotification",
+            "orderHistoryNotification"
+          ]
+        },
+        "fieldPath": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "inFlightOrderChangeState": {
+          "type": "string",
+          "enum": [
+            "ChangesAccepted",
+            "ChangesRejected"
+          ]
+        },
+        "orderHistoryMessage": {
+          "type": "string"
+        },
+        "propagateOrderHistoryMessageToParent": {
+          "type": "boolean"
+        },
+        "resourcePath": {
+          "type": "string"
+        },
+        "serviceOrder": {
+          "$ref": "#/definitions/ServiceorderingV1DomainServiceOrder"
+        },
+        "taskDefinition": {
+          "type": "string"
+        }
+      }
+    },
+    "ServiceorderingV1DomainServiceReference": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "ServiceorderingV1DomainServiceRelationship": {
+      "type": "object",
+      "properties": {
+        "relationshipType": {
+          "type": "string"
+        },
+        "service": {
+          "$ref": "#/definitions/ServiceorderingV1DomainServiceReference"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "oauth2ClientCredentialAuthentication": {
+      "type": "oauth2",
+      "description": "Client credentials flow configuration for the Infonova Keycloak.",
+      "flow": "application",
+      "tokenUrl": ""
+    },
+    "oauth2ResourceOwnerPasswordCredentialAuthentication": {
+      "type": "oauth2",
+      "description": "Resource Owner Password Credentials flow configuration for the Infonova Keycloak.",
+      "flow": "password",
+      "tokenUrl": ""
+    }
+  },
+  "tags": [
+    {
+      "name": "Service Ordering v1",
+      "externalDocs": {
+        "description": "Further documentation",
+        "url": "http://localhost:9700/r6-api/docs/service-ordering-impl/index.html"
+      }
+    }
+  ]
+}

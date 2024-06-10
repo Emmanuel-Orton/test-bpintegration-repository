@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0h6tf3d" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.0.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="WholesaleProvisioning" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_0wmmuye</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="createWholesaleProvisioningOrderDatabaseEntries" name="Create Wholesale Provisioning Order Database Entries" camunda:delegateExpression="${createWholesaleProvisioningOrderDatabaseEntriesStep}">
+      <bpmn:incoming>Flow_1kgfow9</bpmn:incoming>
+      <bpmn:incoming>Flow_0cy2noj</bpmn:incoming>
+      <bpmn:outgoing>Flow_0l05q1m</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0wmmuye" sourceRef="StartEvent_1" targetRef="setWholesaleServiceOrderToInProgress" />
+    <bpmn:serviceTask id="createWholesaleProvisioningTasks" name="Create Wholesale Provisioning Tasks" camunda:delegateExpression="${createWholesaleProvisioningTasks}">
+      <bpmn:incoming>Flow_1qtz1ck</bpmn:incoming>
+      <bpmn:incoming>Flow_0l05q1m</bpmn:incoming>
+      <bpmn:outgoing>Flow_1efis3f</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_07hyi9c">
+      <bpmn:incoming>Flow_1efis3f</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:receiveTask id="createWholesaleProvisioningOrderDatabaseEntries_retry" name="Wait for Retry">
+      <bpmn:incoming>Flow_0y95nbe</bpmn:incoming>
+      <bpmn:outgoing>Flow_1kgfow9</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:receiveTask id="createWholesaleProvisioningTasks_retry" name="Wait for Retry">
+      <bpmn:incoming>Flow_0lwmjpd</bpmn:incoming>
+      <bpmn:outgoing>Flow_1qtz1ck</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:boundaryEvent id="Event_1ll1lvh" attachedToRef="createWholesaleProvisioningTasks">
+      <bpmn:outgoing>Flow_0lwmjpd</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_08ikmzx" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_1qtz1ck" sourceRef="createWholesaleProvisioningTasks_retry" targetRef="createWholesaleProvisioningTasks" />
+    <bpmn:sequenceFlow id="Flow_0lwmjpd" sourceRef="Event_1ll1lvh" targetRef="createWholesaleProvisioningTasks_retry" />
+    <bpmn:boundaryEvent id="Event_1udze2o" attachedToRef="createWholesaleProvisioningOrderDatabaseEntries">
+      <bpmn:outgoing>Flow_0y95nbe</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_0tczjl3" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_0y95nbe" sourceRef="Event_1udze2o" targetRef="createWholesaleProvisioningOrderDatabaseEntries_retry" />
+    <bpmn:sequenceFlow id="Flow_1kgfow9" sourceRef="createWholesaleProvisioningOrderDatabaseEntries_retry" targetRef="createWholesaleProvisioningOrderDatabaseEntries" />
+    <bpmn:sequenceFlow id="Flow_0l05q1m" sourceRef="createWholesaleProvisioningOrderDatabaseEntries" targetRef="createWholesaleProvisioningTasks" />
+    <bpmn:sequenceFlow id="Flow_1efis3f" sourceRef="createWholesaleProvisioningTasks" targetRef="Event_07hyi9c" />
+    <bpmn:serviceTask id="setWholesaleServiceOrderToInProgress" name="Set ServiceOrder to InProgress" camunda:delegateExpression="${setServiceOrderToInProgressStep}">
+      <bpmn:incoming>Flow_0wmmuye</bpmn:incoming>
+      <bpmn:incoming>Flow_1xopw7e</bpmn:incoming>
+      <bpmn:outgoing>Flow_0cy2noj</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:boundaryEvent id="Event_0pe1jk7" attachedToRef="setWholesaleServiceOrderToInProgress">
+      <bpmn:outgoing>Flow_0hvr9nz</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_0zoibnm" />
+    </bpmn:boundaryEvent>
+    <bpmn:receiveTask id="setWholesaleServiceOrderToInProgress_retry" name="Wait for Retry">
+      <bpmn:incoming>Flow_0hvr9nz</bpmn:incoming>
+      <bpmn:outgoing>Flow_1xopw7e</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:sequenceFlow id="Flow_0hvr9nz" sourceRef="Event_0pe1jk7" targetRef="setWholesaleServiceOrderToInProgress_retry" />
+    <bpmn:sequenceFlow id="Flow_1xopw7e" sourceRef="setWholesaleServiceOrderToInProgress_retry" targetRef="setWholesaleServiceOrderToInProgress" />
+    <bpmn:sequenceFlow id="Flow_0cy2noj" sourceRef="setWholesaleServiceOrderToInProgress" targetRef="createWholesaleProvisioningOrderDatabaseEntries" />
+    <bpmn:textAnnotation id="TextAnnotation_0hepeep">
+      <bpmn:text>Started by endpoint call</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1jb0qaz" sourceRef="StartEvent_1" targetRef="TextAnnotation_0hepeep" />
+  </bpmn:process>
+  <bpmn:message id="Message_2o305hl" name="SOW_Restart_workflow" />
+  <bpmn:message id="Message_2mufvot" name="SOW_verification_task_resolved" />
+  <bpmn:message id="Message_06npa17" name="SOW_create_task_resolved" />
+  <bpmn:message id="Message_1lf4iod" name="SOW_review_task_resolved" />
+  <bpmn:message id="Message_3uib7df" name="SOW_approve_task_resolved" />
+  <bpmn:message id="Message_1dbbebr" name="Cancel_Request_Received" />
+  <bpmn:message id="Message_2os7939" name="SOW_Cancel_Request_Received" />
+  <bpmn:message id="Message_0l366uu" name="SOW_RT_approve_task_resolved" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="WholesaleProvisioning">
+      <bpmndi:BPMNShape id="TextAnnotation_0hepeep_di" bpmnElement="TextAnnotation_0hepeep">
+        <dc:Bounds x="470" y="80" width="100" height="41" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1efis3f_di" bpmnElement="Flow_1efis3f">
+        <di:waypoint x="380" y="670" />
+        <di:waypoint x="380" y="772" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0l05q1m_di" bpmnElement="Flow_0l05q1m">
+        <di:waypoint x="380" y="510" />
+        <di:waypoint x="380" y="590" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1kgfow9_di" bpmnElement="Flow_1kgfow9">
+        <di:waypoint x="260" y="460" />
+        <di:waypoint x="330" y="460" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0y95nbe_di" bpmnElement="Flow_0y95nbe">
+        <di:waypoint x="312" y="490" />
+        <di:waypoint x="260" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0lwmjpd_di" bpmnElement="Flow_0lwmjpd">
+        <di:waypoint x="312" y="650" />
+        <di:waypoint x="260" y="650" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1qtz1ck_di" bpmnElement="Flow_1qtz1ck">
+        <di:waypoint x="260" y="620" />
+        <di:waypoint x="330" y="620" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0wmmuye_di" bpmnElement="Flow_0wmmuye">
+        <di:waypoint x="380" y="158" />
+        <di:waypoint x="380" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0hvr9nz_di" bpmnElement="Flow_0hvr9nz">
+        <di:waypoint x="312" y="320" />
+        <di:waypoint x="260" y="320" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1xopw7e_di" bpmnElement="Flow_1xopw7e">
+        <di:waypoint x="260" y="290" />
+        <di:waypoint x="330" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0cy2noj_di" bpmnElement="Flow_0cy2noj">
+        <di:waypoint x="380" y="340" />
+        <di:waypoint x="380" y="430" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_1crzjam_di" bpmnElement="createWholesaleProvisioningOrderDatabaseEntries">
+        <dc:Bounds x="330" y="430" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_06d4xxb" bpmnElement="createWholesaleProvisioningTasks">
+        <dc:Bounds x="330" y="590" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_07hyi9c_di" bpmnElement="Event_07hyi9c">
+        <dc:Bounds x="362" y="772" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_111g7n2" bpmnElement="createWholesaleProvisioningOrderDatabaseEntries_retry">
+        <dc:Bounds x="160" y="430" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0w1fs6u" bpmnElement="createWholesaleProvisioningTasks_retry">
+        <dc:Bounds x="160" y="590" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1vhddh8" bpmnElement="setWholesaleServiceOrderToInProgress">
+        <dc:Bounds x="330" y="260" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="362" y="122" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_04istpa" bpmnElement="setWholesaleServiceOrderToInProgress_retry">
+        <dc:Bounds x="160" y="260" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_1jb0qaz_di" bpmnElement="Association_1jb0qaz">
+        <di:waypoint x="397" y="136" />
+        <di:waypoint x="470" y="112" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_14wezl6_di" bpmnElement="Event_1udze2o">
+        <dc:Bounds x="312" y="472" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1pfvnbg_di" bpmnElement="Event_1ll1lvh">
+        <dc:Bounds x="312" y="632" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0pyv923" bpmnElement="Event_0pe1jk7">
+        <dc:Bounds x="312" y="302" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

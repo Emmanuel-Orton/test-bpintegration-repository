@@ -1,0 +1,18 @@
+{
+  "id": "telus_assisted_sales_events",
+  "flows": [
+    "ClientCredential"
+  ],
+  "initialClientAccessSecret": "{{ telus_assisted_sales_events_client_secret }}",
+  "accessMappings": [
+    {
+      "workGroup": "telus_assisted_sales_EVENTS",
+      "tenant": "{{ tenant_name }}"
+    },
+    {
+      "workGroup": "telus_assisted_sales_EVENTS",
+      "tenant": "{{ tenant_ws_name }}"
+    }
+  ],
+  "requiresSecret": true
+}

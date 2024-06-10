@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0h6tf3d" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.0.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="ModifyOrder" name="Modify Order" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_0wmcrvl</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="moCreateWsMoReviewTaskStep" name="Create WS MO Review Task" camunda:delegateExpression="${createWsMoReviewTaskStep}">
+      <bpmn:incoming>Flow_1m06pka</bpmn:incoming>
+      <bpmn:incoming>Flow_1de3bmf</bpmn:incoming>
+      <bpmn:incoming>Flow_1oi4cgf</bpmn:incoming>
+      <bpmn:outgoing>Flow_0erj7ed</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_0milawz" name="resolution action">
+      <bpmn:incoming>Flow_1cumzga</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ne4k7g</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1uozv4l</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0erj7ed" sourceRef="moCreateWsMoReviewTaskStep" targetRef="moEventWsMoReviewTaskResolved" />
+    <bpmn:serviceTask id="moWsMoUpdateTaskStep" name="Create WS MO Update Task " camunda:delegateExpression="${createWsMoUpdateTaskStep}">
+      <bpmn:incoming>Flow_0ne4k7g</bpmn:incoming>
+      <bpmn:incoming>Flow_10yknfp</bpmn:incoming>
+      <bpmn:incoming>Flow_01ryo9m</bpmn:incoming>
+      <bpmn:incoming>Flow_19hfbt7</bpmn:incoming>
+      <bpmn:outgoing>Flow_1kpepv7</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0ne4k7g" name="modify" sourceRef="Gateway_0milawz" targetRef="moWsMoUpdateTaskStep">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${WF_TASK_RESOLUTION_ACTION=='modify'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:serviceTask id="moCreateWsMoFinalizeTaskStep" name="Create WS MO Finalize Task" camunda:delegateExpression="${createWsMoFinalizeTaskStep}">
+      <bpmn:incoming>Flow_1wpk8w8</bpmn:incoming>
+      <bpmn:incoming>Flow_16b89yg</bpmn:incoming>
+      <bpmn:outgoing>Flow_1kpi20h</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1uozv4l" name="approved" sourceRef="Gateway_0milawz" targetRef="moCreateRetailMoCreateTaskStep">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${WF_TASK_RESOLUTION_ACTION=='approved'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:exclusiveGateway id="Gateway_1l0ve7b" name="resolution action">
+      <bpmn:incoming>Flow_0sw8p1z</bpmn:incoming>
+      <bpmn:outgoing>Flow_10yknfp</bpmn:outgoing>
+      <bpmn:outgoing>Flow_07psbo0</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1kpi20h" sourceRef="moCreateWsMoFinalizeTaskStep" targetRef="moEventWsMoFinalizeOrderTaskResolved" />
+    <bpmn:sequenceFlow id="Flow_10yknfp" name="modify" sourceRef="Gateway_1l0ve7b" targetRef="moWsMoUpdateTaskStep">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${WF_TASK_RESOLUTION_ACTION=='modify'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1kpepv7" sourceRef="moWsMoUpdateTaskStep" targetRef="moUpdateTaskResolved" />
+    <bpmn:intermediateCatchEvent id="moEventWsMoReviewTaskResolved" name="MO Review Task resolved">
+      <bpmn:incoming>Flow_0erj7ed</bpmn:incoming>
+      <bpmn:outgoing>Flow_1cumzga</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1co72z9" messageRef="Message_1lf4iod" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="Flow_1cumzga" sourceRef="moEventWsMoReviewTaskResolved" targetRef="Gateway_0milawz" />
+    <bpmn:intermediateCatchEvent id="moEventWsMoFinalizeOrderTaskResolved" name="MO WS Approved Task resolved">
+      <bpmn:incoming>Flow_1kpi20h</bpmn:incoming>
+      <bpmn:outgoing>Flow_0sw8p1z</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1bf4zyi" messageRef="Message_3uib7df" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="Flow_0sw8p1z" sourceRef="moEventWsMoFinalizeOrderTaskResolved" targetRef="Gateway_1l0ve7b" />
+    <bpmn:endEvent id="Event_07hyi9c">
+      <bpmn:incoming>Flow_07psbo0</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="moCreateRetailMoCreateTaskStep" name="Create RT MO Created Task" camunda:delegateExpression="${createRetailMoCreateTaskStep}">
+      <bpmn:incoming>Flow_1uozv4l</bpmn:incoming>
+      <bpmn:incoming>Flow_0iupgxm</bpmn:incoming>
+      <bpmn:outgoing>Flow_1rvudl0</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1rvudl0" sourceRef="moCreateRetailMoCreateTaskStep" targetRef="moEventRTMoCreatedTaskResolved" />
+    <bpmn:intermediateCatchEvent id="moEventRTMoCreatedTaskResolved" name="MO RT Mo Created Task resolved">
+      <bpmn:incoming>Flow_1rvudl0</bpmn:incoming>
+      <bpmn:outgoing>Flow_05jlrao</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1f4vkcb" messageRef="Message_0l366uu" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="Flow_05jlrao" sourceRef="moEventRTMoCreatedTaskResolved" targetRef="Gateway_0mvon64" />
+    <bpmn:exclusiveGateway id="Gateway_0mvon64" name="resolution action">
+      <bpmn:incoming>Flow_05jlrao</bpmn:incoming>
+      <bpmn:outgoing>Flow_1wpk8w8</bpmn:outgoing>
+      <bpmn:outgoing>Flow_01ryo9m</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1wpk8w8" name="completed" sourceRef="Gateway_0mvon64" targetRef="moCreateWsMoFinalizeTaskStep">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${WF_TASK_RESOLUTION_ACTION=='completed'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_01ryo9m" name="modify" sourceRef="Gateway_0mvon64" targetRef="moWsMoUpdateTaskStep">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${WF_TASK_RESOLUTION_ACTION=='modify'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:receiveTask id="moCreateMoUpdateTaskStep_retry" name="Wait for Retry">
+      <bpmn:incoming>Flow_1o53d5h</bpmn:incoming>
+      <bpmn:outgoing>Flow_19hfbt7</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:receiveTask id="moCreateWsMoFinalizeTaskStep_retry" name="Wait for Retry">
+      <bpmn:incoming>Flow_0m8hpf2</bpmn:incoming>
+      <bpmn:outgoing>Flow_16b89yg</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:receiveTask id="moCreateRetailMoCreateTaskStep_retry" name="Wait for Retry">
+      <bpmn:incoming>Flow_17bv6s2</bpmn:incoming>
+      <bpmn:outgoing>Flow_0iupgxm</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:receiveTask id="moCreateWsMoReviewTaskStep_retry" name="Wait for Retry">
+      <bpmn:incoming>Flow_05a3uvx</bpmn:incoming>
+      <bpmn:outgoing>Flow_1m06pka</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:boundaryEvent id="Event_1eit68p" attachedToRef="moCreateWsMoReviewTaskStep">
+      <bpmn:outgoing>Flow_05a3uvx</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1xkll06" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_05a3uvx" sourceRef="Event_1eit68p" targetRef="moCreateWsMoReviewTaskStep_retry" />
+    <bpmn:sequenceFlow id="Flow_1m06pka" sourceRef="moCreateWsMoReviewTaskStep_retry" targetRef="moCreateWsMoReviewTaskStep" />
+    <bpmn:boundaryEvent id="Event_14m54oa" attachedToRef="moCreateRetailMoCreateTaskStep">
+      <bpmn:outgoing>Flow_17bv6s2</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1hktt1c" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_17bv6s2" sourceRef="Event_14m54oa" targetRef="moCreateRetailMoCreateTaskStep_retry" />
+    <bpmn:sequenceFlow id="Flow_0iupgxm" sourceRef="moCreateRetailMoCreateTaskStep_retry" targetRef="moCreateRetailMoCreateTaskStep" />
+    <bpmn:boundaryEvent id="Event_0yn09u7" attachedToRef="moWsMoUpdateTaskStep">
+      <bpmn:outgoing>Flow_1o53d5h</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1gn66yx" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_1o53d5h" sourceRef="Event_0yn09u7" targetRef="moCreateMoUpdateTaskStep_retry" />
+    <bpmn:sequenceFlow id="Flow_19hfbt7" sourceRef="moCreateMoUpdateTaskStep_retry" targetRef="moWsMoUpdateTaskStep" />
+    <bpmn:boundaryEvent id="Event_1eaxyex" attachedToRef="moCreateWsMoFinalizeTaskStep">
+      <bpmn:outgoing>Flow_0m8hpf2</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_19mkyy7" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_0m8hpf2" sourceRef="Event_1eaxyex" targetRef="moCreateWsMoFinalizeTaskStep_retry" />
+    <bpmn:sequenceFlow id="Flow_16b89yg" sourceRef="moCreateWsMoFinalizeTaskStep_retry" targetRef="moCreateWsMoFinalizeTaskStep" />
+    <bpmn:sequenceFlow id="Flow_0wmcrvl" sourceRef="StartEvent_1" targetRef="moCreateWsMoInitiateTaskStep" />
+    <bpmn:intermediateCatchEvent id="moUpdateTaskResolved" name="MO Update Task resolved">
+      <bpmn:incoming>Flow_1kpepv7</bpmn:incoming>
+      <bpmn:outgoing>Flow_1de3bmf</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1v8fdw2" messageRef="Message_03uqa64" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="Flow_1de3bmf" sourceRef="moUpdateTaskResolved" targetRef="moCreateWsMoReviewTaskStep" />
+    <bpmn:sequenceFlow id="Flow_07psbo0" name="completed" sourceRef="Gateway_1l0ve7b" targetRef="Event_07hyi9c">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${WF_TASK_RESOLUTION_ACTION=='completed'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:serviceTask id="moCreateWsMoInitiateTaskStep" name="Create Initiate Modify Order  Task" camunda:delegateExpression="${createInitiateChangeOrderTaskStep}">
+      <bpmn:incoming>Flow_1neqq2x</bpmn:incoming>
+      <bpmn:incoming>Flow_0wmcrvl</bpmn:incoming>
+      <bpmn:outgoing>Flow_0x5k6nt</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:boundaryEvent id="Event_0pe1n67" attachedToRef="moCreateWsMoInitiateTaskStep">
+      <bpmn:outgoing>Flow_1deyls7</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1p3ztl3" />
+    </bpmn:boundaryEvent>
+    <bpmn:receiveTask id="moCreateWsMoInitiateTaskStep_retry" name="Wait for Retry">
+      <bpmn:incoming>Flow_1deyls7</bpmn:incoming>
+      <bpmn:outgoing>Flow_1neqq2x</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:intermediateCatchEvent id="moEventWsMoInitiateTaskResolved" name="MO Initiate Task resolved">
+      <bpmn:incoming>Flow_0x5k6nt</bpmn:incoming>
+      <bpmn:outgoing>Flow_1oi4cgf</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_196e4mc" messageRef="Message_22mg71j" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="Flow_1oi4cgf" sourceRef="moEventWsMoInitiateTaskResolved" targetRef="moCreateWsMoReviewTaskStep" />
+    <bpmn:sequenceFlow id="Flow_1deyls7" sourceRef="Event_0pe1n67" targetRef="moCreateWsMoInitiateTaskStep_retry" />
+    <bpmn:sequenceFlow id="Flow_1neqq2x" sourceRef="moCreateWsMoInitiateTaskStep_retry" targetRef="moCreateWsMoInitiateTaskStep" />
+    <bpmn:sequenceFlow id="Flow_0x5k6nt" sourceRef="moCreateWsMoInitiateTaskStep" targetRef="moEventWsMoInitiateTaskResolved" />
+    <bpmn:textAnnotation id="TextAnnotation_0hepeep">
+      <bpmn:text>Started by endpoint call</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1jb0qaz" sourceRef="StartEvent_1" targetRef="TextAnnotation_0hepeep" />
+  </bpmn:process>
+  <bpmn:message id="Message_1lf4iod" name="MO_review_task_resolved" />
+  <bpmn:message id="Message_3uib7df" name="MO_finalize_order_task_resolved" />
+  <bpmn:message id="Message_0l366uu" name="MO_RT_mo_created_task_resolved" />
+  <bpmn:message id="Message_2eo2o3u" name="MO_modify_order_created_task_resolved" />
+  <bpmn:message id="Message_03uqa64" name="MO_update_task_resolved" />
+  <bpmn:message id="Message_22mg71j" name="MO_initiate_task_resolved" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="ModifyOrder">
+      <bpmndi:BPMNEdge id="Flow_0x5k6nt_di" bpmnElement="Flow_0x5k6nt">
+        <di:waypoint x="380" y="350" />
+        <di:waypoint x="380" y="392" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1neqq2x_di" bpmnElement="Flow_1neqq2x">
+        <di:waypoint x="260" y="300" />
+        <di:waypoint x="330" y="300" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1deyls7_di" bpmnElement="Flow_1deyls7">
+        <di:waypoint x="312" y="330" />
+        <di:waypoint x="260" y="330" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1oi4cgf_di" bpmnElement="Flow_1oi4cgf">
+        <di:waypoint x="380" y="428" />
+        <di:waypoint x="380" y="490" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_07psbo0_di" bpmnElement="Flow_07psbo0">
+        <di:waypoint x="380" y="1395" />
+        <di:waypoint x="380" y="1462" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="314" y="1395" width="51" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1de3bmf_di" bpmnElement="Flow_1de3bmf">
+        <di:waypoint x="710" y="1042" />
+        <di:waypoint x="710" y="530" />
+        <di:waypoint x="430" y="530" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0wmcrvl_di" bpmnElement="Flow_0wmcrvl">
+        <di:waypoint x="380" y="178" />
+        <di:waypoint x="380" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_16b89yg_di" bpmnElement="Flow_16b89yg">
+        <di:waypoint x="260" y="1140" />
+        <di:waypoint x="330" y="1140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0m8hpf2_di" bpmnElement="Flow_0m8hpf2">
+        <di:waypoint x="312" y="1170" />
+        <di:waypoint x="260" y="1170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_19hfbt7_di" bpmnElement="Flow_19hfbt7">
+        <di:waypoint x="700" y="1230" />
+        <di:waypoint x="620" y="1230" />
+        <di:waypoint x="588" y="1190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1o53d5h_di" bpmnElement="Flow_1o53d5h">
+        <di:waypoint x="648" y="1190" />
+        <di:waypoint x="700" y="1190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0iupgxm_di" bpmnElement="Flow_0iupgxm">
+        <di:waypoint x="260" y="820" />
+        <di:waypoint x="330" y="820" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_17bv6s2_di" bpmnElement="Flow_17bv6s2">
+        <di:waypoint x="312" y="850" />
+        <di:waypoint x="260" y="850" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1m06pka_di" bpmnElement="Flow_1m06pka">
+        <di:waypoint x="260" y="520" />
+        <di:waypoint x="330" y="520" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05a3uvx_di" bpmnElement="Flow_05a3uvx">
+        <di:waypoint x="312" y="550" />
+        <di:waypoint x="260" y="550" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_01ryo9m_di" bpmnElement="Flow_01ryo9m">
+        <di:waypoint x="405" y="1010" />
+        <di:waypoint x="490" y="1010" />
+        <di:waypoint x="490" y="1150" />
+        <di:waypoint x="530" y="1150" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="443" y="993" width="33" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1wpk8w8_di" bpmnElement="Flow_1wpk8w8">
+        <di:waypoint x="380" y="1035" />
+        <di:waypoint x="380" y="1110" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="326" y="1070" width="51" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05jlrao_di" bpmnElement="Flow_05jlrao">
+        <di:waypoint x="380" y="948" />
+        <di:waypoint x="380" y="985" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1rvudl0_di" bpmnElement="Flow_1rvudl0">
+        <di:waypoint x="380" y="870" />
+        <di:waypoint x="380" y="912" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0sw8p1z_di" bpmnElement="Flow_0sw8p1z">
+        <di:waypoint x="380" y="1278" />
+        <di:waypoint x="380" y="1345" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1cumzga_di" bpmnElement="Flow_1cumzga">
+        <di:waypoint x="380" y="648" />
+        <di:waypoint x="380" y="685" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1kpepv7_di" bpmnElement="Flow_1kpepv7">
+        <di:waypoint x="630" y="1150" />
+        <di:waypoint x="710" y="1150" />
+        <di:waypoint x="710" y="1078" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10yknfp_di" bpmnElement="Flow_10yknfp">
+        <di:waypoint x="405" y="1370" />
+        <di:waypoint x="580" y="1370" />
+        <di:waypoint x="580" y="1190" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="476" y="1352" width="33" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1kpi20h_di" bpmnElement="Flow_1kpi20h">
+        <di:waypoint x="380" y="1190" />
+        <di:waypoint x="380" y="1242" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1uozv4l_di" bpmnElement="Flow_1uozv4l">
+        <di:waypoint x="380" y="735" />
+        <di:waypoint x="380" y="790" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="328" y="757" width="46" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ne4k7g_di" bpmnElement="Flow_0ne4k7g">
+        <di:waypoint x="405" y="710" />
+        <di:waypoint x="580" y="710" />
+        <di:waypoint x="580" y="1110" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="476" y="692" width="33" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0erj7ed_di" bpmnElement="Flow_0erj7ed">
+        <di:waypoint x="380" y="570" />
+        <di:waypoint x="380" y="612" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="362" y="142" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_15k8vd6" bpmnElement="moCreateWsMoReviewTaskStep">
+        <dc:Bounds x="330" y="490" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0sxr1yo" bpmnElement="Gateway_0milawz" isMarkerVisible="true">
+        <dc:Bounds x="355" y="685" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="268" y="703" width="81" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0ibp9id" bpmnElement="moWsMoUpdateTaskStep">
+        <dc:Bounds x="530" y="1110" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1mc6xmn" bpmnElement="moCreateWsMoFinalizeTaskStep">
+        <dc:Bounds x="330" y="1110" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0wegp0d" bpmnElement="moEventWsMoReviewTaskResolved">
+        <dc:Bounds x="362" y="612" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="268" y="616" width="83" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0flvd3c" bpmnElement="moCreateRetailMoCreateTaskStep">
+        <dc:Bounds x="330" y="790" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1kid6xc" bpmnElement="moEventRTMoCreatedTaskResolved">
+        <dc:Bounds x="362" y="912" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="279" y="916" width="66" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_17mteru" bpmnElement="Gateway_0mvon64" isMarkerVisible="true">
+        <dc:Bounds x="355" y="985" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="268" y="1003" width="81" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0mqv440" bpmnElement="moCreateMoUpdateTaskStep_retry">
+        <dc:Bounds x="700" y="1170" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0o8s9fj" bpmnElement="moCreateWsMoFinalizeTaskStep_retry">
+        <dc:Bounds x="160" y="1110" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1xsxg7p" bpmnElement="moCreateRetailMoCreateTaskStep_retry">
+        <dc:Bounds x="160" y="790" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_12f6vv7" bpmnElement="moCreateWsMoReviewTaskStep_retry">
+        <dc:Bounds x="160" y="490" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0lu8rb5" bpmnElement="moUpdateTaskResolved">
+        <dc:Bounds x="692" y="1042" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="740" y="1046" width="83" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0ff1qtq" bpmnElement="moCreateWsMoInitiateTaskStep">
+        <dc:Bounds x="330" y="270" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0kmd6m1" bpmnElement="moCreateWsMoInitiateTaskStep_retry">
+        <dc:Bounds x="160" y="270" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1xkieqk" bpmnElement="moEventWsMoInitiateTaskResolved">
+        <dc:Bounds x="362" y="392" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="270" y="396" width="80" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0hepeep_di" bpmnElement="TextAnnotation_0hepeep">
+        <dc:Bounds x="420" y="80" width="100" height="41" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_07hyi9c_di" bpmnElement="Event_07hyi9c">
+        <dc:Bounds x="362" y="1462" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0a74r24" bpmnElement="Gateway_1l0ve7b" isMarkerVisible="true">
+        <dc:Bounds x="355" y="1345" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="268" y="1363" width="81" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1o4n9ae" bpmnElement="moEventWsMoFinalizeOrderTaskResolved">
+        <dc:Bounds x="362" y="1242" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="266" y="1246" width="89" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0mh3xhe" bpmnElement="Event_0pe1n67">
+        <dc:Bounds x="312" y="312" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_07bh6kr_di" bpmnElement="Event_1eaxyex">
+        <dc:Bounds x="312" y="1152" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0rxjszy_di" bpmnElement="Event_0yn09u7">
+        <dc:Bounds x="612" y="1172" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0oqxqhx_di" bpmnElement="Event_14m54oa">
+        <dc:Bounds x="312" y="832" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1792jeh_di" bpmnElement="Event_1eit68p">
+        <dc:Bounds x="312" y="532" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_1jb0qaz_di" bpmnElement="Association_1jb0qaz">
+        <di:waypoint x="395" y="150" />
+        <di:waypoint x="431" y="121" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

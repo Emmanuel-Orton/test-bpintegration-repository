@@ -1,0 +1,764 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Infonova API Swagger",
+    "version": ""
+  },
+  "host": "localhost:9700",
+  "basePath": "/r6-api",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+    "/{tenant}/serviceInventory/v1/services": {
+      "get": {
+        "tags": [
+          "Service Inventory v1"
+        ],
+        "summary": "GET /serviceInventory/v1/services",
+        "description": "GET /serviceInventory/v1/services",
+        "operationId": "getServiceInventoryV1Services",
+        "produces": [
+          "application/json;charset=utf-8",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search query. Supported properties are product,serviceIdentifier,id.",
+            "required": false,
+            "type": "string",
+            "format": "Lucene syntax is not supported",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ServiceinventoryV1DomainServiceList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/serviceInventory/v1/services/{service}": {
+      "get": {
+        "tags": [
+          "Service Inventory v1"
+        ],
+        "summary": "GET /serviceInventory/v1/services/{service}",
+        "description": "GET /serviceInventory/v1/services/{service}",
+        "operationId": "getServiceInventoryV1ServicesService",
+        "produces": [
+          "application/json;charset=utf-8",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "service",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ServiceinventoryV1DomainService"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Service Inventory v1"
+        ],
+        "summary": "PUT /serviceInventory/v1/services/{service}",
+        "description": "PUT /serviceInventory/v1/services/{service}",
+        "operationId": "putServiceInventoryV1ServicesService",
+        "consumes": [
+          "application/json;charset=utf-8",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json;charset=utf-8",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "service",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ServiceinventoryV1DomainService"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ServiceinventoryV1DomainService"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Service Inventory v1"
+        ],
+        "summary": "PATCH /serviceInventory/v1/services/{service}",
+        "description": "PATCH /serviceInventory/v1/services/{service}",
+        "operationId": "patchServiceInventoryV1ServicesService",
+        "consumes": [
+          "application/json;charset=utf-8",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json;charset=utf-8",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "service",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ServiceinventoryV1DomainService"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ServiceinventoryV1DomainService"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/serviceInventory/v1/services/{service}/changes": {
+      "get": {
+        "tags": [
+          "Service Inventory v1"
+        ],
+        "summary": "GET /serviceInventory/v1/services/{service}/changes",
+        "description": "GET /serviceInventory/v1/services/{service}/changes",
+        "operationId": "getServiceInventoryV1ServicesServiceChanges",
+        "produces": [
+          "application/json;charset=utf-8",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "service",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ServiceinventoryV1DomainServiceChangeList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "CommonsDomainModelArgument": {
+      "type": "object",
+      "properties": {
+        "argument": {
+          "type": "string"
+        },
+        "argumentDescription": {
+          "type": "string"
+        },
+        "argumentKey": {
+          "type": "string"
+        },
+        "subMessages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelMessage"
+          }
+        }
+      }
+    },
+    "CommonsDomainModelLink": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string"
+        },
+        "templated": {
+          "type": "boolean"
+        }
+      }
+    },
+    "CommonsDomainModelMessage": {
+      "type": "object",
+      "properties": {
+        "args": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelArgument"
+          }
+        },
+        "key": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "messageTemplate": {
+          "type": "string"
+        }
+      }
+    },
+    "CommonsDomainModelMessageAware": {
+      "type": "object",
+      "properties": {
+        "logId": {
+          "type": "string"
+        },
+        "messages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelMessage"
+          }
+        }
+      }
+    },
+    "CommonsTimeInterval": {
+      "type": "object",
+      "properties": {
+        "end": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "start": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "ServiceinventoryV1DomainProductRelationship": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/CommonsDomainModelLink"
+          }
+        },
+        "relatedProduct": {
+          "type": "string"
+        },
+        "service": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ServiceinventoryV1DomainService": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/CommonsDomainModelLink"
+          }
+        },
+        "id": {
+          "type": "string"
+        },
+        "instanceName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "productRelationships": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceinventoryV1DomainProductRelationship"
+          }
+        },
+        "serviceBarring": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceinventoryV1DomainServiceBarring"
+          }
+        },
+        "serviceCharacteristics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceinventoryV1DomainServiceCharacteristic"
+          }
+        },
+        "serviceIdentifier": {
+          "$ref": "#/definitions/ServiceinventoryV1DomainServiceIdentifier"
+        },
+        "serviceIdentifiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceinventoryV1DomainServiceIdentifier"
+          }
+        },
+        "serviceProvider": {
+          "type": "string"
+        },
+        "serviceRelationships": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceinventoryV1DomainServiceRelationship"
+          }
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ServiceinventoryV1DomainServiceAndServiceinventoryV1DomainServiceCharacteristicAndServiceinventoryV1DomainServiceIdentifier": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/CommonsDomainModelLink"
+          }
+        },
+        "characterValue": {
+          "type": "string"
+        },
+        "dateValue": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "id": {
+          "type": "string"
+        },
+        "identifier": {
+          "type": "string"
+        },
+        "instanceName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "numericValue": {
+          "type": "string",
+          "format": "number"
+        },
+        "productRelationships": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceinventoryV1DomainProductRelationship"
+          }
+        },
+        "serviceBarring": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceinventoryV1DomainServiceBarring"
+          }
+        },
+        "serviceCharacteristics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceinventoryV1DomainServiceCharacteristic"
+          }
+        },
+        "serviceIdentifier": {
+          "$ref": "#/definitions/ServiceinventoryV1DomainServiceIdentifier"
+        },
+        "serviceIdentifiers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceinventoryV1DomainServiceIdentifier"
+          }
+        },
+        "serviceProvider": {
+          "type": "string"
+        },
+        "serviceRelationships": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceinventoryV1DomainServiceRelationship"
+          }
+        },
+        "state": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ServiceinventoryV1DomainServiceBarring": {
+      "type": "object",
+      "properties": {
+        "level": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "ServiceinventoryV1DomainServiceChange": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/CommonsDomainModelLink"
+          }
+        },
+        "current": {
+          "$ref": "#/definitions/ServiceinventoryV1DomainServiceAndServiceinventoryV1DomainServiceCharacteristicAndServiceinventoryV1DomainServiceIdentifier"
+        },
+        "eventDefinition": {
+          "type": "string"
+        },
+        "previous": {
+          "$ref": "#/definitions/ServiceinventoryV1DomainServiceAndServiceinventoryV1DomainServiceCharacteristicAndServiceinventoryV1DomainServiceIdentifier"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "ServiceinventoryV1DomainServiceChangeList": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceinventoryV1DomainServiceChange"
+          }
+        }
+      }
+    },
+    "ServiceinventoryV1DomainServiceCharacteristic": {
+      "type": "object",
+      "properties": {
+        "characterValue": {
+          "type": "string"
+        },
+        "dateValue": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "numericValue": {
+          "type": "string",
+          "format": "number"
+        },
+        "state": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ServiceinventoryV1DomainServiceIdentifier": {
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ServiceinventoryV1DomainServiceList": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ServiceinventoryV1DomainService"
+          }
+        }
+      }
+    },
+    "ServiceinventoryV1DomainServiceRelationship": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/CommonsDomainModelLink"
+          }
+        },
+        "relatedService": {
+          "type": "string"
+        },
+        "service": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "oauth2ClientCredentialAuthentication": {
+      "type": "oauth2",
+      "description": "Client credentials flow configuration for the Infonova Keycloak.",
+      "flow": "application",
+      "tokenUrl": ""
+    },
+    "oauth2ResourceOwnerPasswordCredentialAuthentication": {
+      "type": "oauth2",
+      "description": "Resource Owner Password Credentials flow configuration for the Infonova Keycloak.",
+      "flow": "password",
+      "tokenUrl": ""
+    }
+  },
+  "tags": [
+    {
+      "name": "Service Inventory v1",
+      "externalDocs": {
+        "description": "Further documentation",
+        "url": "http://localhost:9700/r6-api/docs/service-inventory-impl/index.html"
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "list": [
+    {
+      "name": "telus_assisted_sales_EVENTS_ROLE",
+      "displayName": "telus_assisted_sales_EVENTS_ROLE",
+      "description": "telus_assisted_sales_CUSTOMER_EVENTS_ROLE",
+      "active": true,
+      "permissions": [
+      ]
+    }
+  ]
+}

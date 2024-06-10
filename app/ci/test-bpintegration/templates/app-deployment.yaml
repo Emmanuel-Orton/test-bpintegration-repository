@@ -1,0 +1,112 @@
+{{- $secretChecksum := include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
+{{- with .Values.app }}
+  {{- if .enabled}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: telus-test-bpintegration-api{{ $.Values.global.env }}
+  labels:
+    app: telus-test-bpintegration-api{{ $.Values.global.env }}
+spec:
+  replicas: {{ .replicas }}
+  selector:
+    matchLabels:
+      app: telus-test-bpintegration-api{{ $.Values.global.env }}
+  template:
+    metadata:
+      labels:
+        app: telus-test-bpintegration-api{{ $.Values.global.env }}
+      annotations:
+        commit: {{ $.Chart.AppVersion | quote }}
+        checksum/config: {{ $secretChecksum }}
+    spec:
+      {{- if $.Values.app.gcpProxy.enabled }}
+      serviceAccountName: {{ required "app.serviceAccountName is mandatory" $.Values.app.serviceAccountName }}
+      {{- else }}
+      # do not mount default service account token
+      # create dedicated service account with role bindings if access to k8s needed
+      automountServiceAccountToken: false
+      {{- end }}
+      containers:
+        - name: backend
+          image: "{{ $.Values.global.repository }}/test-bpintegration-app:{{ $.Chart.Version }}"
+          imagePullPolicy: Always
+          resources: {{ toYaml .resources | nindent 12 }}
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: management-port
+              containerPort: 9001
+          livenessProbe:
+            httpGet:
+              port: management-port
+              path: /actuator/health/liveness
+            initialDelaySeconds: 60
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              port: management-port
+              path: /actuator/health/readiness
+            initialDelaySeconds: 60
+            periodSeconds: 5
+          env:
+            - name: STARTUP_DELAY
+              value: "{{ $.Values.app.startupDelay }}"
+            {{- range $key, $val := .env }}
+            - name: {{ $key }}
+              value: {{ $val | quote }}
+            {{- end }}
+            {{if .debug}}
+            - name:  "DEBUG_PORT"
+              value: "5005"
+            {{- end}}
+          envFrom:
+            - secretRef:
+                  name:  secret-{{$.Chart.Name}}{{$.Values.global.env}}
+          volumeMounts:
+            - name: configuration
+              mountPath: /app/config
+        {{- if $.Values.app.gcpProxy.enabled}}
+        - name: dbproxy
+          command:
+            - /cloud_sql_proxy
+            - -instances={{ $.Values.global.integration.gcpProxy.databaseService }}
+          image: 'gcr.io/cloudsql-docker/gce-proxy:1.28.1'
+          resources:
+            limits:
+              cpu: 80m
+              memory: 32Mi
+            requests:
+              cpu: 80m
+              memory: 32Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsUser: 2
+        {{- end }}
+      volumes:
+        - name: configuration
+          configMap:
+            name: telus-test-bpintegration-api-configuration{{ $.Values.global.env }}
+      imagePullSecrets:
+      - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: telus-test-bpintegration-api{{ $.Values.global.env }}
+spec:
+  ports:
+    - port: 8080
+      name: http
+  selector:
+    app: telus-test-bpintegration-api{{ $.Values.global.env }}
+  clusterIP: None
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: telus-test-bpintegration-api-configuration{{ $.Values.global.env }}
+data:
+{{ ($.Files.Glob "config/*").AsConfig | indent 2 }}
+{{- end }}
+{{- end }}

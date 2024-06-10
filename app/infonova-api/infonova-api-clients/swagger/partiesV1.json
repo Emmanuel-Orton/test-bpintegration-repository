@@ -1,0 +1,2825 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Infonova API Swagger",
+    "version": ""
+  },
+  "host": "localhost:9700",
+  "basePath": "/r6-api",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+    "/{tenant}/parties/v1/individuals": {
+      "get": {
+        "tags": [
+          "Parties v1"
+        ],
+        "summary": "GET /parties/v1/individuals",
+        "description": "GET /parties/v1/individuals",
+        "operationId": "getPartiesV1Individuals",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "chunkSize",
+            "in": "query",
+            "description": "The size of a chunk. Defaults to 50 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "Filter properties",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The requested page of the result. Defaults to 1 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The size of a page. Defaults to 50 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search query. Supported properties are id,customerAccounts,type,state,givenName,familyName,fullName,formattedName,middleName,preferredName,identification.identifier,contactMediums.contactMedium,contactMediums.emailAddress,contactMediums.telephoneNumber.number,contactMediums.postalAddress,relatedEntities.entity,relatedEntities.entityType,relatedEntities.role,relatedEntities.includeChildRoles,parameters.*,relatedEntity.entity,relatedEntity.entityType,relatedEntity.role,relatedEntity.includeChildRoles.",
+            "required": false,
+            "type": "string",
+            "format": "Lucene syntax is not supported",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "scroll",
+            "in": "query",
+            "description": "If set to true, requests a result containing a `scrollId` to continue scrolling through the result.",
+            "required": false,
+            "type": "boolean",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "scrollId",
+            "in": "query",
+            "description": "The requested scroll id to continue scrolling through the result. Ignored if not provided.",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Sort by id,customerAccounts,type,state,familyName",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sort order. Must be 'asc' or 'desc'.",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainIndividualIndividualList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Parties v1"
+        ],
+        "summary": "POST /parties/v1/individuals",
+        "description": "POST /parties/v1/individuals",
+        "operationId": "postPartiesV1Individuals",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainIndividualIndividual"
+            }
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainIndividualIndividual"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/parties/v1/individuals/{id}": {
+      "get": {
+        "tags": [
+          "Parties v1"
+        ],
+        "summary": "GET /parties/v1/individuals/{id}",
+        "description": "GET /parties/v1/individuals/{id}",
+        "operationId": "getPartiesV1IndividualsId",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainIndividualIndividual"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Parties v1"
+        ],
+        "summary": "PUT /parties/v1/individuals/{id}",
+        "description": "PUT /parties/v1/individuals/{id}",
+        "operationId": "putPartiesV1IndividualsId",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainIndividualIndividual"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainIndividualIndividual"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Parties v1"
+        ],
+        "summary": "DELETE /parties/v1/individuals/{id}",
+        "description": "DELETE /parties/v1/individuals/{id}",
+        "operationId": "deletePartiesV1IndividualsId",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainIndividualIndividual"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Parties v1"
+        ],
+        "summary": "PATCH /parties/v1/individuals/{id}",
+        "description": "PATCH /parties/v1/individuals/{id}",
+        "operationId": "patchPartiesV1IndividualsId",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainIndividualIndividual"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainIndividualIndividual"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/parties/v1/individuals/{individual}/history": {
+      "get": {
+        "tags": [
+          "Parties v1"
+        ],
+        "summary": "GET /parties/v1/individuals/{individual}/history",
+        "description": "GET /parties/v1/individuals/{individual}/history",
+        "operationId": "getPartiesV1IndividualsIndividualHistory",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "individual",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "Filter properties",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The requested page of the result. Defaults to 1 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The size of a page. Defaults to 50 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search query. Supported properties are . A temporal restriction can be provided using the query properties from, to and period.",
+            "required": false,
+            "type": "string",
+            "format": "Lucene syntax is not supported",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Sort by created,creator",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sort order. Must be 'asc' or 'desc'.",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainPartyHistoryEntryList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/parties/v1/organizationTypes": {
+      "post": {
+        "tags": [
+          "Parties v1"
+        ],
+        "summary": "POST /parties/v1/organizationTypes",
+        "description": "POST /parties/v1/organizationTypes",
+        "operationId": "postPartiesV1OrganizationTypes",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainOrganizationOrganizationType"
+            }
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainOrganizationOrganizationType"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/parties/v1/organizationTypes/{organizationType}": {
+      "get": {
+        "tags": [
+          "Parties v1"
+        ],
+        "summary": "GET /parties/v1/organizationTypes/{organizationType}",
+        "description": "GET /parties/v1/organizationTypes/{organizationType}",
+        "operationId": "getPartiesV1OrganizationTypesOrganizationType",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "organizationType",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainOrganizationOrganizationType"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Parties v1"
+        ],
+        "summary": "PUT /parties/v1/organizationTypes/{organizationType}",
+        "description": "PUT /parties/v1/organizationTypes/{organizationType}",
+        "operationId": "putPartiesV1OrganizationTypesOrganizationType",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "organizationType",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainOrganizationOrganizationType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainOrganizationOrganizationType"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Parties v1"
+        ],
+        "summary": "DELETE /parties/v1/organizationTypes/{organizationType}",
+        "description": "DELETE /parties/v1/organizationTypes/{organizationType}",
+        "operationId": "deletePartiesV1OrganizationTypesOrganizationType",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "organizationType",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainOrganizationOrganizationType"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Parties v1"
+        ],
+        "summary": "PATCH /parties/v1/organizationTypes/{organizationType}",
+        "description": "PATCH /parties/v1/organizationTypes/{organizationType}",
+        "operationId": "patchPartiesV1OrganizationTypesOrganizationType",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "organizationType",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainOrganizationOrganizationType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainOrganizationOrganizationType"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/parties/v1/organizations": {
+      "get": {
+        "tags": [
+          "Parties v1"
+        ],
+        "summary": "GET /parties/v1/organizations",
+        "description": "GET /parties/v1/organizations",
+        "operationId": "getPartiesV1Organizations",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "chunkSize",
+            "in": "query",
+            "description": "The size of a chunk. Defaults to 50 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "Filter properties",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The requested page of the result. Defaults to 1 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The size of a page. Defaults to 50 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search query. Supported properties are id,customerAccounts,type,state,tradingName,legalName,nameType,businessNumber,industryType,organizationType,identification.identifier,contactMediums.contactMedium,contactMediums.emailAddress,contactMediums.telephoneNumber.number,contactMediums.postalAddress,relatedEntities.entity,relatedEntities.entityType,relatedEntities.role,relatedEntities.includeChildRoles,parameters.*,relatedEntity.entity,relatedEntity.entityType,relatedEntity.role,relatedEntity.includeChildRoles.",
+            "required": false,
+            "type": "string",
+            "format": "Lucene syntax is not supported",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "scroll",
+            "in": "query",
+            "description": "If set to true, requests a result containing a `scrollId` to continue scrolling through the result.",
+            "required": false,
+            "type": "boolean",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "scrollId",
+            "in": "query",
+            "description": "The requested scroll id to continue scrolling through the result. Ignored if not provided.",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Sort by id,customerAccounts,type,state,tradingName",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sort order. Must be 'asc' or 'desc'.",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainOrganizationOrganizationList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Parties v1"
+        ],
+        "summary": "POST /parties/v1/organizations",
+        "description": "POST /parties/v1/organizations",
+        "operationId": "postPartiesV1Organizations",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainOrganizationOrganization"
+            }
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainOrganizationOrganization"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/parties/v1/organizations/{id}": {
+      "get": {
+        "tags": [
+          "Parties v1"
+        ],
+        "summary": "GET /parties/v1/organizations/{id}",
+        "description": "GET /parties/v1/organizations/{id}",
+        "operationId": "getPartiesV1OrganizationsId",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainOrganizationOrganization"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Parties v1"
+        ],
+        "summary": "PUT /parties/v1/organizations/{id}",
+        "description": "PUT /parties/v1/organizations/{id}",
+        "operationId": "putPartiesV1OrganizationsId",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainOrganizationOrganization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainOrganizationOrganization"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Parties v1"
+        ],
+        "summary": "DELETE /parties/v1/organizations/{id}",
+        "description": "DELETE /parties/v1/organizations/{id}",
+        "operationId": "deletePartiesV1OrganizationsId",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainOrganizationOrganization"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Parties v1"
+        ],
+        "summary": "PATCH /parties/v1/organizations/{id}",
+        "description": "PATCH /parties/v1/organizations/{id}",
+        "operationId": "patchPartiesV1OrganizationsId",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainOrganizationOrganization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainOrganizationOrganization"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/parties/v1/organizations/{organization}/history": {
+      "get": {
+        "tags": [
+          "Parties v1"
+        ],
+        "summary": "GET /parties/v1/organizations/{organization}/history",
+        "description": "GET /parties/v1/organizations/{organization}/history",
+        "operationId": "getPartiesV1OrganizationsOrganizationHistory",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "organization",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "Filter properties",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The requested page of the result. Defaults to 1 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The size of a page. Defaults to 50 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search query. Supported properties are . A temporal restriction can be provided using the query properties from, to and period.",
+            "required": false,
+            "type": "string",
+            "format": "Lucene syntax is not supported",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Sort by created,creator",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sort order. Must be 'asc' or 'desc'.",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainPartyHistoryEntryList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/parties/v1/parties": {
+      "get": {
+        "tags": [
+          "Parties v1"
+        ],
+        "summary": "GET /parties/v1/parties",
+        "description": "GET /parties/v1/parties",
+        "operationId": "getPartiesV1Parties",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "chunkSize",
+            "in": "query",
+            "description": "The size of a chunk. Defaults to 50 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "Filter properties",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The requested page of the result. Defaults to 1 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The size of a page. Defaults to 50 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search query. Supported properties are id,customerAccounts,type,state,givenName,familyName,fullName,formattedName,middleName,preferredName,tradingName,legalName,nameType,businessNumber,industryType,organizationType,identification.identifier,contactMediums.contactMedium,contactMediums.emailAddress,contactMediums.telephoneNumber.number,contactMediums.postalAddress,relatedEntities.entity,relatedEntities.entityType,relatedEntities.role,relatedEntities.includeChildRoles,parameters.*.",
+            "required": false,
+            "type": "string",
+            "format": "Lucene syntax is not supported",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "scroll",
+            "in": "query",
+            "description": "If set to true, requests a result containing a `scrollId` to continue scrolling through the result.",
+            "required": false,
+            "type": "boolean",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "scrollId",
+            "in": "query",
+            "description": "The requested scroll id to continue scrolling through the result. Ignored if not provided.",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Sort by organizationType,customerAccounts,id,relatedEntity,relatedEntity.role,relatedEntity.entity,relatedEntity.entityType,relatedEntity.includeChildRoles,contactMediums.emailAddress,contactMediums.postalAddress,contactMediums.telephoneNumber.number,contactMediums.postalAddress.country,contactMediums.postalAddress.city,contactMediums.postalAddress.postcode,contactMediums.postalAddress.streetNr,contactMediums.postalAddress.streetNrSuffix,contactMediums.postalAddress.streetNrLast,contactMediums.postalAddress.streetNrLastSuffix",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sort order. Must be 'asc' or 'desc'.",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/PartyV1DomainPartyList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "CommonsDomainModelArgument": {
+      "type": "object",
+      "properties": {
+        "argument": {
+          "type": "string"
+        },
+        "argumentDescription": {
+          "type": "string"
+        },
+        "argumentKey": {
+          "type": "string"
+        },
+        "subMessages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelMessage"
+          }
+        }
+      }
+    },
+    "CommonsDomainModelDomainModelAndPartyV1DomainPartyAndPartyV1DomainRelatedEntity": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/CommonsDomainModelLink"
+          }
+        },
+        "contactMedium": {
+          "$ref": "#/definitions/PartyV1DomainContactMedium"
+        },
+        "contactMediums": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainContactMedium"
+          }
+        },
+        "customerAccount": {
+          "type": "string"
+        },
+        "entity": {
+          "type": "string"
+        },
+        "entityType": {
+          "type": "string",
+          "enum": [
+            "CustomerAccount",
+            "Product",
+            "Organization",
+            "Individual"
+          ]
+        },
+        "externalReferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainExternalReference"
+          }
+        },
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "identifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainIdentification"
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "party": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "partyType": {
+          "type": "string",
+          "enum": [
+            "Individual",
+            "Organization"
+          ]
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "relatedEntities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainRelatedEntity"
+          }
+        },
+        "relatedParties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainRelatedParty"
+          }
+        },
+        "role": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "CommonsDomainModelLink": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string"
+        },
+        "templated": {
+          "type": "boolean"
+        }
+      }
+    },
+    "CommonsDomainModelMessage": {
+      "type": "object",
+      "properties": {
+        "args": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelArgument"
+          }
+        },
+        "key": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "messageTemplate": {
+          "type": "string"
+        }
+      }
+    },
+    "CommonsDomainModelMessageAware": {
+      "type": "object",
+      "properties": {
+        "logId": {
+          "type": "string"
+        },
+        "messages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelMessage"
+          }
+        }
+      }
+    },
+    "CommonsTimeInterval": {
+      "type": "object",
+      "properties": {
+        "end": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "start": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "ConfigparamsV1ParameterDefinition": {
+      "type": "object",
+      "properties": {
+        "_translations": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        },
+        "attributes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "hint": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "parameterSetName": {
+          "type": "string"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "searchable": {
+          "type": "boolean"
+        },
+        "validationRegex": {
+          "type": "string"
+        }
+      }
+    },
+    "PartyV1DomainContactMedium": {
+      "type": "object",
+      "properties": {
+        "contactMedium": {
+          "type": "string"
+        },
+        "contactType": {
+          "type": "string"
+        },
+        "emailAddress": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "postalAddress": {
+          "type": "string"
+        },
+        "preferred": {
+          "type": "boolean"
+        },
+        "role": {
+          "type": "string"
+        },
+        "telephoneNumber": {
+          "$ref": "#/definitions/PartyV1DomainTelephoneNumber"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Email",
+            "TelephoneNumber",
+            "PostalAddress",
+            "Other"
+          ]
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "PartyV1DomainExternalReference": {
+      "type": "object",
+      "properties": {
+        "externalReference": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "PartyV1DomainIdentification": {
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string"
+        },
+        "issuingAuthority": {
+          "type": "string"
+        },
+        "issuingDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "type": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "PartyV1DomainIndividualIndividual": {
+      "type": "object",
+      "properties": {
+        "contactMediums": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainContactMedium"
+          }
+        },
+        "countryOfBirth": {
+          "type": "string"
+        },
+        "customerAccount": {
+          "type": "string"
+        },
+        "dateOfBirth": {
+          "type": "string",
+          "format": "date"
+        },
+        "dateOfDeath": {
+          "type": "string",
+          "format": "date"
+        },
+        "disabilities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "externalReferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainExternalReference"
+          }
+        },
+        "familyName": {
+          "type": "string"
+        },
+        "formattedName": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "givenName": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "identifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainIdentification"
+          }
+        },
+        "location": {
+          "type": "string"
+        },
+        "maritalStatus": {
+          "type": "string"
+        },
+        "middleName": {
+          "type": "string"
+        },
+        "otherNames": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainIndividualOtherName"
+          }
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "partyType": {
+          "type": "string",
+          "enum": [
+            "Individual",
+            "Organization"
+          ]
+        },
+        "placeOfBirth": {
+          "type": "string"
+        },
+        "preferredLanguage": {
+          "type": "string"
+        },
+        "preferredName": {
+          "type": "string"
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "relatedEntities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainRelatedEntity"
+          }
+        },
+        "relatedParties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainRelatedParty"
+          }
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "Initialized",
+            "Validated",
+            "Deceased"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "PartyV1DomainIndividualIndividualList": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainIndividualIndividual"
+          }
+        },
+        "paginationInformation": {
+          "type": "object",
+          "properties": {
+            "pageSize": {
+              "type": "integer"
+            },
+            "totalNumberOfRecords": {
+              "type": "integer"
+            }
+          }
+        },
+        "scrollingInformation": {
+          "type": "object",
+          "properties": {
+            "chunkSize": {
+              "type": "integer"
+            },
+            "scrollId": {
+              "type": "string"
+            },
+            "totalNumberOfRecords": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "PartyV1DomainIndividualOtherName": {
+      "type": "object",
+      "properties": {
+        "familyName": {
+          "type": "string"
+        },
+        "formattedName": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
+        "givenName": {
+          "type": "string"
+        },
+        "middleName": {
+          "type": "string"
+        },
+        "preferredName": {
+          "type": "string"
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "title": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "PartyV1DomainOrganizationOrganization": {
+      "type": "object",
+      "properties": {
+        "businessNumber": {
+          "type": "string"
+        },
+        "contactMediums": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainContactMedium"
+          }
+        },
+        "contactPerson": {
+          "$ref": "#/definitions/PartyV1DomainIndividualIndividual"
+        },
+        "customerAccount": {
+          "type": "string"
+        },
+        "externalReferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainExternalReference"
+          }
+        },
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "identifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainIdentification"
+          }
+        },
+        "industryType": {
+          "type": "string"
+        },
+        "legalEntity": {
+          "type": "boolean"
+        },
+        "legalName": {
+          "type": "string"
+        },
+        "nameType": {
+          "type": "string"
+        },
+        "organizationType": {
+          "type": "string"
+        },
+        "otherNames": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainOrganizationOtherName"
+          }
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "partyType": {
+          "type": "string",
+          "enum": [
+            "Individual",
+            "Organization"
+          ]
+        },
+        "preferredLanguage": {
+          "type": "string"
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "relatedEntities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainRelatedEntity"
+          }
+        },
+        "relatedParties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainRelatedParty"
+          }
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "Initialized",
+            "Validated",
+            "Closed"
+          ]
+        },
+        "tradingName": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "PartyV1DomainOrganizationOrganizationList": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainOrganizationOrganization"
+          }
+        },
+        "paginationInformation": {
+          "type": "object",
+          "properties": {
+            "pageSize": {
+              "type": "integer"
+            },
+            "totalNumberOfRecords": {
+              "type": "integer"
+            }
+          }
+        },
+        "scrollingInformation": {
+          "type": "object",
+          "properties": {
+            "chunkSize": {
+              "type": "integer"
+            },
+            "scrollId": {
+              "type": "string"
+            },
+            "totalNumberOfRecords": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "PartyV1DomainOrganizationOrganizationType": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "displayOrder": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "parameterDefinitions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ConfigparamsV1ParameterDefinition"
+          }
+        }
+      }
+    },
+    "PartyV1DomainOrganizationOtherName": {
+      "type": "object",
+      "properties": {
+        "legalName": {
+          "type": "string"
+        },
+        "nameType": {
+          "type": "string"
+        },
+        "party": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "tradingName": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "PartyV1DomainParty": {
+      "type": "object",
+      "properties": {
+        "businessNumber": {
+          "type": "string"
+        },
+        "contactMediums": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainContactMedium"
+          }
+        },
+        "contactPerson": {
+          "$ref": "#/definitions/PartyV1DomainIndividualIndividual"
+        },
+        "countryOfBirth": {
+          "type": "string"
+        },
+        "customerAccount": {
+          "type": "string"
+        },
+        "dateOfBirth": {
+          "type": "string",
+          "format": "date"
+        },
+        "dateOfDeath": {
+          "type": "string",
+          "format": "date"
+        },
+        "disabilities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "externalReferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainExternalReference"
+          }
+        },
+        "familyName": {
+          "type": "string"
+        },
+        "formattedName": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "givenName": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "identifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainIdentification"
+          }
+        },
+        "industryType": {
+          "type": "string"
+        },
+        "legalEntity": {
+          "type": "boolean"
+        },
+        "legalName": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "maritalStatus": {
+          "type": "string"
+        },
+        "middleName": {
+          "type": "string"
+        },
+        "nameType": {
+          "type": "string"
+        },
+        "organizationType": {
+          "type": "string"
+        },
+        "otherNames": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainIndividualOtherName"
+          }
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "partyType": {
+          "type": "string",
+          "enum": [
+            "Individual",
+            "Organization"
+          ]
+        },
+        "placeOfBirth": {
+          "type": "string"
+        },
+        "preferredLanguage": {
+          "type": "string"
+        },
+        "preferredName": {
+          "type": "string"
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "relatedEntities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainRelatedEntity"
+          }
+        },
+        "relatedParties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainRelatedParty"
+          }
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "Initialized",
+            "Validated",
+            "Deceased"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "tradingName": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "PartyV1DomainPartyHistoryEntry": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "contentTemplate": {
+          "type": "string"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "creator": {
+          "type": "string"
+        },
+        "eventBody": {
+          "$ref": "#/definitions/PartyV1DomainPartyHistoryEventBody"
+        },
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "PartyV1DomainPartyHistoryEntryList": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainPartyHistoryEntry"
+          }
+        },
+        "paginationInformation": {
+          "type": "object",
+          "properties": {
+            "pageSize": {
+              "type": "integer"
+            },
+            "totalNumberOfRecords": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "PartyV1DomainPartyHistoryEventBody": {
+      "type": "object",
+      "properties": {
+        "current": {
+          "$ref": "#/definitions/CommonsDomainModelDomainModelAndPartyV1DomainPartyAndPartyV1DomainRelatedEntity"
+        },
+        "previous": {
+          "$ref": "#/definitions/CommonsDomainModelDomainModelAndPartyV1DomainPartyAndPartyV1DomainRelatedEntity"
+        }
+      }
+    },
+    "PartyV1DomainPartyList": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainParty"
+          }
+        },
+        "paginationInformation": {
+          "type": "object",
+          "properties": {
+            "pageSize": {
+              "type": "integer"
+            },
+            "totalNumberOfRecords": {
+              "type": "integer"
+            }
+          }
+        },
+        "scrollingInformation": {
+          "type": "object",
+          "properties": {
+            "chunkSize": {
+              "type": "integer"
+            },
+            "scrollId": {
+              "type": "string"
+            },
+            "totalNumberOfRecords": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "PartyV1DomainRelatedEntity": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/CommonsDomainModelLink"
+          }
+        },
+        "contactMedium": {
+          "$ref": "#/definitions/PartyV1DomainContactMedium"
+        },
+        "entity": {
+          "type": "string"
+        },
+        "entityType": {
+          "type": "string",
+          "enum": [
+            "CustomerAccount",
+            "Product",
+            "Organization",
+            "Individual"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "party": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "role": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "PartyV1DomainRelatedParty": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/CommonsDomainModelLink"
+          }
+        },
+        "contactMedium": {
+          "$ref": "#/definitions/PartyV1DomainContactMedium"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "party": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "role": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "PartyV1DomainTelephoneNumber": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Mobile",
+            "FixedLine"
+          ]
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "oauth2ClientCredentialAuthentication": {
+      "type": "oauth2",
+      "description": "Client credentials flow configuration for the Infonova Keycloak.",
+      "flow": "application",
+      "tokenUrl": ""
+    },
+    "oauth2ResourceOwnerPasswordCredentialAuthentication": {
+      "type": "oauth2",
+      "description": "Resource Owner Password Credentials flow configuration for the Infonova Keycloak.",
+      "flow": "password",
+      "tokenUrl": ""
+    }
+  },
+  "tags": [
+    {
+      "name": "Parties v1",
+      "externalDocs": {
+        "description": "Further documentation",
+        "url": "http://localhost:9700/r6-api/docs/parties-impl/index.html"
+      }
+    }
+  ]
+}

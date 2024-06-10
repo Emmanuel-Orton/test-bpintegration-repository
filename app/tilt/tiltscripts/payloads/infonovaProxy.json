@@ -1,0 +1,13 @@
+{
+  "request": {
+    "urlPattern": "/r6-api/.*",
+    "method": "ANY"
+  },
+  "response": {
+    "additionalProxyRequestHeaders": {
+      "Accept-Encoding": ""
+    },
+    "proxyBaseUrl": "https://eu01.sb.infonova.com"
+  },
+  "priority": 1
+}

@@ -1,0 +1,561 @@
+{
+  "productOrderSummary": {
+    "billingAccount": "1193814066",
+    "draftId": "73914",
+    "user": "telus_assisted_sales_app",
+    "channel": "Assisted_Sales",
+    "products": [
+      {
+        "id": "2dfdd899-772f-474e-bc1e-4ea17d651e22",
+        "action": "add",
+        "productOffering": "TravelAndExpenses",
+        "invoiceName": "Travel & Expenses",
+        "instanceName": "",
+        "services": [
+          {
+            "id": "27b52c12-d9af-4154-b165-823e88a27d70",
+            "name": "TravelAndExpenses",
+            "action": "add",
+            "serviceCharacteristics": [
+              {
+                "id": "5792b8a6-085c-4b4d-9f66-c93f8e819709",
+                "name": "TravelAndExpenses:TBSGROUPID",
+                "value": "TAE_ID",
+                "type": "STRING",
+                "action": "add",
+                "displayName": "TBS Grouping Key"
+              },
+              {
+                "id": "5be1b1a1-0edb-45aa-8b92-7c66e2db44c7",
+                "name": "TravelAndExpenses:FLIGHTS_CHARGE",
+                "type": "NONE",
+                "action": "add",
+                "displayName": "Flights",
+                "onceOnlyCharges": {
+                  "charges": [
+                    {
+                      "name": "Flights_Charge",
+                      "excludedAmount": "12321",
+                      "originalExcludedAmount": "0",
+                      "taxInformation": {
+                        "taxType": "VERTEX",
+                        "externalTaxCalculated": false
+                      },
+                      "billText": "Flights",
+                      "currency": "CAD",
+                      "assignmentType": "Charge",
+                      "billingEngine": "R6"
+                    }
+                  ],
+                  "currencySums": [
+                    {
+                      "currency": "CAD",
+                      "excludedAmountSum": "12321",
+                      "taxSummaries": [
+                        {
+                          "taxType": "VERTEX",
+                          "taxableAmount": "12321",
+                          "externalTaxCalculated": false
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "6b02ed74-484a-476a-be82-29027e38a993",
+                "name": "TravelAndExpenses:RT_CUSTOMER",
+                "value": "mike_cst_test_2_leg_name",
+                "type": "STRING",
+                "action": "add",
+                "displayName": "Retail Customer Legal Name"
+              },
+              {
+                "id": "ec09c1a5-7a2c-4ab6-be1c-81bbd6486d9a",
+                "name": "TravelAndExpenses:OPI_NUMBER",
+                "value": "1612000",
+                "type": "STRING",
+                "action": "add",
+                "displayName": "Retail Customer Opi Number"
+              },
+              {
+                "id": "ed3702d7-c621-4193-86ac-960f7cf2bb38",
+                "name": "TravelAndExpenses:SALES_AGENT_NAME",
+                "value": "Gabor Dobrocsi",
+                "type": "STRING",
+                "action": "add",
+                "displayName": "Sales Agent Name"
+              },
+              {
+                "id": "0245f33b-e56b-4e86-b69d-50f2fa75f9de",
+                "name": "TravelAndExpenses:SALES_AGENT_EMAIL",
+                "value": "ce-mikhail.pakhomau@bearingpoint.com",
+                "type": "STRING",
+                "action": "add",
+                "displayName": "Sales Agent Email"
+              },
+              {
+                "id": "6466759b-1cca-4b37-af6c-4ba9263fa10e",
+                "name": "TravelAndExpenses:SALES_AGENT_USERNAME",
+                "value": "sb_telus_admin_mikhailp",
+                "type": "STRING",
+                "action": "add",
+                "displayName": "Sales Agent Username"
+              }
+            ],
+            "usageCharges": {
+            },
+            "displayName": "Travel & Expenses"
+          }
+        ],
+        "totals": {
+          "onceOnlyTotal": [
+            {
+              "currency": "CAD",
+              "excludedAmountSum": "12321",
+              "taxSummaries": [
+                {
+                  "taxType": "VERTEX",
+                  "taxableAmount": "12321",
+                  "externalTaxCalculated": false
+                }
+              ]
+            }
+          ]
+        },
+        "displayParameters": [
+          {
+            "name": "OPI number",
+            "key": "opi_num",
+            "value": "OPI-1612000"
+          },
+          {
+            "name": "Budgetary quote",
+            "key": "budget_quote",
+            "value": "Yes"
+          }
+        ],
+        "parameters": {
+          "operator_name": "sb_telus_admin_mikhailp",
+          "opi_num": "OPI-1612000",
+          "operator_email": "ce-mikhail.pakhomau@bearingpoint.com",
+          "budget_quote": "Yes"
+        }
+      },
+      {
+        "id": "297aeb1e-a981-494f-9159-c5bce5f98744",
+        "action": "add",
+        "productOffering": "JOLERA_AZURE",
+        "invoiceName": "Jolera - Azure",
+        "characteristics": [
+          {
+            "id": "dc234005-dde5-4085-b48a-cda33eff17c1",
+            "name": "JOLERA_AZURE_BINDING_PERIOD_12_MONTHS",
+            "action": "add",
+            "displayName": "12 Months Contract"
+          }
+        ],
+        "products": [
+          {
+            "id": "7ede353e-0f58-4a0c-a4e4-7cb550fd67e9",
+            "action": "add",
+            "productOffering": "ManageItAzureEssentials",
+            "invoiceName": "Manage IT Cloud Azure",
+            "instanceName": "",
+            "characteristics": [
+              {
+                "id": "478ee272-9bbe-4c4e-a53d-16df1ebe773f",
+                "name": "MANAGE_IT_CLOUD_A_ES_BINDING_PERIOD_12_MONTHS",
+                "action": "add",
+                "displayName": "12 Months Contract",
+                "bindingPeriods": [
+                  {
+                    "name": "MANAGE_IT_CLOUD_A_ES_BINDING_PERIOD_12_MONTHS",
+                    "action": "add",
+                    "chargeSpecification": "MANAGE_IT_CLOUD_A_ES_CONTRACT_TERMINATION_CHARGE",
+                    "displayName": "12 Months Contract",
+                    "description": "12 Months Contract",
+                    "duration": "P12M",
+                    "endDate": "2024-05-10T14:14:49Z",
+                    "calculatedEndDate": "2024-05-10T14:14:49Z"
+                  }
+                ]
+              }
+            ],
+            "services": [
+              {
+                "id": "aa4f38b1-fbd8-4461-84b3-3cf4645de48f",
+                "name": "ManageItCloudAzureESOAP",
+                "action": "add",
+                "serviceCharacteristics": [
+                  {
+                    "id": "718c3460-4ba0-489d-a59d-dc0bcc725a9e",
+                    "name": "ManageItCloudAzureESOAP:TBSGROUPID",
+                    "value": "ALL_IN_ONE_ID",
+                    "type": "STRING",
+                    "action": "add",
+                    "displayName": "TBS Grouping Key"
+                  },
+                  {
+                    "id": "212a111f-0bb2-4917-bd4a-963257092e5f",
+                    "name": "ManageItCloudAzureESOAP:OOC_CHARGE",
+                    "type": "NONE",
+                    "action": "add",
+                    "displayName": "Once Only Charge",
+                    "onceOnlyCharges": {
+                      "charges": [
+                        {
+                          "name": "ManageItCloudAzureESOAP",
+                          "excludedAmount": "0",
+                          "originalExcludedAmount": "0",
+                          "taxInformation": {
+                            "taxType": "VERTEX",
+                            "externalTaxCalculated": false
+                          },
+                          "billText": "Manage IT Cloud – Azure Essentials - Onboarding and Activation Package",
+                          "currency": "CAD",
+                          "assignmentType": "Charge",
+                          "billingEngine": "R6"
+                        }
+                      ],
+                      "currencySums": [
+                        {
+                          "currency": "CAD",
+                          "excludedAmountSum": "0",
+                          "taxSummaries": [
+                            {
+                              "taxType": "VERTEX",
+                              "taxableAmount": "0",
+                              "externalTaxCalculated": false
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "2d885453-d65f-48f3-9250-6c6d407176e5",
+                    "name": "ManageItCloudAzureESOAP:SKU_NUMBER",
+                    "value": "P-M-IT-CLOUD-AZURE-OB",
+                    "type": "STRING",
+                    "action": "add",
+                    "displayName": "SKU Number"
+                  },
+                  {
+                    "id": "c0cc1d0d-7b77-4412-b18b-4f732b02a23b",
+                    "name": "ManageItCloudAzureESOAP:QUANTITY",
+                    "value": "1",
+                    "type": "NUMBER",
+                    "action": "add",
+                    "displayName": "Quantity"
+                  },
+                  {
+                    "id": "027aac78-cba5-4a84-bdf5-7ed03f5bdab1",
+                    "name": "ManageItCloudAzureESOAP:UNIT_PRICE",
+                    "value": "0.00",
+                    "type": "NUMBER",
+                    "action": "add",
+                    "displayName": "Unit Price"
+                  },
+                  {
+                    "id": "4a54eba6-de15-4efd-891c-2831d3870777",
+                    "name": "ManageItCloudAzureESOAP:UNIT_PRICE_WS",
+                    "type": "NUMBER",
+                    "action": "add",
+                    "displayName": "Unit Price"
+                  },
+                  {
+                    "id": "eabf70db-805f-4c72-95dd-dcdda39c3c94",
+                    "name": "ManageItCloudAzureESOAP:DESCRIPTION",
+                    "type": "STRING",
+                    "action": "add",
+                    "displayName": "Description"
+                  },
+                  {
+                    "id": "8989d310-218b-4768-b473-e1bf917a6f68",
+                    "name": "ManageItCloudAzureESOAP:SITE",
+                    "type": "STRING",
+                    "action": "add",
+                    "displayName": "Site"
+                  },
+                  {
+                    "id": "ce147b84-20f0-4509-a817-2256de71fdd6",
+                    "name": "ManageItCloudAzureESOAP:RT_CUSTOMER",
+                    "value": "mike_cst_test_2_leg_name",
+                    "type": "STRING",
+                    "action": "add",
+                    "displayName": "Retail Customer Legal Name"
+                  },
+                  {
+                    "id": "6080a5f5-ba0d-4b06-92b2-94eb546e378d",
+                    "name": "ManageItCloudAzureESOAP:OPI_NUMBER",
+                    "value": "1612000",
+                    "type": "STRING",
+                    "action": "add",
+                    "displayName": "Retail Customer Opi Number"
+                  },
+                  {
+                    "id": "89c790cd-176a-45f5-b28d-23ed2ed525a2",
+                    "name": "ManageItCloudAzureESOAP:SALES_AGENT_NAME",
+                    "value": "Gabor Dobrocsi",
+                    "type": "STRING",
+                    "action": "add",
+                    "displayName": "Sales Agent Name"
+                  },
+                  {
+                    "id": "181bd400-346f-4ef0-bab9-dd0ab5b26c13",
+                    "name": "ManageItCloudAzureESOAP:SALES_AGENT_EMAIL",
+                    "value": "ce-mikhail.pakhomau@bearingpoint.com",
+                    "type": "STRING",
+                    "action": "add",
+                    "displayName": "Sales Agent Email"
+                  },
+                  {
+                    "id": "d1e11e1d-031a-4187-8ee3-44e286e33cb3",
+                    "name": "ManageItCloudAzureESOAP:SALES_AGENT_USERNAME",
+                    "value": "sb_telus_admin_mikhailp",
+                    "type": "STRING",
+                    "action": "add",
+                    "displayName": "Sales Agent Username"
+                  }
+                ],
+                "usageCharges": {
+                },
+                "displayName": "Manage IT Cloud – Azure Essentials - Onboarding and Activation"
+              }
+            ],
+            "totals": {
+              "onceOnlyTotal": [
+                {
+                  "currency": "CAD",
+                  "excludedAmountSum": "0",
+                  "taxSummaries": [
+                    {
+                      "taxType": "VERTEX",
+                      "taxableAmount": "0",
+                      "externalTaxCalculated": false
+                    }
+                  ]
+                }
+              ]
+            },
+            "displayParameters": [
+              {
+                "name": "OPI number",
+                "key": "opi_num",
+                "value": "OPI-1612000"
+              },
+              {
+                "name": "Budgetary quote",
+                "key": "budget_quote",
+                "value": "Yes"
+              }
+            ],
+            "parameters": {
+              "opi_num": "OPI-1612000",
+              "budget_quote": "Yes"
+            }
+          }
+        ],
+        "totals": {
+          "onceOnlyTotal": [
+            {
+              "currency": "CAD",
+              "excludedAmountSum": "0",
+              "taxSummaries": [
+                {
+                  "taxType": "VERTEX",
+                  "taxableAmount": "0",
+                  "externalTaxCalculated": false
+                }
+              ]
+            }
+          ]
+        },
+        "displayParameters": [
+          {
+            "name": "OPI number",
+            "key": "opi_num",
+            "value": "OPI-1612000"
+          },
+          {
+            "name": "Budgetary quote",
+            "key": "budget_quote",
+            "value": "Yes"
+          }
+        ],
+        "parameters": {
+          "opi_num": "OPI-1612000",
+          "budget_quote": "Yes"
+        }
+      }
+    ],
+    "totals": {
+      "onceOnlyTotal": [
+        {
+          "currency": "CAD",
+          "excludedAmountSum": "12321",
+          "taxSummaries": [
+            {
+              "taxType": "VERTEX",
+              "taxableAmount": "12321",
+              "externalTaxCalculated": false
+            }
+          ]
+        }
+      ]
+    },
+    "orderDate": "2023-05-10T14:14:49Z",
+    "parameters": {
+      "IS_ASSISTED_SALES": "true",
+      "SALES_AGENT_NAME": "Gabor Dobrocsi",
+      "budget_quote": "Yes",
+      "opi_num": "1612000",
+      "SALES_AGENT_EMAIL": "ce-mikhail.pakhomau@bearingpoint.com",
+      "SALES_AGENT_USERNAME": "sb_telus_admin_mikhailp"
+    }
+  },
+  "customerAccount": {
+    "id": "1193814066",
+    "billingAccount": "1193814066",
+    "type": "Customer",
+    "state": "New",
+    "organization": {
+      "partyType": "Organization",
+      "primary": true,
+      "id": "98f06d5c-6c03-4f5f-83a9-4c92bbf4109a",
+      "tradingName": "mike_cst_test_2",
+      "legalName": "mike_cst_test_2_leg_name",
+      "businessNumber": "mike_cst_test_2_reg_num",
+      "state": "Validated",
+      "legalEntity": false,
+      "type": "CORPORATION",
+      "industryType": "HEALTHCARE",
+      "contactPerson": {
+        "partyType": "Individual",
+        "id": "f5b62a62-ecb8-47ff-9e44-c7c76d2e9378",
+        "state": "Validated",
+        "givenName": "mike_cst_test_2_first_name",
+        "familyName": "mike_cst_test_2_last_name",
+        "validFor": {
+          "start": "2023-05-04T09:26:35Z"
+        }
+      },
+      "preferredLanguage": "en",
+      "relatedEntities": [
+        {
+          "entityType": "CustomerAccount",
+          "entity": "1193814066",
+          "role": "CUSTOMER_ACCOUNT_OWNER",
+          "primary": true
+        }
+      ],
+      "contactMediums": [
+        {
+          "type": "PostalAddress",
+          "postalAddress": "25708369",
+          "preferred": false,
+          "primary": true,
+          "validFor": {
+            "start": "2023-05-04T09:26:35Z"
+          }
+        }
+      ],
+      "validFor": {
+        "start": "2023-05-04T09:26:35Z"
+      }
+    },
+    "preferredLanguage": "en",
+    "timezone": "Canada/Pacific",
+    "creationDate": "2023-05-04T09:26:35Z",
+    "channel": "Assisted_Sales",
+    "parameters": {
+      "ownership": "OTHER",
+      "jurisdiction": "SK",
+      "jobTitle": "mike_cst_test_2_job_title",
+      "registrationDate": "2023-05-04T09:25:02.393Z",
+      "RCID": "14621642",
+      "customerAccountChannel": "Assisted_Sales",
+      "marketSegment": "CONSTRUCTION"
+    }
+  },
+  "billingAccount": {
+    "id": "1193814066",
+    "customerAccount": "1193814066",
+    "type": "Customer",
+    "state": "New",
+    "ratingType": "Postpaid",
+    "customerBillDetails": {
+      "billingAccount": "1193814066",
+      "priceDisplayIncludingTax": true,
+      "displayItemized": true,
+      "deliveryMethod": "ONLINE_ONLY",
+      "interval": 1,
+      "startMonth": "MAY",
+      "currency": "CAD",
+      "validFor": {
+        "start": "2023-05-04T09:26:35Z"
+      }
+    },
+    "billingCycleAssignment": {
+      "billingAccount": "1193814066",
+      "billingCycle": "DEFAULT",
+      "validFor": {
+        "start": "2023-05-04T09:26:35Z"
+      }
+    },
+    "billReceiver": {
+      "billingAccount": "1193814066",
+      "givenName": "mike_cst_test_2_first_name",
+      "familyName": "mike_cst_test_2_last_name",
+      "postalAddress": "25708370",
+      "validFor": {
+        "start": "2023-05-04T09:26:35Z"
+      },
+      "tradingName": "mike_cst_test_2"
+    },
+    "preferredLanguage": "en",
+    "creditProfile": {
+      "creditRiskRating": 5
+    },
+    "timezone": "Canada/Pacific",
+    "creationDate": "2023-05-04T09:26:35Z",
+    "parameters": {
+      "ownership": "OTHER",
+      "jurisdiction": "SK",
+      "jobTitle": "mike_cst_test_2_job_title",
+      "registrationDate": "2023-05-04T09:25:02.393Z",
+      "RCID": "14621642",
+      "customerAccountChannel": "Assisted_Sales",
+      "marketSegment": "CONSTRUCTION"
+    }
+  },
+  "billingCycle": {
+    "name": "DEFAULT",
+    "billingDateShift": 1,
+    "locked": false,
+    "description": "SMB Bill Cycle 1",
+    "frequency": 1,
+    "dueDateShift": 15,
+    "tags": [
+    ]
+  },
+  "addresses": [
+    {
+      "id": "25708369",
+      "country": "CA",
+      "city": "Toronto",
+      "province": "CA.YT",
+      "postcode": "M5V 0B1",
+      "streetName": "38 Grand Magazine St"
+    },
+    {
+      "id": "25708370",
+      "country": "CA",
+      "city": "Toronto",
+      "province": "CA.YT",
+      "postcode": "M5V 0B1",
+      "streetName": "38 Grand Magazine St"
+    }
+  ]
+}

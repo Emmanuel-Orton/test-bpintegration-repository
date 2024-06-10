@@ -1,0 +1,13 @@
+{
+  "request": {
+    "urlPattern": "/test-bpintegration-app/.*",
+    "method": "ANY"
+  },
+  "response": {
+    "additionalProxyRequestHeaders": {
+      "Accept-Encoding": ""
+    },
+    "proxyBaseUrl": "https://$target.dev.tel-dev.be-delivery.com"
+  },
+  "priority": 1
+}

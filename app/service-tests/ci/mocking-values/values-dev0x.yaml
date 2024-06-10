@@ -1,0 +1,7 @@
+global:
+  infonova:
+    url: https://dev0x.dev.ts-op.be-delivery.com/mocking
+    keycloakUrl: https://eu01.sb.infonova.com
+test-bpintegration-app:
+  config:
+    enabled: false

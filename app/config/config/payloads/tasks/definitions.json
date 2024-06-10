@@ -1,0 +1,92 @@
+{
+  "list": [
+    {
+      "name": "TELUS_RT_ORDER_VERIFICATION",
+      "displayName": "Order Verification",
+      "description": "Task for Order Verification",
+      "template": "telus.tasks.order.verification.task.ftl",
+      "category": "Provisioning",
+      "priority": 2,
+      "approvalRequired": false,
+      "manual": true,
+      "slaTimeInHours": 90,
+      "resolutionActions": [
+        "approved",
+        "modify_order"
+      ]
+    },
+    {
+      "name": "TELUS_WORKFLOW_ERROR",
+      "displayName": "Generic error during workflow step",
+      "description": "Generic error during workflow step",
+      "template": "telus.workflow.task.workflow.error.ftl",
+      "category": "Provisioning",
+      "priority": 1,
+      "approvalRequired": false,
+      "manual": false,
+      "slaTimeInHours": 90,
+      "resolutionActions": [
+        "retry"
+      ]
+    },
+    {
+      "name": "TELUS_RT_SOW_CREATE",
+      "displayName": "Retail SOW Creation",
+      "description": "Task for Retail SOW Creation",
+      "template": "telus.tasks.retail.sow.creation.task.ftl",
+      "category": "Provisioning",
+      "priority": 2,
+      "approvalRequired": false,
+      "manual": true,
+      "slaTimeInHours": 90,
+      "resolutionActions": [
+        "approved",
+        "modify"
+      ]
+    },
+    {
+      "name": "TELUS_RT_CO_CREATION",
+      "displayName": "Retail Change Order Creation",
+      "description": "Task for Retail CO Creation",
+      "template": "telus.tasks.retail.co.creation.task.ftl",
+      "category": "Provisioning",
+      "priority": 2,
+      "approvalRequired": false,
+      "manual": true,
+      "slaTimeInHours": 90,
+      "resolutionActions": [
+        "completed",
+        "modify"
+      ]
+    },
+    {
+      "name": "TELUS_RT_ORDER_MODIFICATION",
+      "displayName": "Order Modification",
+      "description": "Task for Order Verification",
+      "template": "telus.tasks.retail.order.modification.task.ftl",
+      "category": "Provisioning",
+      "priority": 2,
+      "approvalRequired": false,
+      "manual": true,
+      "slaTimeInHours": 90,
+      "resolutionActions": [
+        "completed"
+      ]
+    },
+    {
+      "name": "TELUS_RT_CO_DAY2_CREATE",
+      "displayName": "Retail Change Order (Day 2)",
+      "description": "Retail Change Order (Day 2)",
+      "template": "telus.tasks.wholesale.co.day2.create.task.ftl",
+      "category": "Provisioning",
+      "priority": 3,
+      "approvalRequired": false,
+      "manual": true,
+      "slaTimeInHours": 90,
+      "resolutionActions": [
+        "completed",
+        "modify"
+      ]
+    }
+  ]
+}

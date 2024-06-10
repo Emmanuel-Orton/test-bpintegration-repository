@@ -1,0 +1,3 @@
+test-bpintegration-app:
+  config:
+    integrationAppUrl: https://dev0x.dev.ts-op.be-delivery.com/mocking/test-bpintegration-app

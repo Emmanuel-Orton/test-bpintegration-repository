@@ -1,0 +1,31 @@
+{
+  "list": [
+    {
+      "name": "telus_assisted_sales_EVENTS",
+      "url": "{{ integration_app_url }}/{{ tenant_name }}",
+      "uniqueRequestIdHeader": "Request-Id",
+      "authenticationType": "oauth2",
+      {%- if auth_server_type == "generic" %}
+      "oauth2Authentication": {
+        "serverType": "{{ auth_server_type }}",
+        "scopes": "{{ scopes }}",
+        "grantType": "clientCredentials",
+        "authenticationServerUrl": "{{ telus_token_url }}",
+        "clientId": "{{ telus_client_id }}",
+        "accessSecret": "{{ telus_client_secret }}"
+      }
+      {%- else %}
+      "oauth2Authentication": {
+        "grantType": "clientCredentials",
+        "authenticationServerUrl": "{{ keycloak_authserver_url }}",
+        "clientId": "telus_assisted_sales_events",
+        "accessSecret": "{{ telus_assisted_sales_events_client_secret }}",
+        "realm": "{{ realm_name }}"
+      }
+      {%- endif %}
+    ,"headers": {
+      "env": "{{ env }}"
+    }
+    }
+  ]
+}

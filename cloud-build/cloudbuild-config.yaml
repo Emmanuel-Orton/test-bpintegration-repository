@@ -1,0 +1,82 @@
+substitutions:
+  _IMAGE_NAME: test-app
+  _NEW_MICROSERVICE_NAME: test-bpintegration
+  _GITHUB_USERNAME: your-github-username
+  _GITHUB_EMAIL: your-github-email
+
+steps:
+- name: 'gcr.io/cloud-builders/git'
+  entrypoint: 'bash'
+  secretEnv:
+  - github_token
+  args:
+  - '-c'
+  - |
+    set -e
+
+    # Clone the template repository
+    ls -al
+    mkdir /workspace/sales-bp-integration-test-bpintegration-base-template-repository
+    find /workspace -mindepth 1 -maxdepth 1 ! -name 'sales-bp-integration-test-bpintegration-base-template-repository' -exec cp -r {} /workspace/sales-bp-integration-test-bpintegration-base-template-repository/ \;
+    cd /workspace/sales-bp-integration-test-bpintegration-base-template-repository/
+    ls -al
+
+    # Replace placeholder text within files
+    new_test-bpintegration_name="${_NEW_MICROSERVICE_NAME}"
+    find . -type f -exec sed -i "s/test-bpintegration/$new_test-bpintegration_name/g" {} +
+
+    # Rename directories and files
+    find . -depth -name '*test-bpintegration*' | while read name ; do
+      new_name=$(echo "$name" | sed "s/test-bpintegration/$new_test-bpintegration_name/g")
+      mv "$name" "$new_name"
+    done
+
+    # Rename the directory itself
+    cd ..
+    mv /workspace/sales-bp-integration-test-bpintegration-base-template-repository "$new_test-bpintegration_name"
+    cd $new_test-bpintegration_name
+    ls -al
+    cd /workspace/$new_test-bpintegration_name/app/ci/
+    ls -al
+
+    # Check if the GitHub repository already exists
+    repo_name="${new_test-bpintegration_name}-repository"
+    response=$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: token $github_token" \
+         https://api.github.com/repos/${_GITHUB_USERNAME}/${repo_name})
+         echo "$response"
+
+    if [ "$response" -eq 404 ]; then
+      # Create a new GitHub repository using the GitHub API
+      curl -H "Authorization: token $github_token" \
+           -d '{"name":"'"${repo_name}"'"}' \
+           https://api.github.com/user/repos
+    fi
+    echo "i am here"
+    git config --global user.email $_GITHUB_EMAIL   
+    git config --global user.name $_GITHUB_USERNAME 
+
+    # Initialize a new Git repository or update existing remote
+    cd /workspace/$new_test-bpintegration_name
+    rm -rf .git  # Remove any existing Git repository
+    git init
+
+    # Check if remote origin already exists and update or add it
+    if git remote | grep origin; then
+      git remote remove origin
+    fi
+    git remote add origin "https://$github_token@github.com/${_GITHUB_USERNAME}/${repo_name}.git"
+
+    git add .
+    git commit -m "Initial commit for $new_test-bpintegration_name"
+    git branch -M main  # Create and switch to the main branch
+
+    git push -u origin main
+
+options:
+  dynamicSubstitutions: true
+  logging: CLOUD_LOGGING_ONLY
+
+availableSecrets:
+  secretManager:
+  - versionName: projects/${PROJECT_ID}/secrets/GITHUB_TOKEN/versions/latest
+    env: 'github_token'

@@ -1,0 +1,237 @@
+{
+  "list": [
+    {
+      "name": "TELUS_WS_SOW_CREATE",
+      "displayName": "Wholesale SOW Creation",
+      "description": "Task for Wholesale SOW Creation",
+      "template": "telus.tasks.ws.sow.create.task.ftl",
+      "category": "Provisioning",
+      "priority": 2,
+      "approvalRequired": false,
+      "manual": true,
+      "slaTimeInHours": 90,
+      "resolutionActions": [
+        "approved"
+      ]
+    },
+    {
+      "name": "TELUS_WS_SOW_REVIEW",
+      "displayName": "Wholesale SOW Review Task",
+      "description": "Task for Wholesale SOW Review",
+      "template": "telus.tasks.ws.sow.review.task.ftl",
+      "category": "Provisioning",
+      "priority": 2,
+      "approvalRequired": false,
+      "manual": true,
+      "slaTimeInHours": 90,
+      "resolutionActions": [
+        "approved",
+        "modify"
+      ]
+    },
+    {
+      "name": "TELUS_WS_SOW_APPROVE",
+      "displayName": "Wholesale SOW Approve Task",
+      "description": "Task for Wholesale SOW Approve",
+      "template": "telus.tasks.ws.sow.approve.task.ftl",
+      "category": "Provisioning",
+      "priority": 2,
+      "approvalRequired": false,
+      "manual": true,
+      "slaTimeInHours": 90,
+      "resolutionActions": [
+        "approved",
+        "modify"
+      ]
+    },
+    {
+      "name": "TELUS_WS_SOW_UPDATE",
+      "displayName": "Wholesale SOW Update",
+      "description": "Task for Wholesale SOW Update",
+      "template": "telus.tasks.ws.sow.update.task.ftl",
+      "category": "Provisioning",
+      "priority": 2,
+      "approvalRequired": false,
+      "manual": true,
+      "slaTimeInHours": 90,
+      "resolutionActions": [
+        "review",
+        "modify_order"
+      ]
+    },
+    {
+      "name": "TELUS_WORKFLOW_ERROR",
+      "displayName": "Generic error during SOW workflow step",
+      "description": "Generic error during SOW workflow step",
+      "template": "telus.workflow.task.workflow.error.ftl",
+      "category": "Provisioning",
+      "priority": 1,
+      "approvalRequired": false,
+      "manual": false,
+      "slaTimeInHours": 90,
+      "resolutionActions": [
+        "retry"
+      ]
+    },
+    {
+      "name": "TELUS_WS_DAF_REVIEW",
+      "displayName": "DAF Review",
+      "description": "Task for Wholesale DAF Review",
+      "template": "telus.tasks.wholesale.daf.review.task.ftl",
+      "category": "Provisioning",
+      "priority": 2,
+      "approvalRequired": false,
+      "manual": true,
+      "slaTimeInHours": 90,
+      "resolutionActions": [
+        "approved",
+        "modify"
+      ]
+    },
+    {
+      "name": "TELUS_WS_DAF_UPDATE",
+      "displayName": "DAF Update",
+      "description": "Task for Wholesale DAF Update",
+      "template": "telus.tasks.wholesale.daf.update.task.ftl",
+      "category": "Provisioning",
+      "priority": 2,
+      "approvalRequired": false,
+      "manual": true,
+      "slaTimeInHours": 90,
+      "resolutionActions": [
+        "review"
+      ]
+    },
+    {
+      "name": "TELUS_WS_DAF_APPROVE",
+      "displayName": "DAF Customer Approval",
+      "description": "Task for Wholesale DAF Approve",
+      "template": "telus.tasks.wholesale.daf.approve.task.ftl",
+      "category": "Provisioning",
+      "priority": 2,
+      "approvalRequired": false,
+      "manual": true,
+      "slaTimeInHours": 90,
+      "resolutionActions": [
+        "approved",
+        "modify"
+      ]
+    },
+    {
+      "name": "TELUS_WS_CO_REVIEW",
+      "displayName": "Change Order Review",
+      "description": "Task for Wholesale Change Order Review",
+      "template": "telus.tasks.wholesale.co.review.task.ftl",
+      "category": "Provisioning",
+      "priority": 2,
+      "approvalRequired": false,
+      "manual": true,
+      "slaTimeInHours": 90,
+      "resolutionActions": [
+        "approved",
+        "modify"
+      ]
+    },
+    {
+      "name": "TELUS_WS_ORDER_SERVICE_PROVISIONING_TASK",
+      "displayName": "Order Fulfillment",
+      "description": "Order Fulfillment",
+      "template": "telus.order.service.provisioning.task.ftl",
+      "category": "Provisioning",
+      "priority": 2,
+      "approvalRequired": false,
+      "manual": true,
+      "slaTimeInHours": 90,
+      "resolutionActions": [
+        "close"
+      ]
+    },
+    {
+      "name": "TELUS_WS_CO_PARTNER_APPROVE",
+      "displayName": "Wholesale Change Order Partner Approval",
+      "description": "Task for Wholesale Change Order Partner Approval",
+      "template": "telus.tasks.wholesale.co.partner.approval.task.ftl",
+      "category": "Provisioning",
+      "priority": 2,
+      "approvalRequired": false,
+      "manual": true,
+      "slaTimeInHours": 90,
+      "resolutionActions": [
+        "completed",
+        "modify"
+      ]
+    },
+    {
+      "name": "TELUS_WS_CO_UPDATE",
+      "displayName": "Change Order Update",
+      "description": "Change Order Update",
+      "template": "telus.tasks.wholesale.co.update.task.ftl",
+      "category": "Provisioning",
+      "priority": 2,
+      "approvalRequired": false,
+      "manual": true,
+      "slaTimeInHours": 90,
+      "resolutionActions": [
+        "review"
+      ]
+    },
+    {
+      "name": "TELUS_WS_CO_DAY2_REVIEW",
+      "displayName": "Change Order (Day 2) Review",
+      "description": "Change Order (Day 2) Review",
+      "template": "telus.tasks.wholesale.co.day2.review.task.ftl",
+      "category": "Provisioning",
+      "priority": 3,
+      "approvalRequired": false,
+      "manual": true,
+      "slaTimeInHours": 90,
+      "resolutionActions": [
+        "approved",
+        "modify"
+      ]
+    },
+    {
+      "name": "TELUS_WS_CO_DAY2_INITIATE",
+      "displayName": "Initiate Change Order (Day 2)",
+      "description": "Initiate Change Order (Day 2)",
+      "template": "telus.tasks.wholesale.co.day2.initiate.task.ftl",
+      "category": "Provisioning",
+      "priority": 3,
+      "approvalRequired": false,
+      "manual": true,
+      "slaTimeInHours": 90,
+      "resolutionActions": [
+        "completed"
+      ]
+    },
+    {
+      "name": "TELUS_WS_CO_DAY2_UPDATE",
+      "displayName": "Change Order (Day 2) Update",
+      "description": "Change Order (Day 2) Update",
+      "template": "telus.tasks.wholesale.co.day2.update.task.ftl",
+      "category": "Provisioning",
+      "priority": 3,
+      "approvalRequired": false,
+      "manual": true,
+      "slaTimeInHours": 90,
+      "resolutionActions": [
+        "review"
+      ]
+    }, 
+    {
+      "name": "TELUS_WS_CO_DAY2_FINALIZE",
+      "displayName": "Finalize Change Order (Day 2)",
+      "description": "Finalize Change Order (Day 2)",
+      "template": "telus.tasks.wholesale.co.day2.finalize.task.ftl",
+      "category": "Provisioning",
+      "priority": 3,
+      "approvalRequired": false,
+      "manual": true,
+      "slaTimeInHours": 90,
+      "resolutionActions": [
+        "completed",
+        "modify"
+      ]
+    }
+  ]
+}

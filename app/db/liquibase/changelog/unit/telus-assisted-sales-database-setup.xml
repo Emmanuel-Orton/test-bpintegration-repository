@@ -1,0 +1,79 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet author="assisted_sales" id="test-bpintegration-create-camunda-role" runAlways="true">
+        <createProcedure>
+            DO
+            $do$
+            BEGIN
+   IF NOT EXISTS (
+      SELECT FROM pg_catalog.pg_roles  -- SELECT list can be empty for this
+      WHERE  rolname = 'camunda_as') THEN
+
+            CREATE ROLE camunda_as;
+            END IF;
+            END
+            $do$;
+        </createProcedure>
+        <sql endDelimiter=";">
+            ALTER ROLE camunda_as WITH INHERIT NOCREATEROLE NOCREATEDB LOGIN NOREPLICATION BYPASSRLS PASSWORD '${CAMUNDA_AS_PASSWORD}'
+        </sql>
+        <sql endDelimiter=";">
+            ALTER ROLE camunda_as SET search_path = 'camunda_as'
+        </sql>
+    </changeSet>
+    <changeSet author="assisted_sales" id="test-bpintegration-create-camunda-schema">
+        <sql endDelimiter=";">
+            CREATE SCHEMA IF NOT EXISTS camunda_as
+        </sql>
+        <sql endDelimiter=";">
+            GRANT ALL ON schema camunda_as TO camunda_as
+        </sql>
+        <sql endDelimiter=";">
+            ALTER DEFAULT PRIVILEGES IN SCHEMA camunda_as GRANT USAGE ON SEQUENCES TO camunda_as
+        </sql>
+        <sql endDelimiter=";">
+            ALTER DEFAULT PRIVILEGES IN SCHEMA camunda_as GRANT ALL PRIVILEGES ON TABLES TO camunda_as
+        </sql>
+    </changeSet>
+
+    <changeSet author="assisted_sales" id="update-assisted_sales-role">
+        <createProcedure>
+            DO
+            $do$
+            BEGIN
+            IF NOT EXISTS (
+            SELECT FROM pg_catalog.pg_roles  -- SELECT list can be empty for this
+            WHERE  rolname = 'assisted_sales') THEN
+
+            CREATE ROLE assisted_sales;
+            END IF;
+            END
+            $do$;
+        </createProcedure>
+        <sql endDelimiter=";">
+            ALTER ROLE assisted_sales WITH INHERIT NOCREATEROLE NOCREATEDB LOGIN NOREPLICATION BYPASSRLS PASSWORD '${DB_PASSWORD_ROLE}'
+        </sql>
+        <sql endDelimiter=";">
+            ALTER ROLE assisted_sales SET search_path = 'assisted_sales'
+        </sql>
+    </changeSet>
+
+    <changeSet author="assisted_sales" id="create-assisted_sales-schema">
+        <sql endDelimiter=";">
+            CREATE SCHEMA IF NOT EXISTS assisted_sales
+        </sql>
+        <sql endDelimiter=";">
+            GRANT ALL ON schema assisted_sales TO assisted_sales
+        </sql>
+        <sql endDelimiter=";">
+            ALTER DEFAULT PRIVILEGES IN SCHEMA assisted_sales GRANT USAGE ON SEQUENCES TO assisted_sales
+        </sql>
+        <sql endDelimiter=";">
+            ALTER DEFAULT PRIVILEGES IN SCHEMA assisted_sales GRANT ALL PRIVILEGES ON TABLES TO assisted_sales
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0h6tf3d" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.0.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="InflightOrderWholesaleProvisioning" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_0wmmuye</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="ioPrepareInflightOrderItems" name="Prepare Inflight Order Items" camunda:delegateExpression="${prepareInflightOrderItemsStep}">
+      <bpmn:incoming>Flow_1kgfow9</bpmn:incoming>
+      <bpmn:incoming>Flow_0wmmuye</bpmn:incoming>
+      <bpmn:outgoing>Flow_0l05q1m</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0wmmuye" sourceRef="StartEvent_1" targetRef="ioPrepareInflightOrderItems" />
+    <bpmn:endEvent id="Event_07hyi9c">
+      <bpmn:incoming>Flow_0048dra</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:receiveTask id="ioPrepareInflightOrderItems_retry" name="Wait for Retry">
+      <bpmn:incoming>Flow_0y95nbe</bpmn:incoming>
+      <bpmn:outgoing>Flow_1kgfow9</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:boundaryEvent id="Event_1udze2o" attachedToRef="ioPrepareInflightOrderItems">
+      <bpmn:outgoing>Flow_0y95nbe</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_0tczjl3" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_0y95nbe" sourceRef="Event_1udze2o" targetRef="ioPrepareInflightOrderItems_retry" />
+    <bpmn:sequenceFlow id="Flow_1kgfow9" sourceRef="ioPrepareInflightOrderItems_retry" targetRef="ioPrepareInflightOrderItems" />
+    <bpmn:sequenceFlow id="Flow_0l05q1m" sourceRef="ioPrepareInflightOrderItems" targetRef="ioRemoveProvisoningTasks" />
+    <bpmn:serviceTask id="ioConfirmInflightOrderSuccess" name="Confirm Inflight Order Success" camunda:delegateExpression="${confirmInflightOrderSucessStep}">
+      <bpmn:incoming>Flow_1xopw7e</bpmn:incoming>
+      <bpmn:incoming>Flow_0erschs</bpmn:incoming>
+      <bpmn:outgoing>Flow_0048dra</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:boundaryEvent id="Event_0pe1jk7" attachedToRef="ioConfirmInflightOrderSuccess">
+      <bpmn:outgoing>Flow_0hvr9nz</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_0zoibnm" />
+    </bpmn:boundaryEvent>
+    <bpmn:receiveTask id="ioConfirmInflightOrderSucess_retry" name="Wait for Retry">
+      <bpmn:incoming>Flow_0hvr9nz</bpmn:incoming>
+      <bpmn:outgoing>Flow_1xopw7e</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:sequenceFlow id="Flow_0hvr9nz" sourceRef="Event_0pe1jk7" targetRef="ioConfirmInflightOrderSucess_retry" />
+    <bpmn:sequenceFlow id="Flow_1xopw7e" sourceRef="ioConfirmInflightOrderSucess_retry" targetRef="ioConfirmInflightOrderSuccess" />
+    <bpmn:sequenceFlow id="Flow_08vlrtk" sourceRef="ioRemoveProvisoningTasks" targetRef="ioModifyProvisoningItems" />
+    <bpmn:receiveTask id="ioRemoveProvisoningTasks_retry" name="Wait for Retry">
+      <bpmn:incoming>Flow_14yjsaf</bpmn:incoming>
+      <bpmn:outgoing>Flow_0v3mha2</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:boundaryEvent id="Event_1rbves2" attachedToRef="ioRemoveProvisoningTasks">
+      <bpmn:outgoing>Flow_14yjsaf</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_0cc2rpb" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_14yjsaf" sourceRef="Event_1rbves2" targetRef="ioRemoveProvisoningTasks_retry" />
+    <bpmn:sequenceFlow id="Flow_0v3mha2" sourceRef="ioRemoveProvisoningTasks_retry" targetRef="ioRemoveProvisoningTasks" />
+    <bpmn:serviceTask id="ioRemoveProvisoningTasks" name="Delete Provisoning Items" camunda:delegateExpression="${inflightDeleteWholesaleProvisioningItemsStep}">
+      <bpmn:incoming>Flow_0v3mha2</bpmn:incoming>
+      <bpmn:incoming>Flow_0l05q1m</bpmn:incoming>
+      <bpmn:outgoing>Flow_08vlrtk</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0048dra" sourceRef="ioConfirmInflightOrderSuccess" targetRef="Event_07hyi9c" />
+    <bpmn:receiveTask id="ioModifyProvisoningItems_retry" name="Wait for Retry">
+      <bpmn:incoming>Flow_1pprqb9</bpmn:incoming>
+      <bpmn:outgoing>Flow_1n1h98q</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:serviceTask id="ioModifyProvisoningItems" name="Modify Provisoning Items" camunda:delegateExpression="${inflightModifyWholesaleProvisioningItemsStep}">
+      <bpmn:incoming>Flow_08vlrtk</bpmn:incoming>
+      <bpmn:incoming>Flow_1n1h98q</bpmn:incoming>
+      <bpmn:outgoing>Flow_0erschs</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:boundaryEvent id="Event_0ms84uk" attachedToRef="ioModifyProvisoningItems">
+      <bpmn:outgoing>Flow_1pprqb9</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1pvjjcb" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_0erschs" sourceRef="ioModifyProvisoningItems" targetRef="ioConfirmInflightOrderSuccess" />
+    <bpmn:sequenceFlow id="Flow_1n1h98q" sourceRef="ioModifyProvisoningItems_retry" targetRef="ioModifyProvisoningItems" />
+    <bpmn:sequenceFlow id="Flow_1pprqb9" sourceRef="Event_0ms84uk" targetRef="ioModifyProvisoningItems_retry" />
+    <bpmn:textAnnotation id="TextAnnotation_0hepeep">
+      <bpmn:text>Started by endpoint call</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1jb0qaz" sourceRef="StartEvent_1" targetRef="TextAnnotation_0hepeep" />
+  </bpmn:process>
+  <bpmn:message id="Message_2o305hl" name="SOW_Restart_workflow" />
+  <bpmn:message id="Message_2mufvot" name="SOW_verification_task_resolved" />
+  <bpmn:message id="Message_06npa17" name="SOW_create_task_resolved" />
+  <bpmn:message id="Message_1lf4iod" name="SOW_review_task_resolved" />
+  <bpmn:message id="Message_3uib7df" name="SOW_approve_task_resolved" />
+  <bpmn:message id="Message_1dbbebr" name="Cancel_Request_Received" />
+  <bpmn:message id="Message_2os7939" name="SOW_Cancel_Request_Received" />
+  <bpmn:message id="Message_0l366uu" name="SOW_RT_approve_task_resolved" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="InflightOrderWholesaleProvisioning">
+      <bpmndi:BPMNEdge id="Flow_0v3mha2_di" bpmnElement="Flow_0v3mha2">
+        <di:waypoint x="260" y="450" />
+        <di:waypoint x="330" y="450" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_14yjsaf_di" bpmnElement="Flow_14yjsaf">
+        <di:waypoint x="312" y="480" />
+        <di:waypoint x="260" y="480" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_08vlrtk_di" bpmnElement="Flow_08vlrtk">
+        <di:waypoint x="380" y="500" />
+        <di:waypoint x="380" y="560" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0l05q1m_di" bpmnElement="Flow_0l05q1m">
+        <di:waypoint x="380" y="360" />
+        <di:waypoint x="380" y="420" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1kgfow9_di" bpmnElement="Flow_1kgfow9">
+        <di:waypoint x="260" y="310" />
+        <di:waypoint x="330" y="310" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0y95nbe_di" bpmnElement="Flow_0y95nbe">
+        <di:waypoint x="312" y="340" />
+        <di:waypoint x="260" y="340" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0wmmuye_di" bpmnElement="Flow_0wmmuye">
+        <di:waypoint x="380" y="188" />
+        <di:waypoint x="380" y="280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0048dra_di" bpmnElement="Flow_0048dra">
+        <di:waypoint x="380" y="790" />
+        <di:waypoint x="380" y="862" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1xopw7e_di" bpmnElement="Flow_1xopw7e">
+        <di:waypoint x="260" y="740" />
+        <di:waypoint x="330" y="740" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0hvr9nz_di" bpmnElement="Flow_0hvr9nz">
+        <di:waypoint x="312" y="770" />
+        <di:waypoint x="260" y="770" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0erschs_di" bpmnElement="Flow_0erschs">
+        <di:waypoint x="380" y="640" />
+        <di:waypoint x="380" y="710" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1n1h98q_di" bpmnElement="Flow_1n1h98q">
+        <di:waypoint x="260" y="590" />
+        <di:waypoint x="330" y="590" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1pprqb9_di" bpmnElement="Flow_1pprqb9">
+        <di:waypoint x="312" y="620" />
+        <di:waypoint x="260" y="620" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="362" y="152" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1crzjam_di" bpmnElement="ioPrepareInflightOrderItems">
+        <dc:Bounds x="330" y="280" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_111g7n2" bpmnElement="ioPrepareInflightOrderItems_retry">
+        <dc:Bounds x="160" y="280" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0hepeep_di" bpmnElement="TextAnnotation_0hepeep">
+        <dc:Bounds x="470" y="80" width="100" height="41" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_035isl4_di" bpmnElement="ioRemoveProvisoningTasks">
+        <dc:Bounds x="330" y="420" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1983x43" bpmnElement="ioRemoveProvisoningTasks_retry">
+        <dc:Bounds x="160" y="420" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0dezwke" bpmnElement="ioModifyProvisoningItems_retry">
+        <dc:Bounds x="160" y="560" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0xnbyr6" bpmnElement="ioModifyProvisoningItems">
+        <dc:Bounds x="330" y="560" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1vhddh8" bpmnElement="ioConfirmInflightOrderSuccess">
+        <dc:Bounds x="330" y="710" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_04istpa" bpmnElement="ioConfirmInflightOrderSucess_retry">
+        <dc:Bounds x="160" y="710" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_07hyi9c_di" bpmnElement="Event_07hyi9c">
+        <dc:Bounds x="362" y="862" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_14wezl6_di" bpmnElement="Event_1udze2o">
+        <dc:Bounds x="312" y="322" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_1jb0qaz_di" bpmnElement="Association_1jb0qaz">
+        <di:waypoint x="397" y="163" />
+        <di:waypoint x="474" y="121" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_169ylk6_di" bpmnElement="Event_1rbves2">
+        <dc:Bounds x="312" y="462" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0e2rza9" bpmnElement="Event_0ms84uk">
+        <dc:Bounds x="312" y="602" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0pyv923" bpmnElement="Event_0pe1jk7">
+        <dc:Bounds x="312" y="752" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

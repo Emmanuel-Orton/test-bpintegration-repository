@@ -1,0 +1,254 @@
+{
+  "id": "7272170",
+  "description": "Create bundle offer\n        Jolera Managed Service<br/>Create base offer\n        Travel &amp;amp; Expenses",
+  "type": "NEW",
+  "state": "InProgress",
+  "cancelable": true,
+  "changeable": true,
+  "priority": 2,
+  "channel": "Assisted_Sales",
+  "operator": "sb_telus_admin_telustest01",
+  "user": "sb_telus_admin_telustest01",
+  "userType": "user",
+  "orderDate": "2023-03-03T16:44:46Z",
+  "requestedCompletionDate": "2023-01-11T10:07:10Z",
+  "expectedCompletionDate": "2023-01-11T10:07:10Z",
+  "billingAccount": "1191867959",
+  "version": 1,
+  "orderItems": [
+    {
+      "id": "7272171",
+      "action": "add",
+      "state": "InProgress",
+      "cancelable": true,
+      "changeable": true,
+      "product": {
+        "id": "96fc8509-3470-457d-bb4c-791dc37c9b86",
+        "action": "add",
+        "state": "InProgress",
+        "productOffering": {
+          "name": "JOLERA_MANAGED_SERVICE"
+        },
+        "cancelable": true,
+        "changeable": true,
+        "productCharacteristics": [
+          {
+            "id": "593204d7-5bc7-4f7e-9eb6-3a732fd474fd",
+            "name": "JOLERA_BINDING_PERIOD_12_MONTHS",
+            "action": "add",
+            "bindingPeriods": [
+              {
+                "id": "df037b5c-8353-477c-98e6-bdb50b06e9cf",
+                "name": "JOLERA_BINDING_PERIOD_12_MONTHS",
+                "chargeSpecification": "JOLERA_CONTRACT_TERMINATION_CHARGE",
+                "action": "add",
+                "endDate": "2024-01-11T10:07:10Z",
+                "calculatedEndDate": "2024-01-11T10:07:10Z"
+              }
+            ]
+          }
+        ],
+        "products": [
+          {
+            "id": "a7893563-f19f-43b2-b5a3-ef9c9874c3ca",
+            "instanceName": "1191867959_22e7f0e3795446b18d335afdbb7770ba",
+            "action": "add",
+            "state": "InProgress",
+            "productOffering": {
+              "name": "MonitorIt"
+            },
+            "cancelable": true,
+            "changeable": true,
+            "services": [
+              {
+                "id": "821afe52-9dbd-4e9a-a86b-63f2bddcf0f7",
+                "name": "MonitorItDevice",
+                "serviceIdentifier": "1191867959_22e7f0e3795446b18d335afdbb7770ba",
+                "instanceName": "1191867959_22e7f0e3795446b18d335afdbb7770ba",
+                "action": "add",
+                "state": "InProgress",
+                "provisioningDate": "2023-01-11T10:07:10Z",
+                "serviceCharacteristics": [
+                  {
+                    "name": "MonitorItDevice:RT_CUSTOMER",
+                    "id": "7615e253-ce4e-4b09-b557-b7fdd99320ea",
+                    "value": "151 OS",
+                    "type": "STRING",
+                    "action": "add"
+                  },
+                  {
+                    "name": "MonitorItDevice:TBSGROUPID",
+                    "id": "bbb1ccd9-3fc5-4800-955b-b48019edcf3e",
+                    "value": "ALL_IN_ONE_ID",
+                    "type": "STRING",
+                    "action": "add"
+                  },
+                  {
+                    "name": "MonitorItDevice:MONTHLY_CHARGE",
+                    "id": "45d19ae5-af76-4bd7-abcf-9a1d667b1a58",
+                    "type": "NONE",
+                    "action": "add",
+                    "prices": [
+                      {
+                        "id": "5b214794-7fb6-4455-b4ed-ab3a50160f78",
+                        "name": "Monitor_Device",
+                        "adHocPaymentRequired": false,
+                        "priceAdjustment": {
+                          "netCharge": "5"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "name": "MonitorItDevice:SKU_NUMBER",
+                    "id": "3d066da8-375a-4596-a549-a4dd1e6b634c",
+                    "value": "P-MO-IT-DEVICE",
+                    "type": "STRING",
+                    "action": "add"
+                  },
+                  {
+                    "name": "MonitorItDevice:QUANTITY",
+                    "id": "6e9b5c6e-2e91-4965-be08-989fe2f11e93",
+                    "value": "5",
+                    "type": "NUMBER",
+                    "action": "add"
+                  },
+                  {
+                    "name": "MonitorItDevice:UNIT_PRICE",
+                    "id": "420674fa-ad64-4291-aaef-6a8265d643c3",
+                    "value": "1.00",
+                    "type": "NUMBER",
+                    "action": "add"
+                  },
+                  {
+                    "name": "MonitorItDevice:UNIT_PRICE_WS",
+                    "id": "5cae0a8f-4b03-48a0-b12c-0a44c6185d05",
+                    "value": "1.00",
+                    "type": "NUMBER",
+                    "action": "add"
+                  },
+                  {
+                    "name": "MonitorItDevice:DESCRIPTION",
+                    "id": "83b54668-9724-44ed-8bf0-42ada806dcc7",
+                    "type": "STRING",
+                    "action": "add"
+                  },
+                  {
+                    "name": "MonitorItDevice:SITE",
+                    "id": "551b0dc0-149c-4abb-b58d-7acdf33c98dc",
+                    "type": "STRING",
+                    "action": "add"
+                  }
+                ],
+                "relatedParties": [
+                  {
+                    "role": "SERVICE_PROVIDER",
+                    "name": "SB_TELUS_TELUSTEST01_WS"
+                  }
+                ],
+                "cancelable": true,
+                "changeable": true,
+                "usageAdjustments": {
+                },
+                "capabilityId": "821afe52-9dbd-4e9a-a86b-63f2bddcf0f7"
+              }
+            ],
+            "wholesale": false,
+            "wholesaleAgreement": false,
+            "relatedParties": [
+            ]
+          }
+        ],
+        "wholesale": false,
+        "wholesaleAgreement": false,
+        "relatedParties": [
+        ],
+        "parameters": {
+          "ban_num": "328483",
+          "SCHAR_INITIALIZATION_STATE": "{\"TELUS_MAT\":false,\"TELUS_WBS\":false,\"FG_SOW_PO\":false}",
+          "budget_quote": "Yes",
+          "car_num": "2121",
+          "opi_num": "2376767",
+          "draft_order_placed_dt": "2023-01-11T10:07:10.380138Z"
+        }
+      }
+    },
+    {
+      "id": "7272174",
+      "action": "add",
+      "state": "Completed",
+      "cancelable": false,
+      "changeable": false,
+      "product": {
+        "id": "523b698e-dc53-455c-b95b-f891dc073f2b",
+        "instanceName": "1191867959_648e41a8847a4ae2af65b43a58b25820",
+        "action": "add",
+        "state": "Completed",
+        "productOffering": {
+          "name": "TravelAndExpenses"
+        },
+        "cancelable": false,
+        "changeable": false,
+        "services": [
+          {
+            "id": "c6428fff-a397-4be8-9fb8-dece9a73bc76",
+            "name": "TravelAndExpenses",
+            "serviceIdentifier": "1191867959_648e41a8847a4ae2af65b43a58b25820",
+            "instanceName": "1191867959_648e41a8847a4ae2af65b43a58b25820",
+            "action": "add",
+            "state": "Completed",
+            "provisioningDate": "2023-01-11T10:07:10Z",
+            "serviceCharacteristics": [
+              {
+                "name": "TravelAndExpenses:AAA_GROUPID_2",
+                "id": "ffea292b-7c37-446f-9f5b-bb4e40a9446e",
+                "value": "TAE_ID_2",
+                "type": "STRING",
+                "action": "add"
+              },
+              {
+                "name": "TravelAndExpenses:TBSGROUPID",
+                "id": "bba6f5b2-67d0-407c-9ad7-4a336ce563e7",
+                "value": "TAE_ID",
+                "type": "STRING",
+                "action": "add"
+              },
+              {
+                "name": "TravelAndExpenses:RT_CUSTOMER",
+                "id": "24ec2024-3562-49cd-bbf0-d9985b4453ed",
+                "value": "151 OS",
+                "type": "STRING",
+                "action": "add"
+              }
+            ],
+            "relatedParties": [
+              {
+                "role": "SERVICE_PROVIDER",
+                "name": "SB_TELUS_TELUSTEST01_WS"
+              }
+            ],
+            "cancelable": false,
+            "changeable": false,
+            "usageAdjustments": {
+            },
+            "capabilityId": "c6428fff-a397-4be8-9fb8-dece9a73bc76"
+          }
+        ],
+        "wholesale": false,
+        "wholesaleAgreement": false,
+        "relatedParties": [
+        ]
+      }
+    }
+  ],
+  "relatedObjects": [
+  ],
+  "parameters": {
+    "ban_num": "328483",
+    "IS_ASSISTED_SALES": "true",
+    "budget_quote": "Yes",
+    "opi_num": "2376767",
+    "car_num": "2121",
+    "draft_order_placed_dt": "2023-01-11T10:07:10.380138Z"
+  }
+}

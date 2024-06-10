@@ -1,0 +1,16 @@
+{
+  "name": "assisted_sales_workflow",
+  "state": "Active",
+  "relatedParty": {
+    "type": "Individual",
+    "givenName": "test-bpintegration",
+    "name": "test-bpintegration Workflow",
+    "role": "User",
+    "familyName": "Workflow"
+  },
+  "userAccessMappings": [
+    {
+      "workGroupName": "telus_assisted_sales_workflow"
+    }
+  ]
+}

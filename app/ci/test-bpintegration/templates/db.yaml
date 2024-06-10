@@ -1,0 +1,96 @@
+{{- with .Values.db }}
+  {{- if .enabled}}
+  {{- if .job.enabled}}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: telus-test-bpintegration-db-init{{ $.Values.global.env }}
+  namespace: {{ $.Release.Namespace }}
+  labels:
+    type: telus-test-bpintegration-db-init{{ $.Values.global.env }}
+  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook-weight": "-5"
+    "helm.sh/hook-delete-policy": "before-hook-creation"
+spec:
+  template:
+    metadata:
+      name: telus-test-bpintegration-db-init{{ $.Values.global.env }}
+      labels:
+        type: telus-test-bpintegration-db-init{{ $.Values.global.env }}
+    spec:
+      {{- if $.Values.app.gcpProxy.enabled }}
+      serviceAccountName: {{ required "app.serviceAccountName is mandatory" $.Values.app.serviceAccountName }}
+      {{- else }}
+      # do not mount default service account token
+      # create dedicated service account with role bindings if access to k8s needed
+      automountServiceAccountToken: false
+      {{- end }}
+      restartPolicy: Never
+      containers:
+        - name: installer
+          image: "{{ $.Values.global.repository }}/test-bpintegration-app-db-init:{{ $.Chart.Version }}"
+          imagePullPolicy: Always
+          volumeMounts:
+            - mountPath: "/liquibase/changelog/liquibase.properties"
+              name: db-deployment-config
+              subPath: liquibase.properties
+            - mountPath: "/tmp/signals/"
+              name: process-sync
+          envFrom:
+            - secretRef:
+                name: test-bpintegration-db-config{{ $.Values.global.env }}
+          env:
+            - name: STARTUP_DELAY
+              value: "{{ $.Values.db.job.startupDelay }}"
+        {{- if $.Values.app.gcpProxy.enabled}}
+        - name: dbproxy
+          command:
+            - sh
+            - -c
+          args:
+            - >-
+              /cloud_sql_proxy
+              -instances={{ $.Values.global.integration.gcpProxy.databaseService }}
+              -term_timeout=10s & PID=$!; until [ -f /tmp/signals/finished  ]; do sleep 1; echo polling; done; echo "kill $PID"; kill $PID
+          image: 'gcr.io/cloudsql-docker/gce-proxy:1.28.1-alpine'
+          resources:
+            limits:
+              cpu: 80m
+              memory: 32Mi
+            requests:
+              cpu: 80m
+              memory: 32Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsUser: 2
+          volumeMounts:
+            - mountPath: "/tmp/signals/"
+              name: process-sync
+      {{- end }}
+      volumes:
+        - name: db-deployment-config
+          configMap:
+            name: db-deployment-config{{ $.Values.global.env }}
+        - name: process-sync
+          emptyDir: {}
+      imagePullSecrets:
+        - name: regcred
+  backoffLimit: 0
+  {{- end }}
+---
+  {{- if .configmap.enabled}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-deployment-config{{ $.Values.global.env }}
+  annotations:
+    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook-weight": "-10"
+data:
+  liquibase.properties: {{ tpl ($.Files.Get "configuration/database/liquibase.properties") $ | quote }}
+  {{- end }}
+  {{- end }}
+{{- end }}

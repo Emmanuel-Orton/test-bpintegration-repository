@@ -1,0 +1,1980 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Infonova API Swagger",
+    "version": ""
+  },
+  "host": "localhost:9700",
+  "basePath": "/r6-api",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+    "/{tenant}/ordering/v1/events/orderProcessingComplete/{eventId}/success": {
+      "post": {
+        "tags": [
+          "Ordering v1"
+        ],
+        "summary": "POST /ordering/v1/events/orderProcessingComplete/{eventId}/success",
+        "description": "POST /ordering/v1/events/orderProcessingComplete/{eventId}/success",
+        "operationId": "postOrderingV1EventsOrderProcessingCompleteEventIdSuccess",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OrderingV1DomainOrderEventResponse"
+            }
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+              
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+              
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/ordering/v1/events/orderProcessingStart/{eventId}/failure": {
+      "post": {
+        "tags": [
+          "Ordering v1"
+        ],
+        "summary": "POST /ordering/v1/events/orderProcessingStart/{eventId}/failure",
+        "description": "POST /ordering/v1/events/orderProcessingStart/{eventId}/failure",
+        "operationId": "postOrderingV1EventsOrderProcessingStartEventIdFailure",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+              
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+              
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/ordering/v1/events/orderProcessingStart/{eventId}/success": {
+      "post": {
+        "tags": [
+          "Ordering v1"
+        ],
+        "summary": "POST /ordering/v1/events/orderProcessingStart/{eventId}/success",
+        "description": "POST /ordering/v1/events/orderProcessingStart/{eventId}/success",
+        "operationId": "postOrderingV1EventsOrderProcessingStartEventIdSuccess",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OrderingV1DomainOrderEventResponse"
+            }
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+              
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+              
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/ordering/v1/orders": {
+      "get": {
+        "tags": [
+          "Ordering v1"
+        ],
+        "summary": "GET /ordering/v1/orders",
+        "description": "GET /ordering/v1/orders",
+        "operationId": "getOrderingV1Orders",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "chunkSize",
+            "in": "query",
+            "description": "The size of a chunk. Defaults to 50 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "Filter properties",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The requested page of the result. Defaults to 1 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The size of a page. Defaults to 50 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search query. Supported properties are billingAccount,id,externalId,externalAccount,creationDate,completionDate,type,state,user,userType.",
+            "required": false,
+            "type": "string",
+            "format": "Lucene syntax is supported",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "scroll",
+            "in": "query",
+            "description": "If set to true, requests a result containing a `scrollId` to continue scrolling through the result.",
+            "required": false,
+            "type": "boolean",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "scrollId",
+            "in": "query",
+            "description": "The requested scroll id to continue scrolling through the result. Ignored if not provided.",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Sort by billingAccount,id,externalId,externalAccount,creationDate,completionDate",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sort order. Must be 'asc' or 'desc'.",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/OrderingV1DomainOrderList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+              
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+              
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/ordering/v1/orders/{order}": {
+      "get": {
+        "tags": [
+          "Ordering v1"
+        ],
+        "summary": "GET /ordering/v1/orders/{order}",
+        "description": "GET /ordering/v1/orders/{order}",
+        "operationId": "getOrderingV1OrdersOrder",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/OrderingV1DomainOrder"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+              
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+              
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/ordering/v1/orders/{order}/documents": {
+      "get": {
+        "tags": [
+          "Ordering v1"
+        ],
+        "summary": "GET /ordering/v1/orders/{order}/documents",
+        "description": "GET /ordering/v1/orders/{order}/documents",
+        "operationId": "getOrderingV1OrdersOrderDocuments",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The requested page of the result. Defaults to 1 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The size of a page. Defaults to 50 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search query. Supported properties are id,name,hash,type,createdBy,createdByType. The property parameters containing arbitrary key/value pairs can be searched.",
+            "required": false,
+            "type": "string",
+            "format": "Lucene syntax is not supported",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Sort by name,created,changed, size,createdBy",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sort order. Must be 'asc' or 'desc'.",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CrV1DomainUploadedDocumentList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+              
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+              
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Ordering v1"
+        ],
+        "summary": "POST /ordering/v1/orders/{order}/documents",
+        "description": "POST /ordering/v1/orders/{order}/documents",
+        "operationId": "postOrderingV1OrdersOrderDocuments",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "file",
+            "in": "formData",
+            "required": true,
+            "type": "file"
+          },
+          {
+            "name": "type",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "comment",
+            "in": "formData",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "relatedObject",
+            "in": "formData",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "relatedObjectType",
+            "in": "formData",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "formData",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CrV1DomainUploadedDocument"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+              
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+              
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/ordering/v1/orders/{order}/documents/{id}": {
+      "get": {
+        "tags": [
+          "Ordering v1"
+        ],
+        "summary": "GET /ordering/v1/orders/{order}/documents/{id}",
+        "description": "GET /ordering/v1/orders/{order}/documents/{id}",
+        "operationId": "getOrderingV1OrdersOrderDocumentsId",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CrV1DomainUploadedDocument"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+              
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+              
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Ordering v1"
+        ],
+        "summary": "PUT /ordering/v1/orders/{order}/documents/{id}",
+        "description": "PUT /ordering/v1/orders/{order}/documents/{id}",
+        "operationId": "putOrderingV1OrdersOrderDocumentsId",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CrV1DomainUploadedDocument"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CrV1DomainUploadedDocument"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+              
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+              
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Ordering v1"
+        ],
+        "summary": "DELETE /ordering/v1/orders/{order}/documents/{id}",
+        "description": "DELETE /ordering/v1/orders/{order}/documents/{id}",
+        "operationId": "deleteOrderingV1OrdersOrderDocumentsId",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CrV1DomainUploadedDocument"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+              
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+              
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Ordering v1"
+        ],
+        "summary": "PATCH /ordering/v1/orders/{order}/documents/{id}",
+        "description": "PATCH /ordering/v1/orders/{order}/documents/{id}",
+        "operationId": "patchOrderingV1OrdersOrderDocumentsId",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CrV1DomainUploadedDocument"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CrV1DomainUploadedDocument"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+              
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+              
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/ordering/v1/orders/{order}/documents/{id}/download": {
+      "get": {
+        "tags": [
+          "Ordering v1"
+        ],
+        "summary": "GET /ordering/v1/orders/{order}/documents/{id}/download",
+        "description": "GET /ordering/v1/orders/{order}/documents/{id}/download",
+        "operationId": "getOrderingV1OrdersOrderDocumentsIdDownload",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "file"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+              
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+              
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/ordering/v1/orders/{order}/hierarchy": {
+      "get": {
+        "tags": [
+          "Ordering v1"
+        ],
+        "summary": "GET /ordering/v1/orders/{order}/hierarchy",
+        "description": "GET /ordering/v1/orders/{order}/hierarchy",
+        "operationId": "getOrderingV1OrdersOrderHierarchy",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/OrderingV1DomainOrderList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+              
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+              
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/ordering/v1/orders/{order}/hierarchy/{item}": {
+      "get": {
+        "tags": [
+          "Ordering v1"
+        ],
+        "summary": "GET /ordering/v1/orders/{order}/hierarchy/{item}",
+        "description": "GET /ordering/v1/orders/{order}/hierarchy/{item}",
+        "operationId": "getOrderingV1OrdersOrderHierarchyItem",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "item",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/OrderingV1DomainOrder"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+              
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+              
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/ordering/v1/orders/{order}/hierarchy/{item}/history": {
+      "get": {
+        "tags": [
+          "Ordering v1"
+        ],
+        "summary": "GET /ordering/v1/orders/{order}/hierarchy/{item}/history",
+        "description": "GET /ordering/v1/orders/{order}/hierarchy/{item}/history",
+        "operationId": "getOrderingV1OrdersOrderHierarchyItemHistory",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "item",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "Filter properties",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The requested page of the result. Defaults to 1 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The size of a page. Defaults to 50 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search query. Supported properties are category,description. A temporal restriction can be provided using the query properties from, to and period.",
+            "required": false,
+            "type": "string",
+            "format": "Lucene syntax is not supported",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Sort by creationDate,category",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sort order. Must be 'asc' or 'desc'.",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/OrderingV1DomainOrderHistoryEntryList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+              
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+              
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/ordering/v1/orders/{order}/hierarchy/{item}/history/{history}": {
+      "get": {
+        "tags": [
+          "Ordering v1"
+        ],
+        "summary": "GET /ordering/v1/orders/{order}/hierarchy/{item}/history/{history}",
+        "description": "GET /ordering/v1/orders/{order}/hierarchy/{item}/history/{history}",
+        "operationId": "getOrderingV1OrdersOrderHierarchyItemHistoryHistory",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "item",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "history",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/OrderingV1DomainOrderHistoryEntry"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+              
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+              
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/ordering/v1/orders/{order}/history": {
+      "get": {
+        "tags": [
+          "Ordering v1"
+        ],
+        "summary": "GET /ordering/v1/orders/{order}/history",
+        "description": "GET /ordering/v1/orders/{order}/history",
+        "operationId": "getOrderingV1OrdersOrderHistory",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/OrderingV1DomainOrderHistoryEntryList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+              
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+              
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Ordering v1"
+        ],
+        "summary": "POST /ordering/v1/orders/{order}/history",
+        "description": "POST /ordering/v1/orders/{order}/history",
+        "operationId": "postOrderingV1OrdersOrderHistory",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OrderingV1DomainOrderHistoryEntry"
+            }
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/OrderingV1DomainOrderHistoryEntry"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+              
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+              
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/ordering/v1/orders/{order}/history/{history}": {
+      "get": {
+        "tags": [
+          "Ordering v1"
+        ],
+        "summary": "GET /ordering/v1/orders/{order}/history/{history}",
+        "description": "GET /ordering/v1/orders/{order}/history/{history}",
+        "operationId": "getOrderingV1OrdersOrderHistoryHistory",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "history",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/OrderingV1DomainOrderHistoryEntry"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+              
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+              
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "CommonsDomainModelArgument": {
+      "type": "object",
+      "properties": {
+        "argument": {
+          "type": "string"
+        },
+        "argumentDescription": {
+          "type": "string"
+        },
+        "argumentDisplayName": {
+          "type": "string"
+        },
+        "argumentKey": {
+          "type": "string"
+        },
+        "subMessages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelMessage"
+          }
+        },
+        "templateVariable": {
+          "type": "string"
+        }
+      }
+    },
+    "CommonsDomainModelLink": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string"
+        },
+        "templated": {
+          "type": "boolean"
+        }
+      }
+    },
+    "CommonsDomainModelMessage": {
+      "type": "object",
+      "properties": {
+        "args": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelArgument"
+          }
+        },
+        "key": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "messageTemplate": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "CommonsDomainModelMessageAware": {
+      "type": "object",
+      "properties": {
+        "logId": {
+          "type": "string"
+        },
+        "messages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelMessage"
+          }
+        }
+      }
+    },
+    "CommonsDomainModelRelatedObject": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/CommonsDomainModelLink"
+          }
+        },
+        "id": {
+          "type": "string"
+        },
+        "involvement": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "discriminator": "type"
+    },
+    "CrV1DomainUploadedDocument": {
+      "type": "object",
+      "properties": {
+        "changed": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "changedBy": {
+          "type": "string"
+        },
+        "changedByType": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createdBy": {
+          "type": "string"
+        },
+        "createdByType": {
+          "type": "string"
+        },
+        "customerAccount": {
+          "type": "string"
+        },
+        "encoding": {
+          "type": "string"
+        },
+        "hash": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "mediaType": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "relatedObject": {
+          "$ref": "#/definitions/CommonsDomainModelRelatedObject"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "CrV1DomainUploadedDocumentList": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CrV1DomainUploadedDocument"
+          }
+        },
+        "paginationInformation": {
+          "type": "object",
+          "properties": {
+            "pageSize": {
+              "type": "integer"
+            },
+            "totalNumberOfRecords": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "OrderingV1DomainOrder": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/CommonsDomainModelLink"
+          }
+        },
+        "cancelable": {
+          "type": "boolean"
+        },
+        "changeable": {
+          "type": "boolean"
+        },
+        "changedDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "completionDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "creationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "description": {
+          "type": "string"
+        },
+        "externalOrderId": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "processInstanceId": {
+          "type": "string"
+        },
+        "referenceId": {
+          "type": "string"
+        },
+        "referenceName": {
+          "type": "string"
+        },
+        "relationships": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderingV1DomainRelationship"
+          }
+        },
+        "state": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "userType": {
+          "type": "string"
+        },
+        "version": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "versionAdded": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "OrderingV1DomainOrderEventResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      }
+    },
+    "OrderingV1DomainOrderHistoryEntry": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string"
+        },
+        "creationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "description": {
+          "type": "string"
+        },
+        "descriptionTemplate": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "processInstance": {
+          "type": "string"
+        }
+      }
+    },
+    "OrderingV1DomainOrderHistoryEntryList": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderingV1DomainOrderHistoryEntry"
+          }
+        },
+        "paginationInformation": {
+          "type": "object",
+          "properties": {
+            "pageSize": {
+              "type": "integer"
+            },
+            "totalNumberOfRecords": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "OrderingV1DomainOrderList": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderingV1DomainOrder"
+          }
+        },
+        "paginationInformation": {
+          "type": "object",
+          "properties": {
+            "pageSize": {
+              "type": "integer"
+            },
+            "totalNumberOfRecords": {
+              "type": "integer"
+            }
+          }
+        },
+        "scrollingInformation": {
+          "type": "object",
+          "properties": {
+            "chunkSize": {
+              "type": "integer"
+            },
+            "scrollId": {
+              "type": "string"
+            },
+            "totalNumberOfRecords": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "OrderingV1DomainRelationship": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "oauth2ClientCredentialAuthentication": {
+      "type": "oauth2",
+      "description": "Client credentials flow configuration for the Infonova Keycloak.",
+      "flow": "application",
+      "tokenUrl": ""
+    },
+    "oauth2ResourceOwnerPasswordCredentialAuthentication": {
+      "type": "oauth2",
+      "description": "Resource Owner Password Credentials flow configuration for the Infonova Keycloak.",
+      "flow": "password",
+      "tokenUrl": ""
+    }
+  },
+  "tags": [
+    {
+      "name": "Ordering v1",
+      "externalDocs": {
+        "description": "Further documentation",
+        "url": "http://localhost:9700/r6-api/docs/ordering-impl/index.html"
+      }
+    }
+  ]
+}

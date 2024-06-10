@@ -1,0 +1,16 @@
+version: "2"
+services:
+  helm:
+    image: beyond-docker-artifactory.cd.bearingpoint.com/helm-secrets-jenkins:1.0
+    environment:
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - AWS_REGION
+      - USERNAME
+      - PASSWORD
+      - HELM_FETCH_REPOSITORY
+      - CLUSTER_NAME
+      - HELM_KEYS
+    volumes:
+      - ../:/home/app/test-bpintegration-app
+      - $HOME/.docker/config.json:/home/app/.docker/config.json

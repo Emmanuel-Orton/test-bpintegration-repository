@@ -1,0 +1,16 @@
+{
+  "billingAccount": "1192297826",
+  "parameters": {
+    "PRODUCT_NAME": "Jolera Managed Service",
+    "PROVISIONING_ORDER_ID": "1906921",
+    "RETAIL_BILLING_ACCOUNT_ID": "1192297685",
+    "RETAIL_ORDER_ID": "6953479",
+    "WHOLESALE_SERVICE_OFFER": "WSO_MONITOR_IT_SRV",
+    "WS_BILLING_ACCOUNT_ID": "1192297826",
+    "WS_ORDER_ID": "6953486",
+    "WS_ORDER_LINK": "www.example.com",
+    "WS_SERVICE_ORDER_ID": "6953488"
+  },
+  "priority": 2,
+  "taskDefinition": "TELUS_WS_ORDER_SERVICE_PROVISIONING_TASK"
+}

@@ -1,0 +1,50 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /test-bpintegration-app
+
+management:
+  server:
+    port: 9001
+
+spring:
+  codec:
+    max-in-memory-size: 20MB
+  datasource:
+    hikari:
+      leak-detection-threshold: 30000
+  application:
+    name: telus-test-bpintegration-api
+    sleuth:
+      baggage:
+        remote-fields:
+          - business-process-key
+          - context-id
+        correlation-fields:
+          - business-process-key
+          - context-id
+          - request-id
+  cache:
+    jcache:
+      config: classpath:ehcache.xml
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://test.infonova.com/auth/realms/some_realm
+      client:
+        registration:
+          infonova:
+            authorization-grant-type: client_credentials
+            client-id: telus_assisted_sales_app
+            client-secret: client_secret
+        provider:
+          infonova:
+            token-uri: https://test.infonova.com/auth/realms/some_realm/protocol/openid-connect/token
+  jackson:
+    default-property-inclusion: non_null
+
+infonovaBaseUrl: https://test.infonova.com/r6-api
+
+telus-test-bpintegration-api:
+  overdue_date_start_time: 8:00

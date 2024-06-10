@@ -1,0 +1,173 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Infonova API Swagger",
+    "version": ""
+  },
+  "host": "localhost:9700",
+  "basePath": "/r6-api",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+    "/{tenant}/templateRendering/v1/templates/{name}": {
+      "post": {
+        "tags": [
+          "Template Rendering v1"
+        ],
+        "summary": "POST /templateRendering/v1/templates/{name}",
+        "description": "POST /templateRendering/v1/templates/{name}",
+        "operationId": "postTemplateRenderingV1TemplatesName",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "text/plain"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/commons.ArbitraryStringMap"
+            }
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/commons.AnyType"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/templateRendering/v1/reportTemplates/{name}": {
+      "post": {
+        "tags": [
+          "Template Rendering v1"
+        ],
+        "summary": "POST /templateRendering/v1/reportTemplates/{name}",
+        "description": "POST /templateRendering/v1/reportTemplates/{name}",
+        "operationId": "postTemplateRenderingV1ReportTemplatesName",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/pdf"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/commons.ArbitraryStringMap"
+            }
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "string",
+              "format": "byte"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "commons.AnyType": {
+      "type": "string"
+    },
+    "commons.ArbitraryStringMap": {
+      "type": "object"
+    }
+  },
+  "securityDefinitions": {
+    "oauth2ClientCredentialAuthentication": {
+      "type": "oauth2",
+      "description": "Client credentials flow configuration for the Infonova Keycloak.",
+      "flow": "application",
+      "tokenUrl": ""
+    },
+    "oauth2ResourceOwnerPasswordCredentialAuthentication": {
+      "type": "oauth2",
+      "description": "Resource Owner Password Credentials flow configuration for the Infonova Keycloak.",
+      "flow": "password",
+      "tokenUrl": ""
+    }
+  },
+  "tags": [
+    {
+      "name": "Template Rendering v1",
+      "externalDocs": {
+        "description": "Further documentation",
+        "url": "http://localhost:9700/r6-api/docs/template-management-impl/index.html"
+      }
+    }
+  ]
+}

@@ -1,0 +1,275 @@
+{
+  "id": "7103575",
+  "description": "Create bundle offer\n        Jolera Managed Service",
+  "type": "NEW",
+  "state": "InProgress",
+  "cancelable": false,
+  "changeable": false,
+  "priority": 2,
+  "channel": "Assisted_Sales",
+  "operator": "sb_telus_admin_andyrozman",
+  "user": "sb_telus_admin_andyrozman",
+  "userType": "user",
+  "orderDate": "2023-01-26T14:57:29Z",
+  "requestedCompletionDate": "2023-01-26T14:57:51Z",
+  "expectedCompletionDate": "2023-01-26T14:57:51Z",
+  "billingAccount": "1191795598",
+  "version": 1,
+  "orderItems": [
+    {
+      "id": "7103576",
+      "action": "add",
+      "state": "InProgress",
+      "cancelable": false,
+      "changeable": true,
+      "product": {
+        "id": "d3d8b726-c7fe-4d27-9962-3348b5c8974b",
+        "action": "add",
+        "state": "InProgress",
+        "productOffering": {
+          "name": "JOLERA_MANAGED_SERVICE"
+        },
+        "cancelable": false,
+        "changeable": true,
+        "productCharacteristics": [
+          {
+            "id": "4c1150f9-047f-4f0f-98a7-c2e3c44a7774",
+            "name": "JOLERA_BINDING_PERIOD_12_MONTHS",
+            "action": "add",
+            "bindingPeriods": [
+              {
+                "id": "79213771-4611-47ea-ab71-c023e242e8e0",
+                "name": "JOLERA_BINDING_PERIOD_12_MONTHS",
+                "chargeSpecification": "JOLERA_CONTRACT_TERMINATION_CHARGE",
+                "action": "add",
+                "endDate": "2024-01-26T14:57:31Z",
+                "calculatedEndDate": "2024-01-26T14:57:31Z"
+              }
+            ]
+          }
+        ],
+        "products": [
+          {
+            "id": "990f6f77-8494-4ad9-9884-dbabf77fb173",
+            "instanceName": "1191795598_96958a48a6db40d294646c8e61a0bb50",
+            "action": "add",
+            "state": "InProgress",
+            "productOffering": {
+              "name": "MonitorIt"
+            },
+            "cancelable": false,
+            "changeable": true,
+            "services": [
+              {
+                "id": "c5b72faf-7575-4161-8baa-0f36ea9dbd0f",
+                "name": "MonitorItDevice",
+                "serviceIdentifier": "1191795598_96958a48a6db40d294646c8e61a0bb50",
+                "instanceName": "1191795598_96958a48a6db40d294646c8e61a0bb50",
+                "action": "add",
+                "state": "InProgress",
+                "provisioningDate": "2023-01-26T14:57:51Z",
+                "serviceCharacteristics": [
+                  {
+                    "name": "MonitorItDevice:UNIT_PRICE_WS",
+                    "id": "1ef79242-9612-4ed5-95d1-6a133cb4fcaf",
+                    "value": "1.00",
+                    "type": "NUMBER",
+                    "action": "add"
+                  },
+                  {
+                    "name": "MonitorItDevice:TBSGROUPID",
+                    "id": "3d0be6af-0d6b-46d9-9fab-b40a84f94ca1",
+                    "value": "ALL_IN_ONE_ID",
+                    "type": "STRING",
+                    "action": "add"
+                  },
+                  {
+                    "name": "MonitorItDevice:MONTHLY_CHARGE",
+                    "id": "ab2620f4-d330-487f-8602-9de55492b05e",
+                    "type": "NONE",
+                    "action": "add",
+                    "prices": [
+                      {
+                        "id": "24139acb-eccb-4591-87cd-e963c0f2be2e",
+                        "name": "Monitor_Device",
+                        "adHocPaymentRequired": false,
+                        "priceAdjustment": {
+                          "netCharge": "5"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "name": "MonitorItDevice:SKU_NUMBER",
+                    "id": "add785f5-7051-4c5c-b493-dfc35c375d11",
+                    "value": "P-MO-IT-DEVICE",
+                    "type": "STRING",
+                    "action": "add"
+                  },
+                  {
+                    "name": "MonitorItDevice:QUANTITY",
+                    "id": "343778b8-a0fe-4dbf-9796-617bc6620bed",
+                    "value": "5",
+                    "type": "NUMBER",
+                    "action": "add"
+                  },
+                  {
+                    "name": "MonitorItDevice:UNIT_PRICE",
+                    "id": "1cc0a273-e223-439c-a2d8-ef2c53c8fb0c",
+                    "value": "1.00",
+                    "type": "NUMBER",
+                    "action": "add"
+                  },
+                  {
+                    "name": "MonitorItDevice:DESCRIPTION",
+                    "id": "08d1554f-fe67-4a39-bd00-fbf09150c87c",
+                    "type": "STRING",
+                    "action": "add"
+                  },
+                  {
+                    "name": "MonitorItDevice:SITE",
+                    "id": "09d316d3-fd48-4d55-b0c4-f2e3bc3e32af",
+                    "type": "STRING",
+                    "action": "add"
+                  }
+                ],
+                "relatedParties": [
+                  {
+                    "role": "SERVICE_PROVIDER",
+                    "name": "SB_TELUS_ANDYROZMAN_WS"
+                  }
+                ],
+                "cancelable": false,
+                "changeable": false,
+                "usageAdjustments": {
+                },
+                "capabilityId": "c5b72faf-7575-4161-8baa-0f36ea9dbd0f"
+              }
+            ],
+            "wholesale": false,
+            "wholesaleAgreement": false,
+            "relatedParties": [
+            ]
+          },
+          {
+            "id": "39e4fe15-320c-484d-8861-01da1ae761e5",
+            "instanceName": "1191795598_640a4d9f641549d0bb796a352363692f",
+            "action": "add",
+            "state": "InProgress",
+            "productOffering": {
+              "name": "SupportIt"
+            },
+            "cancelable": false,
+            "changeable": true,
+            "services": [
+              {
+                "id": "8a918f65-0125-4f11-91ce-0537ce4f6b41",
+                "name": "SupportItAdvantageBlue",
+                "serviceIdentifier": "1191795598_640a4d9f641549d0bb796a352363692f",
+                "instanceName": "1191795598_640a4d9f641549d0bb796a352363692f",
+                "action": "add",
+                "state": "InProgress",
+                "provisioningDate": "2023-01-26T14:57:51Z",
+                "serviceCharacteristics": [
+                  {
+                    "name": "SupportItAdvantageBlue:TBSGROUPID",
+                    "id": "da3959ae-8d55-45d5-a6d6-caa317452e42",
+                    "value": "ALL_IN_ONE_ID",
+                    "type": "STRING",
+                    "action": "add"
+                  },
+                  {
+                    "name": "SupportItAdvantageBlue:MONTHLY_CHARGE",
+                    "id": "373157ff-9f00-4717-8596-f6a93a9ae383",
+                    "type": "NONE",
+                    "action": "add",
+                    "prices": [
+                      {
+                        "id": "7ba077cf-73e2-46b0-8e1c-ffd24f24735a",
+                        "name": "Support_It_Advantage_Blue_Monthly_Charge",
+                        "adHocPaymentRequired": false
+                      }
+                    ]
+                  },
+                  {
+                    "name": "SupportItAdvantageBlue:SKU_NUMBER",
+                    "id": "7c2654fe-f8bc-44b4-953c-fc2840227678",
+                    "value": "P-CCHD-E",
+                    "type": "STRING",
+                    "action": "add"
+                  },
+                  {
+                    "name": "SupportItAdvantageBlue:QUANTITY",
+                    "id": "13f782b7-f708-4f9b-b06a-6fd145d5cfd3",
+                    "value": "5",
+                    "type": "NUMBER",
+                    "action": "add"
+                  },
+                  {
+                    "name": "SupportItAdvantageBlue:UNIT_PRICE",
+                    "id": "2c8db601-7e4c-4519-b4a3-b194082794ee",
+                    "value": "100",
+                    "type": "NUMBER",
+                    "action": "add"
+                  },
+                  {
+                    "name": "SupportItAdvantageBlue:UNIT_PRICE_WS",
+                    "id": "a59516e1-d614-4ec4-9e8f-fac6e7c2be67",
+                    "value": "240.00",
+                    "type": "NUMBER",
+                    "action": "add"
+                  },
+                  {
+                    "name": "SupportItAdvantageBlue:DESCRIPTION",
+                    "id": "91ec6664-bb00-4ab9-8825-be0bdecac6e2",
+                    "type": "STRING",
+                    "action": "add"
+                  },
+                  {
+                    "name": "SupportItAdvantageBlue:SITE",
+                    "id": "98ba775a-b9b6-495f-873e-de3d36a30322",
+                    "type": "STRING",
+                    "action": "add"
+                  }
+                ],
+                "relatedParties": [
+                  {
+                    "role": "SERVICE_PROVIDER",
+                    "name": "SB_TELUS_ANDYROZMAN_WS"
+                  }
+                ],
+                "cancelable": false,
+                "changeable": false,
+                "usageAdjustments": {
+                },
+                "capabilityId": "8a918f65-0125-4f11-91ce-0537ce4f6b41"
+              }
+            ],
+            "wholesale": false,
+            "wholesaleAgreement": false,
+            "relatedParties": [
+            ]
+          }
+        ],
+        "wholesale": false,
+        "wholesaleAgreement": false,
+        "relatedParties": [
+        ],
+        "parameters": {
+          "car_num": "2121",
+          "opi_num": "2376767",
+          "ban_num": "328483",
+          "budget_quote": "Yes"
+        }
+      }
+    }
+  ],
+  "relatedObjects": [
+  ],
+  "parameters": {
+    "ban_num": "328483",
+    "budget_quote": "Yes",
+    "opi_num": "2376767",
+    "car_num": "2121"
+  }
+}

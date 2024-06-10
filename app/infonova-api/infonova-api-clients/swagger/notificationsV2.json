@@ -1,0 +1,2034 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Infonova API Swagger",
+    "version": ""
+  },
+  "host": "localhost:9700",
+  "basePath": "/r6-api",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+    "/{tenant}/notifications/v2/channels": {
+      "get": {
+        "tags": [
+          "Notification v2"
+        ],
+        "summary": "GET /notifications/v2/channels",
+        "description": "GET /notifications/v2/channels",
+        "operationId": "getNotificationsV2Channels",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "Filter properties",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search query. Supported properties are name,configurationLevel.",
+            "required": false,
+            "type": "string",
+            "format": "Lucene syntax is not supported",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Sort by name,description",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sort order. Must be 'asc' or 'desc'.",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotificationChannelList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Notification v2"
+        ],
+        "summary": "PUT /notifications/v2/channels",
+        "description": "PUT /notifications/v2/channels",
+        "operationId": "putNotificationsV2Channels",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "keepExisting",
+            "in": "query",
+            "description": "If the keepExisting parameter is set to false, the not referenced objects will be deleted",
+            "required": true,
+            "type": "boolean",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotificationChannels"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Notification v2"
+        ],
+        "summary": "POST /notifications/v2/channels",
+        "description": "POST /notifications/v2/channels",
+        "operationId": "postNotificationsV2Channels",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotificationChannel"
+            }
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotificationChannel"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/notifications/v2/channels/{name}": {
+      "get": {
+        "tags": [
+          "Notification v2"
+        ],
+        "summary": "GET /notifications/v2/channels/{name}",
+        "description": "GET /notifications/v2/channels/{name}",
+        "operationId": "getNotificationsV2ChannelsName",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotificationChannel"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Notification v2"
+        ],
+        "summary": "PUT /notifications/v2/channels/{name}",
+        "description": "PUT /notifications/v2/channels/{name}",
+        "operationId": "putNotificationsV2ChannelsName",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotificationChannel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotificationChannel"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Notification v2"
+        ],
+        "summary": "PATCH /notifications/v2/channels/{name}",
+        "description": "PATCH /notifications/v2/channels/{name}",
+        "operationId": "patchNotificationsV2ChannelsName",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotificationChannel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotificationChannel"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/notifications/v2/events/notificationSend/{eventId}/failure": {
+      "post": {
+        "tags": [
+          "Notification v2"
+        ],
+        "summary": "POST /notifications/v2/events/notificationSend/{eventId}/failure",
+        "description": "POST /notifications/v2/events/notificationSend/{eventId}/failure",
+        "operationId": "postNotificationsV2EventsNotificationSendEventIdFailure",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/notifications/v2/events/notificationSend/{eventId}/success": {
+      "post": {
+        "tags": [
+          "Notification v2"
+        ],
+        "summary": "POST /notifications/v2/events/notificationSend/{eventId}/success",
+        "description": "POST /notifications/v2/events/notificationSend/{eventId}/success",
+        "operationId": "postNotificationsV2EventsNotificationSendEventIdSuccess",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotificationEventResponse"
+            }
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/notifications/v2/notifications": {
+      "get": {
+        "tags": [
+          "Notification v2"
+        ],
+        "summary": "GET /notifications/v2/notifications",
+        "description": "GET /notifications/v2/notifications",
+        "operationId": "getNotificationsV2Notifications",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The requested page of the result. Defaults to 1 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The size of a page. Defaults to 50 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search query. Supported properties are billingAccount,channel. A temporal restriction can be provided using the query properties from, to and period.",
+            "required": false,
+            "type": "string",
+            "format": "Lucene syntax is not supported",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Sort by id,sent,type,channel,order,subject",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sort order. Must be 'asc' or 'desc'.",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotificationList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Notification v2"
+        ],
+        "summary": "POST /notifications/v2/notifications",
+        "description": "POST /notifications/v2/notifications",
+        "operationId": "postNotificationsV2Notifications",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotification"
+            }
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotification"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/notifications/v2/notifications/{id}": {
+      "get": {
+        "tags": [
+          "Notification v2"
+        ],
+        "summary": "GET /notifications/v2/notifications/{id}",
+        "description": "GET /notifications/v2/notifications/{id}",
+        "operationId": "getNotificationsV2NotificationsId",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotification"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Notification v2"
+        ],
+        "summary": "PUT /notifications/v2/notifications/{id}",
+        "description": "PUT /notifications/v2/notifications/{id}",
+        "operationId": "putNotificationsV2NotificationsId",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotification"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotification"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Notification v2"
+        ],
+        "summary": "PATCH /notifications/v2/notifications/{id}",
+        "description": "PATCH /notifications/v2/notifications/{id}",
+        "operationId": "patchNotificationsV2NotificationsId",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotification"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotification"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/notifications/v2/types": {
+      "get": {
+        "tags": [
+          "Notification v2"
+        ],
+        "summary": "GET /notifications/v2/types",
+        "description": "GET /notifications/v2/types",
+        "operationId": "getNotificationsV2Types",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "Filter properties",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search query. Supported properties are name,configurationLevel.",
+            "required": false,
+            "type": "string",
+            "format": "Lucene syntax is not supported",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Sort by name,description",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sort order. Must be 'asc' or 'desc'.",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotificationTypeList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Notification v2"
+        ],
+        "summary": "PUT /notifications/v2/types",
+        "description": "PUT /notifications/v2/types",
+        "operationId": "putNotificationsV2Types",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "keepExisting",
+            "in": "query",
+            "description": "If the keepExisting parameter is set to false, the not referenced objects will be deleted",
+            "required": true,
+            "type": "boolean",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotificationTypes"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Notification v2"
+        ],
+        "summary": "POST /notifications/v2/types",
+        "description": "POST /notifications/v2/types",
+        "operationId": "postNotificationsV2Types",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotificationType"
+            }
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotificationType"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/notifications/v2/types/{name}": {
+      "get": {
+        "tags": [
+          "Notification v2"
+        ],
+        "summary": "GET /notifications/v2/types/{name}",
+        "description": "GET /notifications/v2/types/{name}",
+        "operationId": "getNotificationsV2TypesName",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotificationType"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Notification v2"
+        ],
+        "summary": "PUT /notifications/v2/types/{name}",
+        "description": "PUT /notifications/v2/types/{name}",
+        "operationId": "putNotificationsV2TypesName",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotificationType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotificationType"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Notification v2"
+        ],
+        "summary": "PATCH /notifications/v2/types/{name}",
+        "description": "PATCH /notifications/v2/types/{name}",
+        "operationId": "patchNotificationsV2TypesName",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotificationType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/NotificationV2DomainNotificationType"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "CommonsDomainModelArgument": {
+      "type": "object",
+      "properties": {
+        "argument": {
+          "type": "string"
+        },
+        "argumentDescription": {
+          "type": "string"
+        },
+        "argumentKey": {
+          "type": "string"
+        },
+        "subMessages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelMessage"
+          }
+        }
+      }
+    },
+    "CommonsDomainModelAttachment": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string",
+          "format": "byte"
+        },
+        "encoding": {
+          "type": "string"
+        },
+        "filename": {
+          "type": "string"
+        },
+        "mediaType": {
+          "type": "string"
+        },
+        "sha": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "CommonsDomainModelLink": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string"
+        },
+        "templated": {
+          "type": "boolean"
+        }
+      }
+    },
+    "CommonsDomainModelMessage": {
+      "type": "object",
+      "properties": {
+        "args": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelArgument"
+          }
+        },
+        "key": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "messageTemplate": {
+          "type": "string"
+        }
+      }
+    },
+    "CommonsDomainModelMessageAware": {
+      "type": "object",
+      "properties": {
+        "logId": {
+          "type": "string"
+        },
+        "messages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelMessage"
+          }
+        }
+      }
+    },
+    "CommonsDomainModelRelatedObject": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/CommonsDomainModelLink"
+          }
+        },
+        "id": {
+          "type": "string"
+        },
+        "involvement": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "discriminator": "type"
+    },
+    "CommonsTimeInterval": {
+      "type": "object",
+      "properties": {
+        "end": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "start": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "NotificationV2DomainNotification": {
+      "type": "object",
+      "properties": {
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelAttachment"
+          }
+        },
+        "billingAccount": {
+          "type": "string"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "confidential": {
+          "type": "boolean"
+        },
+        "content": {
+          "type": "string"
+        },
+        "contentMediaType": {
+          "type": "string"
+        },
+        "customerAccountUser": {
+          "type": "string"
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorMessage": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "relatedObjects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelRelatedObject"
+          }
+        },
+        "relatedParties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainRelatedParty"
+          }
+        },
+        "relatedProductOrder": {
+          "$ref": "#/definitions/ProductorderingV1DomainRelatedProductOrder"
+        },
+        "requestedSendDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "sentContent": {
+          "type": "string",
+          "format": "byte"
+        },
+        "sentDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "sentMediaType": {
+          "type": "string"
+        },
+        "sentSubject": {
+          "type": "string"
+        },
+        "sentTo": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        }
+      }
+    },
+    "NotificationV2DomainNotificationChannel": {
+      "type": "object",
+      "properties": {
+        "configurationLevel": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "internal": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "tenantGroup": {
+          "type": "string"
+        }
+      }
+    },
+    "NotificationV2DomainNotificationChannelList": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NotificationV2DomainNotificationChannel"
+          }
+        }
+      }
+    },
+    "NotificationV2DomainNotificationChannelReference": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "default": {
+          "type": "boolean"
+        }
+      }
+    },
+    "NotificationV2DomainNotificationChannels": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NotificationV2DomainNotificationChannel"
+          }
+        }
+      }
+    },
+    "NotificationV2DomainNotificationEventResponse": {
+      "type": "object",
+      "properties": {
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelAttachment"
+          }
+        },
+        "content": {
+          "type": "string"
+        },
+        "contentMediaType": {
+          "type": "string"
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorMessage": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "sentContent": {
+          "type": "string",
+          "format": "byte"
+        },
+        "sentDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "sentMediaType": {
+          "type": "string"
+        },
+        "sentSubject": {
+          "type": "string"
+        },
+        "sentTo": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        }
+      }
+    },
+    "NotificationV2DomainNotificationList": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NotificationV2DomainNotification"
+          }
+        },
+        "paginationInformation": {
+          "type": "object",
+          "properties": {
+            "pageSize": {
+              "type": "integer"
+            },
+            "totalNumberOfRecords": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "NotificationV2DomainNotificationType": {
+      "type": "object",
+      "properties": {
+        "channels": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/NotificationV2DomainNotificationChannelReference"
+          }
+        },
+        "confidential": {
+          "type": "boolean"
+        },
+        "configurationLevel": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "tenantGroup": {
+          "type": "string"
+        }
+      }
+    },
+    "NotificationV2DomainNotificationTypeList": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NotificationV2DomainNotificationType"
+          }
+        }
+      }
+    },
+    "NotificationV2DomainNotificationTypes": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NotificationV2DomainNotificationType"
+          }
+        }
+      }
+    },
+    "PartyV1DomainContactMedium": {
+      "type": "object",
+      "properties": {
+        "contactMedium": {
+          "type": "string"
+        },
+        "contactType": {
+          "type": "string"
+        },
+        "emailAddress": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "postalAddress": {
+          "type": "string"
+        },
+        "preferred": {
+          "type": "boolean"
+        },
+        "role": {
+          "type": "string"
+        },
+        "telephoneNumber": {
+          "$ref": "#/definitions/PartyV1DomainTelephoneNumber"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Email",
+            "TelephoneNumber",
+            "PostalAddress",
+            "Other"
+          ]
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "PartyV1DomainRelatedParty": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/CommonsDomainModelLink"
+          }
+        },
+        "contactMedium": {
+          "$ref": "#/definitions/PartyV1DomainContactMedium"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "party": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "role": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "PartyV1DomainTelephoneNumber": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Mobile",
+            "FixedLine"
+          ]
+        }
+      }
+    },
+    "ProductorderingV1DomainRelatedProductOrder": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/CommonsDomainModelLink"
+          }
+        },
+        "id": {
+          "type": "string"
+        },
+        "relationType": {
+          "type": "string"
+        },
+        "tenant": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "oauth2ClientCredentialAuthentication": {
+      "type": "oauth2",
+      "description": "Client credentials flow configuration for the Infonova Keycloak.",
+      "flow": "application",
+      "tokenUrl": ""
+    },
+    "oauth2ResourceOwnerPasswordCredentialAuthentication": {
+      "type": "oauth2",
+      "description": "Resource Owner Password Credentials flow configuration for the Infonova Keycloak.",
+      "flow": "password",
+      "tokenUrl": ""
+    }
+  },
+  "tags": [
+    {
+      "name": "Notification v2",
+      "externalDocs": {
+        "description": "Further documentation",
+        "url": "http://localhost:9700/r6-api/docs/notification-impl/index.html"
+      }
+    }
+  ]
+}

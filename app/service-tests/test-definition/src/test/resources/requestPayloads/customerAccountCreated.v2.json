@@ -1,0 +1,33 @@
+{
+  "id": "669af392-6b3e-4dfb-98b6-c89bf2e08c29",
+  "eventType": "customerAccountCreated.v2",
+  "tenantKey": "SB_BEYONDTS_DEMO_SRVTESTS",
+  "user": "deployment",
+  "timestamp": "2021-07-12T15:10:37Z",
+  "event": {
+    "current": {
+      "id": "1190254456",
+      "billingAccount": "1190254456",
+      "type": "Customer",
+      "state": "New",
+      "relatedParties": [
+        {
+          "party": "56584b59-da65-4497-ba00-f6e54a7fdf46",
+          "role": "CUSTOMER_ACCOUNT_OWNER",
+          "type": "Individual",
+          "primary": true
+        }
+      ],
+      "preferredLanguage": "de",
+      "timezone": "Europe/Vienna",
+      "creationDate": "2019-03-06T00:00:00Z",
+      "lastStatusChange": "2018-01-01T00:00:00Z",
+      "parameters": {
+        "COUNTRY_MOBILE_PHONE_CODE": "+386",
+        "GENDER": "FEMALE",
+        "PAYMENT_METHOD": "BANK",
+        "RESTRICT_PURCHASE": "NONE"
+      }
+    }
+  }
+}

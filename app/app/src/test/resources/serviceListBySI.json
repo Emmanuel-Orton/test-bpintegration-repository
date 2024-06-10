@@ -1,0 +1,146 @@
+{
+  "list": [
+    {
+      "id": "a57020b7-2b3d-4d1d-ab30-7eccd2416a65",
+      "instanceName": "1193150164_64e29c8b5aeb499391372b4bf8d50565",
+      "name": "MonitorItDevice",
+      "serviceProvider": "SB_TELUS_ANDYROZMAN_WS",
+      "state": "Active",
+      "serviceIdentifier": {
+        "identifier": "1193150164_64e29c8b5aeb499391372b4bf8d50565",
+        "validFor": {
+          "start": "2023-03-10T16:47:07Z"
+        }
+      },
+      "serviceIdentifiers": [
+        {
+          "identifier": "1193150164_64e29c8b5aeb499391372b4bf8d50565",
+          "validFor": {
+            "start": "2023-03-10T16:47:07Z"
+          }
+        }
+      ],
+      "serviceCharacteristics": [
+        {
+          "id": "d5a00a5e-5263-462b-b8fa-3b3f590a7f07",
+          "name": "MonitorItDevice:RT_CUSTOMER",
+          "state": "Active",
+          "characterValue": "Bednar-Roob",
+          "type": "STRING",
+          "validFor": {
+            "start": "2023-03-10T16:47:07Z"
+          }
+        },
+        {
+          "id": "25323b21-f807-4063-8895-eb99562c4797",
+          "name": "MonitorItDevice:TBSGROUPID",
+          "state": "Active",
+          "characterValue": "ALL_IN_ONE_ID",
+          "type": "STRING",
+          "validFor": {
+            "start": "2023-03-10T16:47:07Z"
+          }
+        },
+        {
+          "id": "22bfa63f-2d1e-4cdc-9172-cc39c3b1d5e8",
+          "name": "MonitorItDevice:MONTHLY_CHARGE",
+          "state": "Active",
+          "type": "NONE",
+          "validFor": {
+            "start": "2023-03-10T16:47:07Z"
+          }
+        },
+        {
+          "id": "9794b797-936e-4563-a82d-05453a759821",
+          "name": "MonitorItDevice:SKU_NUMBER",
+          "state": "Active",
+          "characterValue": "P-MO-IT-DEVICE",
+          "type": "STRING",
+          "validFor": {
+            "start": "2023-03-10T16:47:07Z"
+          }
+        },
+        {
+          "id": "0b83a8d2-8239-4bd0-a80a-38c31785d86d",
+          "name": "MonitorItDevice:QUANTITY",
+          "state": "Active",
+          "characterValue": "1",
+          "type": "NUMBER",
+          "validFor": {
+            "start": "2023-03-10T16:47:07Z"
+          }
+        },
+        {
+          "id": "4f788fb4-c2e8-458d-9f3b-b8391f8e8db3",
+          "name": "MonitorItDevice:UNIT_PRICE",
+          "state": "Active",
+          "characterValue": "1.00",
+          "type": "NUMBER",
+          "validFor": {
+            "start": "2023-03-10T16:47:07Z"
+          }
+        },
+        {
+          "id": "712f41d3-5a89-433c-9fc5-9299eeed7e93",
+          "name": "MonitorItDevice:UNIT_PRICE_WS",
+          "state": "Active",
+          "characterValue": "1.00",
+          "type": "NUMBER",
+          "validFor": {
+            "start": "2023-03-10T16:47:07Z"
+          }
+        },
+        {
+          "id": "b02571d7-a005-4b79-aea9-07a5f1344373",
+          "name": "MonitorItDevice:DESCRIPTION",
+          "state": "Active",
+          "type": "STRING",
+          "validFor": {
+            "start": "2023-03-10T16:47:07Z"
+          }
+        },
+        {
+          "id": "295f1df4-3607-4b94-a599-42de55fdd1ef",
+          "name": "MonitorItDevice:SITE",
+          "state": "Active",
+          "type": "STRING",
+          "validFor": {
+            "start": "2023-03-10T16:47:07Z"
+          }
+        }
+      ],
+      "productRelationships": [
+        {
+          "service": "a57020b7-2b3d-4d1d-ab30-7eccd2416a65",
+          "relatedProduct": "560d7b6f-cbbc-4d78-9ee5-03d89b8e2649",
+          "type": "Parent",
+          "state": "Active",
+          "validFor": {
+            "start": "2023-03-10T16:42:17Z"
+          }
+        }
+      ],
+      "validFor": {
+        "start": "2023-03-10T16:47:07Z"
+      },
+      "serviceBarring": [
+        {
+          "type": "customer",
+          "level": 0
+        },
+        {
+          "type": "collection",
+          "level": 0
+        },
+        {
+          "type": "collections",
+          "level": 0
+        },
+        {
+          "type": "effective",
+          "level": 0
+        }
+      ]
+    }
+  ]
+}

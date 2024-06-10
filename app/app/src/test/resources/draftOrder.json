@@ -1,0 +1,33 @@
+{
+  "id": "1057",
+  "billingAccount": "1182916039",
+  "createdInChannel": "Assisted_Sales",
+  "lastSavedInChannel": "Assisted_Sales",
+  "createdBy": "nataliia.krulikovska",
+  "createdByUserType": "user",
+  "lastSaved": "2023-03-29T11:51:46Z",
+  "savedBy": "nataliia.krulikovska",
+  "savedByUserType": "user",
+  "draftProducts": [
+    {
+      "name": "JOLERA_MANAGED_SERVICE",
+      "billText": "Jolera Managed Service",
+      "internalName": "Jolera Managed Service",
+      "quantity": 1
+    }
+  ],
+  "totals": {
+    "recurringTotal": [
+      {
+        "frequency": 1,
+        "currencySums": [
+          {
+            "currency": "CAD",
+            "excludedAmountSum": "15",
+            "includedAmountSum": "16.8"
+          }
+        ]
+      }
+    ]
+  }
+}

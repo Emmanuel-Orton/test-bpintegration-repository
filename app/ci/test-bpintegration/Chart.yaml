@@ -1,0 +1,4 @@
+apiVersion: v2
+description: Spring Boot Application
+name: test-bpintegration-app
+version: 0.0.0

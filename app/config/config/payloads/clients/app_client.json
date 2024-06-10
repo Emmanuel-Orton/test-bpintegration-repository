@@ -1,0 +1,17 @@
+{
+  "id": "telus_assisted_sales_app",
+  "flows": [
+    "ClientCredential"
+  ],
+  "initialClientAccessSecret": "{{ telus_assisted_sales_app_client_secret }}",
+  "accessMappings": [
+    {
+      "workGroup": "telus_assisted_sales_APP",
+      "tenant": "{{ tenant_name }}"
+    }, {
+      "workGroup": "telus_assisted_sales_APP",
+      "tenant": "{{ tenant_ws_name }}"
+    }
+  ],
+  "requiresSecret": true
+}

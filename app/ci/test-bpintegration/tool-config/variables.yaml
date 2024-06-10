@@ -1,0 +1,17 @@
+tenant_group_name: {{ $.Values.global.infonova.tenantGroup }}
+realm_name: {{ $.Values.global.infonova_tenant.realm }}
+tenant_name: {{ $.Values.global.infonova_tenant.tenant }}
+tenant_ws_name: {{ $.Values.global.infonova_tenant.tenantWs }}
+tenant_admin_username: {{ $.Values.global.infonova_tenant.tenantAdmin }}
+tenant_admin_password: {{ $.Values.global.infonova_tenant.tenantPassword }}
+telus_assisted_sales_events_client_secret: {{ required "eventsClientSecret is mandatory" $.Values.config.eventsClientSecret }}
+telus_assisted_sales_app_client_secret: {{ required "appClientSecret is mandatory" $.Values.app.appClientSecret }}
+keycloak_authserver_url: {{ $.Values.global.infonova.keycloakUrl | default $.Values.global.infonova.url }}/auth/
+integration_app_url: {{ required "integrationAppUrl is mandatory" $.Values.config.integrationAppUrl }}
+#Targets
+auth_server_type: {{ $.Values.config.auth.serverType }}
+scopes: {{ $.Values.config.auth.scopes }}
+telus_client_id: {{ required "clientId is mandatory" $.Values.config.auth.clientId }}
+telus_client_secret: {{ required "clientSecret is mandatory" $.Values.config.auth.clientSecret }}
+telus_token_url: {{ required "telusTokenUrl is mandatory" $.Values.config.auth.telusTokenUrl }}
+env: {{ $.Values.global.envHeader | default "" }}

@@ -1,0 +1,22 @@
+{
+  "list": [
+    {
+      "name": "telus_assisted_sales_APP",
+      "displayName": "telus_assisted_sales_APP",
+      "description": "telus_assisted_sales_APP",
+      "active": true,
+      "roles": [
+        "telus_assisted_sales_APP_ROLE"
+      ]
+    },
+    {
+      "name": "telus_assisted_sales_workflow",
+      "displayName": "telus_assisted_sales_workflow",
+      "description": "telus_assisted_sales_workflow",
+      "active": true,
+      "roles": [
+        "telus_assisted_sales_workflow_role"
+      ]
+    }
+  ]
+}

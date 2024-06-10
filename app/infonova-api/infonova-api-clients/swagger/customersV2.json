@@ -1,0 +1,3473 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Infonova API Swagger",
+    "version": ""
+  },
+  "host": "localhost:9700",
+  "basePath": "/r6-api",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+    "/{tenant}/customers/v2/customerAccounts": {
+      "get": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "GET /customers/v2/customerAccounts",
+        "description": "GET /customers/v2/customerAccounts",
+        "operationId": "getCustomersV2CustomerAccounts",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "chunkSize",
+            "in": "query",
+            "description": "The size of a chunk. Defaults to 50 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "Filter properties",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The requested page of the result. Defaults to 1 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The size of a page. Defaults to 50 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search query. Supported properties are id,type,state,givenName,familyName,billReceiver.givenName,billReceiver.familyName,externalId,tradingName,phoneNumber,mobileNumber,emailAddress,businessNumber,lastStatusChange. The property parameters containing arbitrary key/value pairs can be searched.",
+            "required": false,
+            "type": "string",
+            "format": "Lucene syntax is supported",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "scroll",
+            "in": "query",
+            "description": "If set to true, requests a result containing a `scrollId` to continue scrolling through the result.",
+            "required": false,
+            "type": "boolean",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "scrollId",
+            "in": "query",
+            "description": "The requested scroll id to continue scrolling through the result. Ignored if not provided.",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Sort by id,type,state,givenName,familyName,billReceiver.givenName,billReceiver.familyName,externalId,tradingName,phoneNumber,mobileNumber,emailAddress,businessNumber,lastStatusChange",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sort order. Must be 'asc' or 'desc'.",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CustomerV2DomainCustomerAccountList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "POST /customers/v2/customerAccounts",
+        "description": "POST /customers/v2/customerAccounts",
+        "operationId": "postCustomersV2CustomerAccounts",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CustomerV2DomainCustomerAccount"
+            }
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CustomerV2DomainCustomerAccount"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/customers/v2/customerAccounts/{customerAccount}/accountManagementGroups": {
+      "get": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "GET /customers/v2/customerAccounts/{customerAccount}/accountManagementGroups",
+        "description": "GET /customers/v2/customerAccounts/{customerAccount}/accountManagementGroups",
+        "operationId": "getCustomersV2CustomerAccountsCustomerAccountAccountManagementGroups",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The requested page of the result. Defaults to 1 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The size of a page. Defaults to 50 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainCustomerAccountAccountManagementGroupList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/customers/v2/customerAccounts/{customerAccount}/documents": {
+      "get": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "GET /customers/v2/customerAccounts/{customerAccount}/documents",
+        "description": "GET /customers/v2/customerAccounts/{customerAccount}/documents",
+        "operationId": "getCustomersV2CustomerAccountsCustomerAccountDocuments",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The requested page of the result. Defaults to 1 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The size of a page. Defaults to 50 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search query. Supported properties are id,name,hash,type,createdBy,createdByType. The property parameters containing arbitrary key/value pairs can be searched.",
+            "required": false,
+            "type": "string",
+            "format": "Lucene syntax is not supported",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Sort by name,created,changed, size,createdBy",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sort order. Must be 'asc' or 'desc'.",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CrV1DomainUploadedDocumentList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "POST /customers/v2/customerAccounts/{customerAccount}/documents",
+        "description": "POST /customers/v2/customerAccounts/{customerAccount}/documents",
+        "operationId": "postCustomersV2CustomerAccountsCustomerAccountDocuments",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "file",
+            "in": "formData",
+            "required": true,
+            "type": "file"
+          },
+          {
+            "name": "type",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "comment",
+            "in": "formData",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "relatedObject",
+            "in": "formData",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "relatedObjectType",
+            "in": "formData",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "formData",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CrV1DomainUploadedDocument"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/customers/v2/customerAccounts/{customerAccount}/documents/{id}": {
+      "get": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "GET /customers/v2/customerAccounts/{customerAccount}/documents/{id}",
+        "description": "GET /customers/v2/customerAccounts/{customerAccount}/documents/{id}",
+        "operationId": "getCustomersV2CustomerAccountsCustomerAccountDocumentsId",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CrV1DomainUploadedDocument"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "PUT /customers/v2/customerAccounts/{customerAccount}/documents/{id}",
+        "description": "PUT /customers/v2/customerAccounts/{customerAccount}/documents/{id}",
+        "operationId": "putCustomersV2CustomerAccountsCustomerAccountDocumentsId",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CrV1DomainUploadedDocument"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CrV1DomainUploadedDocument"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "DELETE /customers/v2/customerAccounts/{customerAccount}/documents/{id}",
+        "description": "DELETE /customers/v2/customerAccounts/{customerAccount}/documents/{id}",
+        "operationId": "deleteCustomersV2CustomerAccountsCustomerAccountDocumentsId",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CrV1DomainUploadedDocument"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "PATCH /customers/v2/customerAccounts/{customerAccount}/documents/{id}",
+        "description": "PATCH /customers/v2/customerAccounts/{customerAccount}/documents/{id}",
+        "operationId": "patchCustomersV2CustomerAccountsCustomerAccountDocumentsId",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CrV1DomainUploadedDocument"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CrV1DomainUploadedDocument"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/customers/v2/customerAccounts/{customerAccount}/documents/{id}/download": {
+      "get": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "GET /customers/v2/customerAccounts/{customerAccount}/documents/{id}/download",
+        "description": "GET /customers/v2/customerAccounts/{customerAccount}/documents/{id}/download",
+        "operationId": "getCustomersV2CustomerAccountsCustomerAccountDocumentsIdDownload",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "file"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/customers/v2/customerAccounts/{customerAccount}/history": {
+      "get": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "GET /customers/v2/customerAccounts/{customerAccount}/history",
+        "description": "GET /customers/v2/customerAccounts/{customerAccount}/history",
+        "operationId": "getCustomersV2CustomerAccountsCustomerAccountHistory",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "Filter properties",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The requested page of the result. Defaults to 1 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The size of a page. Defaults to 50 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search query. Supported properties are type. A temporal restriction can be provided using the query properties from, to and period.",
+            "required": false,
+            "type": "string",
+            "format": "Lucene syntax is not supported",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Sort by created,type,content,creator",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sort order. Must be 'asc' or 'desc'.",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainCustomerAccountHistoryList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "POST /customers/v2/customerAccounts/{customerAccount}/history",
+        "description": "POST /customers/v2/customerAccounts/{customerAccount}/history",
+        "operationId": "postCustomersV2CustomerAccountsCustomerAccountHistory",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainCustomerAccountHistory"
+            }
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainCustomerAccountHistory"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/customers/v2/customerAccounts/{customerAccount}/history/{id}": {
+      "get": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "GET /customers/v2/customerAccounts/{customerAccount}/history/{id}",
+        "description": "GET /customers/v2/customerAccounts/{customerAccount}/history/{id}",
+        "operationId": "getCustomersV2CustomerAccountsCustomerAccountHistoryId",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainCustomerAccountHistory"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "PUT /customers/v2/customerAccounts/{customerAccount}/history/{id}",
+        "description": "PUT /customers/v2/customerAccounts/{customerAccount}/history/{id}",
+        "operationId": "putCustomersV2CustomerAccountsCustomerAccountHistoryId",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainCustomerAccountHistory"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainCustomerAccountHistory"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "PATCH /customers/v2/customerAccounts/{customerAccount}/history/{id}",
+        "description": "PATCH /customers/v2/customerAccounts/{customerAccount}/history/{id}",
+        "operationId": "patchCustomersV2CustomerAccountsCustomerAccountHistoryId",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainCustomerAccountHistory"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainCustomerAccountHistory"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/customers/v2/customerAccounts/{customerAccount}/notes": {
+      "get": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "GET /customers/v2/customerAccounts/{customerAccount}/notes",
+        "description": "GET /customers/v2/customerAccounts/{customerAccount}/notes",
+        "operationId": "getCustomersV2CustomerAccountsCustomerAccountNotes",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainCustomerAccountNoteList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "POST /customers/v2/customerAccounts/{customerAccount}/notes",
+        "description": "POST /customers/v2/customerAccounts/{customerAccount}/notes",
+        "operationId": "postCustomersV2CustomerAccountsCustomerAccountNotes",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainCustomerAccountNote"
+            }
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainCustomerAccountNote"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/customers/v2/customerAccounts/{customerAccount}/notes/{id}": {
+      "get": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "GET /customers/v2/customerAccounts/{customerAccount}/notes/{id}",
+        "description": "GET /customers/v2/customerAccounts/{customerAccount}/notes/{id}",
+        "operationId": "getCustomersV2CustomerAccountsCustomerAccountNotesId",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainCustomerAccountNote"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "PUT /customers/v2/customerAccounts/{customerAccount}/notes/{id}",
+        "description": "PUT /customers/v2/customerAccounts/{customerAccount}/notes/{id}",
+        "operationId": "putCustomersV2CustomerAccountsCustomerAccountNotesId",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainCustomerAccountNote"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainCustomerAccountNote"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "DELETE /customers/v2/customerAccounts/{customerAccount}/notes/{id}",
+        "description": "DELETE /customers/v2/customerAccounts/{customerAccount}/notes/{id}",
+        "operationId": "deleteCustomersV2CustomerAccountsCustomerAccountNotesId",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainCustomerAccountNote"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "PATCH /customers/v2/customerAccounts/{customerAccount}/notes/{id}",
+        "description": "PATCH /customers/v2/customerAccounts/{customerAccount}/notes/{id}",
+        "operationId": "patchCustomersV2CustomerAccountsCustomerAccountNotesId",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainCustomerAccountNote"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainCustomerAccountNote"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/customers/v2/customerAccounts/{customerAccount}/relationships": {
+      "get": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "GET /customers/v2/customerAccounts/{customerAccount}/relationships",
+        "description": "GET /customers/v2/customerAccounts/{customerAccount}/relationships",
+        "operationId": "getCustomersV2CustomerAccountsCustomerAccountRelationships",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The requested page of the result. Defaults to 1 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "The size of a page. Defaults to 50 if not supplied.",
+            "required": false,
+            "type": "number",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search query. Supported properties are distance,type,at.",
+            "required": false,
+            "type": "string",
+            "format": "Lucene syntax is not supported",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "description": "Sort by type,relatedCustomerAccount,distance",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "description": "Sort order. Must be 'asc' or 'desc'.",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainRelationshipList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "POST /customers/v2/customerAccounts/{customerAccount}/relationships",
+        "description": "POST /customers/v2/customerAccounts/{customerAccount}/relationships",
+        "operationId": "postCustomersV2CustomerAccountsCustomerAccountRelationships",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainRelationship"
+            }
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainRelationship"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/customers/v2/customerAccounts/{customerAccount}/relationships/{relatedCustomerAccount}": {
+      "get": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "GET /customers/v2/customerAccounts/{customerAccount}/relationships/{relatedCustomerAccount}",
+        "description": "GET /customers/v2/customerAccounts/{customerAccount}/relationships/{relatedCustomerAccount}",
+        "operationId": "getCustomersV2CustomerAccountsCustomerAccountRelationshipsRelatedCustomerAccount",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "relatedCustomerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainRelationship"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "PUT /customers/v2/customerAccounts/{customerAccount}/relationships/{relatedCustomerAccount}",
+        "description": "PUT /customers/v2/customerAccounts/{customerAccount}/relationships/{relatedCustomerAccount}",
+        "operationId": "putCustomersV2CustomerAccountsCustomerAccountRelationshipsRelatedCustomerAccount",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "relatedCustomerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainRelationship"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainRelationship"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "PATCH /customers/v2/customerAccounts/{customerAccount}/relationships/{relatedCustomerAccount}",
+        "description": "PATCH /customers/v2/customerAccounts/{customerAccount}/relationships/{relatedCustomerAccount}",
+        "operationId": "patchCustomersV2CustomerAccountsCustomerAccountRelationshipsRelatedCustomerAccount",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "customerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "relatedCustomerAccount",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainRelationship"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CustomerV1DomainRelationship"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/customers/v2/customerAccounts/{id}": {
+      "get": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "GET /customers/v2/customerAccounts/{id}",
+        "description": "GET /customers/v2/customerAccounts/{id}",
+        "operationId": "getCustomersV2CustomerAccountsId",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CustomerV2DomainCustomerAccount"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "PUT /customers/v2/customerAccounts/{id}",
+        "description": "PUT /customers/v2/customerAccounts/{id}",
+        "operationId": "putCustomersV2CustomerAccountsId",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CustomerV2DomainCustomerAccount"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CustomerV2DomainCustomerAccount"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Customer Accounts v2"
+        ],
+        "summary": "PATCH /customers/v2/customerAccounts/{id}",
+        "description": "PATCH /customers/v2/customerAccounts/{id}",
+        "operationId": "patchCustomersV2CustomerAccountsId",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CustomerV2DomainCustomerAccount"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/CustomerV2DomainCustomerAccount"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "CommonsDomainModelArgument": {
+      "type": "object",
+      "properties": {
+        "argument": {
+          "type": "string"
+        },
+        "argumentDescription": {
+          "type": "string"
+        },
+        "argumentDisplayName": {
+          "type": "string"
+        },
+        "argumentKey": {
+          "type": "string"
+        },
+        "subMessages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelMessage"
+          }
+        },
+        "templateVariable": {
+          "type": "string"
+        }
+      }
+    },
+    "CommonsDomainModelLink": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string"
+        },
+        "templated": {
+          "type": "boolean"
+        }
+      }
+    },
+    "CommonsDomainModelMessage": {
+      "type": "object",
+      "properties": {
+        "args": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelArgument"
+          }
+        },
+        "key": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "messageTemplate": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "CommonsDomainModelMessageAware": {
+      "type": "object",
+      "properties": {
+        "logId": {
+          "type": "string"
+        },
+        "messages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelMessage"
+          }
+        }
+      }
+    },
+    "CommonsDomainModelRelatedObject": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/CommonsDomainModelLink"
+          }
+        },
+        "id": {
+          "type": "string"
+        },
+        "involvement": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "discriminator": "type"
+    },
+    "CommonsTimeInterval": {
+      "type": "object",
+      "properties": {
+        "end": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "start": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "CrV1DomainUploadedDocument": {
+      "type": "object",
+      "properties": {
+        "changed": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "changedBy": {
+          "type": "string"
+        },
+        "changedByType": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "createdBy": {
+          "type": "string"
+        },
+        "createdByType": {
+          "type": "string"
+        },
+        "customerAccount": {
+          "type": "string"
+        },
+        "encoding": {
+          "type": "string"
+        },
+        "hash": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "mediaType": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "relatedObject": {
+          "$ref": "#/definitions/CommonsDomainModelRelatedObject"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "CrV1DomainUploadedDocumentList": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CrV1DomainUploadedDocument"
+          }
+        },
+        "paginationInformation": {
+          "type": "object",
+          "properties": {
+            "pageSize": {
+              "type": "integer"
+            },
+            "totalNumberOfRecords": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "CustomerV1DomainCustomerAccount": {
+      "type": "object",
+      "properties": {
+        "associatedTenant": {
+          "type": "string"
+        },
+        "billingAccount": {
+          "type": "string"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "creationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "customerType": {
+          "type": "string"
+        },
+        "externalId": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "individual": {
+          "$ref": "#/definitions/PartyV1DomainIndividualIndividual"
+        },
+        "organization": {
+          "$ref": "#/definitions/PartyV1DomainOrganizationOrganization"
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "preferredLanguage": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "timezone": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "CustomerV1DomainCustomerAccountAccountManagementGroup": {
+      "type": "object",
+      "properties": {
+        "accountManagementGroup": {
+          "type": "string"
+        }
+      }
+    },
+    "CustomerV1DomainCustomerAccountAccountManagementGroupList": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomerV1DomainCustomerAccountAccountManagementGroup"
+          }
+        },
+        "paginationInformation": {
+          "type": "object",
+          "properties": {
+            "pageSize": {
+              "type": "integer"
+            },
+            "totalNumberOfRecords": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "CustomerV1DomainCustomerAccountHistory": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/CommonsDomainModelLink"
+          }
+        },
+        "content": {
+          "type": "string"
+        },
+        "contentTemplate": {
+          "type": "string"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "creator": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "CustomerV1DomainCustomerAccountHistoryList": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomerV1DomainCustomerAccountHistory"
+          }
+        },
+        "paginationInformation": {
+          "type": "object",
+          "properties": {
+            "pageSize": {
+              "type": "integer"
+            },
+            "totalNumberOfRecords": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "CustomerV1DomainCustomerAccountList": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomerV1DomainCustomerAccount"
+          }
+        },
+        "paginationInformation": {
+          "type": "object",
+          "properties": {
+            "pageSize": {
+              "type": "integer"
+            },
+            "totalNumberOfRecords": {
+              "type": "integer"
+            }
+          }
+        },
+        "scrollingInformation": {
+          "type": "object",
+          "properties": {
+            "chunkSize": {
+              "type": "integer"
+            },
+            "scrollId": {
+              "type": "string"
+            },
+            "totalNumberOfRecords": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "CustomerV1DomainCustomerAccountNote": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/CommonsDomainModelLink"
+          }
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "creator": {
+          "type": "string"
+        },
+        "customerAccount": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "CustomerV1DomainCustomerAccountNoteList": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomerV1DomainCustomerAccountNote"
+          }
+        }
+      }
+    },
+    "CustomerV1DomainRelationship": {
+      "type": "object",
+      "properties": {
+        "customerAccount": {
+          "type": "string"
+        },
+        "distance": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "relatedCustomerAccount": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "CustomerV1DomainRelationshipList": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomerV1DomainRelationship"
+          }
+        },
+        "paginationInformation": {
+          "type": "object",
+          "properties": {
+            "pageSize": {
+              "type": "integer"
+            },
+            "totalNumberOfRecords": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "CustomerV2DomainCustomerAccount": {
+      "type": "object",
+      "properties": {
+        "associatedTenant": {
+          "type": "string"
+        },
+        "billingAccount": {
+          "type": "string"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "creationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "customerType": {
+          "type": "string"
+        },
+        "externalId": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "lastStatusChange": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "preferredLanguage": {
+          "type": "string"
+        },
+        "relatedParties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainRelatedParty"
+          }
+        },
+        "state": {
+          "type": "string"
+        },
+        "timezone": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "CustomerV2DomainCustomerAccountList": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomerV2DomainCustomerAccount"
+          }
+        },
+        "paginationInformation": {
+          "type": "object",
+          "properties": {
+            "pageSize": {
+              "type": "integer"
+            },
+            "totalNumberOfRecords": {
+              "type": "integer"
+            }
+          }
+        },
+        "scrollingInformation": {
+          "type": "object",
+          "properties": {
+            "chunkSize": {
+              "type": "integer"
+            },
+            "scrollId": {
+              "type": "string"
+            },
+            "totalNumberOfRecords": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "PartyV1DomainContactMedium": {
+      "type": "object",
+      "properties": {
+        "contactMedium": {
+          "type": "string"
+        },
+        "contactType": {
+          "type": "string"
+        },
+        "emailAddress": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "postalAddress": {
+          "type": "string"
+        },
+        "preferred": {
+          "type": "boolean"
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "role": {
+          "type": "string"
+        },
+        "telephoneNumber": {
+          "$ref": "#/definitions/PartyV1DomainTelephoneNumber"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Email",
+            "TelephoneNumber",
+            "PostalAddress",
+            "Other"
+          ]
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "PartyV1DomainExternalReference": {
+      "type": "object",
+      "properties": {
+        "externalReference": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "PartyV1DomainIdentification": {
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "type": "string"
+        },
+        "issuingAuthority": {
+          "type": "string"
+        },
+        "issuingDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "type": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "PartyV1DomainIndividualIndividual": {
+      "type": "object",
+      "properties": {
+        "contactMediums": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainContactMedium"
+          }
+        },
+        "countryOfBirth": {
+          "type": "string"
+        },
+        "customerAccount": {
+          "type": "string"
+        },
+        "dateOfBirth": {
+          "type": "string",
+          "format": "date"
+        },
+        "dateOfDeath": {
+          "type": "string",
+          "format": "date"
+        },
+        "disabilities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "externalReferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainExternalReference"
+          }
+        },
+        "familyName": {
+          "type": "string"
+        },
+        "formattedName": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "givenName": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "identifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainIdentification"
+          }
+        },
+        "location": {
+          "type": "string"
+        },
+        "maritalStatus": {
+          "type": "string"
+        },
+        "middleName": {
+          "type": "string"
+        },
+        "otherNames": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainIndividualOtherName"
+          }
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "partyType": {
+          "type": "string",
+          "enum": [
+            "Individual",
+            "Organization"
+          ]
+        },
+        "placeOfBirth": {
+          "type": "string"
+        },
+        "preferredLanguage": {
+          "type": "string"
+        },
+        "preferredName": {
+          "type": "string"
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "relatedEntities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainRelatedEntity"
+          }
+        },
+        "relatedParties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainRelatedParty"
+          }
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "Initialized",
+            "Validated",
+            "Deceased"
+          ]
+        },
+        "title": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "PartyV1DomainIndividualOtherName": {
+      "type": "object",
+      "properties": {
+        "familyName": {
+          "type": "string"
+        },
+        "formattedName": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
+        "givenName": {
+          "type": "string"
+        },
+        "middleName": {
+          "type": "string"
+        },
+        "preferredName": {
+          "type": "string"
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "title": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "PartyV1DomainOrganizationOrganization": {
+      "type": "object",
+      "properties": {
+        "businessNumber": {
+          "type": "string"
+        },
+        "contactMediums": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainContactMedium"
+          }
+        },
+        "contactPerson": {
+          "$ref": "#/definitions/PartyV1DomainIndividualIndividual"
+        },
+        "customerAccount": {
+          "type": "string"
+        },
+        "externalReferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainExternalReference"
+          }
+        },
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "identifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainIdentification"
+          }
+        },
+        "industryType": {
+          "type": "string"
+        },
+        "legalEntity": {
+          "type": "boolean"
+        },
+        "legalName": {
+          "type": "string"
+        },
+        "nameType": {
+          "type": "string"
+        },
+        "organizationType": {
+          "type": "string"
+        },
+        "otherNames": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainOrganizationOtherName"
+          }
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "partyType": {
+          "type": "string",
+          "enum": [
+            "Individual",
+            "Organization"
+          ]
+        },
+        "preferredLanguage": {
+          "type": "string"
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "relatedEntities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainRelatedEntity"
+          }
+        },
+        "relatedParties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainRelatedParty"
+          }
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "Initialized",
+            "Validated",
+            "Closed"
+          ]
+        },
+        "tradingName": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "PartyV1DomainOrganizationOtherName": {
+      "type": "object",
+      "properties": {
+        "legalName": {
+          "type": "string"
+        },
+        "nameType": {
+          "type": "string"
+        },
+        "party": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "tradingName": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "PartyV1DomainRelatedEntity": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/CommonsDomainModelLink"
+          }
+        },
+        "contactMedium": {
+          "$ref": "#/definitions/PartyV1DomainContactMedium"
+        },
+        "entity": {
+          "type": "string"
+        },
+        "entityType": {
+          "type": "string",
+          "enum": [
+            "CustomerAccount",
+            "Product",
+            "Organization",
+            "Individual"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "party": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "role": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "PartyV1DomainRelatedParty": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/CommonsDomainModelLink"
+          }
+        },
+        "contactMedium": {
+          "$ref": "#/definitions/PartyV1DomainContactMedium"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "party": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "role": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "PartyV1DomainTelephoneNumber": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Mobile",
+            "FixedLine"
+          ]
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "oauth2ClientCredentialAuthentication": {
+      "type": "oauth2",
+      "description": "Client credentials flow configuration for the Infonova Keycloak.",
+      "flow": "application",
+      "tokenUrl": ""
+    },
+    "oauth2ResourceOwnerPasswordCredentialAuthentication": {
+      "type": "oauth2",
+      "description": "Resource Owner Password Credentials flow configuration for the Infonova Keycloak.",
+      "flow": "password",
+      "tokenUrl": ""
+    }
+  },
+  "tags": [
+    {
+      "name": "Customer Accounts v1",
+      "externalDocs": {
+        "description": "Further documentation",
+        "url": "http://localhost:9700/r6-api/docs/customer-account-impl/index.html"
+      }
+    },
+    {
+      "name": "Customer Accounts v2",
+      "externalDocs": {
+        "description": "Further documentation",
+        "url": "http://localhost:9700/r6-api/docs/customer-account-impl/index-v2.html"
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+version: '3'
+services:
+#  event_listener:
+#    build:
+#      context: app
+#      dockerfile: src/main/docker/Dockerfile_dev
+#    image: ${IMAGE_REPOSITORY}/event-listener-app:${IMAGE_TAG}
+#    ports:
+#    - 8081:8080
+  config:
+    build:
+      context: config
+      args:
+        - IMAGE_REPOSITORY=${IMAGE_REPOSITORY}
+    image: ${IMAGE_REPOSITORY}/test-bpintegration-app-config:${IMAGE_TAG}
+
+    volumes:
+      - ./config/config:/opt/config
+  db:
+    build:
+      context: db
+      args:
+        - IMAGE_REPOSITORY=${IMAGE_REPOSITORY}
+    image: ${IMAGE_REPOSITORY}/test-bpintegration-app-db-init:${IMAGE_TAG}

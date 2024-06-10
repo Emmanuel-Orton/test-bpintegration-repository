@@ -1,0 +1,12 @@
+version: '3'
+services:
+  extract_request:
+    build:
+      context: .
+      dockerfile: Dockerfile_python
+    volumes:
+      - ../../service-tests/test-definition/src/test/resources/requestPayloads:/opt/app/requestPayloads
+  proxy_config:
+    build:
+      context: .
+      dockerfile: Dockerfile

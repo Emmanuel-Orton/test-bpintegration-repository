@@ -1,0 +1,46 @@
+{
+  "billingAccount": "1192312906",
+  "bundle": true,
+  "completenessState": "InProgress",
+  "displayName": "Jolera Managed Service",
+  "id": "19c1457e-f3f3-45a0-868a-071e13c82aa2",
+  "parameters": {
+    "budget_quote": "No",
+    "opi_num": "1111111"
+  },
+  "productCharacteristics": [
+    {
+      "id": "a87fc00a-d2f9-40c9-bf38-b5d4d10df025",
+      "name": "JOLERA_BINDING_PERIOD_12_MONTHS",
+      "state": "NEW",
+      "validFor": {
+        "start": "2022-11-28T13:35:31Z"
+      }
+    }
+  ],
+  "productOffering": "JOLERA_MANAGED_SERVICE",
+  "productRelationships": [
+    {
+      "product": "19c1457e-f3f3-45a0-868a-071e13c82aa2",
+      "relatedProduct": "4eb453b8-b221-4eab-b314-0195ec82ff93",
+      "type": "Child",
+      "validFor": {
+        "start": "2022-11-28T13:35:31Z"
+      }
+    },
+    {
+      "product": "19c1457e-f3f3-45a0-868a-071e13c82aa2",
+      "relatedProduct": "fb488b55-b4aa-4c8e-b784-dd52bae9026a",
+      "type": "Child",
+      "validFor": {
+        "start": "2022-11-28T13:35:31Z"
+      }
+    }
+  ],
+  "state": "New",
+  "validFor": {
+    "start": "2022-11-28T13:35:31Z"
+  },
+  "wholesale": false,
+  "wholesaleAgreement": false
+}

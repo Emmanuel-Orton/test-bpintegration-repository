@@ -1,0 +1,151 @@
+{
+  "id": "f72f46ab-7a6c-405a-888a-915fdfa17e2a",
+  "draftId": "1057",
+  "channel": "Assisted_Sales",
+  "user": "deployment",
+  "userType": "user",
+  "billingAccount": "1182916039",
+  "products": [
+    {
+      "id": "bed2a9c0-6c60-40de-a1e2-df6fad4e9806",
+      "action": "add",
+      "productOffering": {
+        "name": "JOLERA_MANAGED_SERVICE"
+      },
+      "cancelable": true,
+      "changeable": true,
+      "productCharacteristics": [
+        {
+          "id": "8e6d6706-2fa2-42c7-b8fb-1f37c38dda6a",
+          "name": "JOLERA_BINDING_PERIOD_12_MONTHS",
+          "action": "add",
+          "bindingPeriods": [
+            {
+              "id": "a615aa59-27a0-42c4-8d6b-39d3d1985537",
+              "name": "JOLERA_BINDING_PERIOD_12_MONTHS",
+              "chargeSpecification": "JOLERA_CONTRACT_TERMINATION_CHARGE",
+              "action": "add",
+              "endDate": "2024-03-30T15:20:51Z",
+              "calculatedEndDate": "2024-03-30T15:20:51Z"
+            }
+          ]
+        }
+      ],
+      "products": [
+        {
+          "id": "52f2089a-7494-4dab-a498-3f61f21f9a9d",
+          "instanceName": "",
+          "action": "add",
+          "productOffering": {
+            "name": "ManageIt"
+          },
+          "cancelable": true,
+          "changeable": true,
+          "services": [
+            {
+              "id": "0305e9f3-2d08-4eb6-87e8-6d7ac5408ce3",
+              "name": "ManageIt365Tenant",
+              "action": "add",
+              "serviceCharacteristics": [
+                {
+                  "name": "ManageIt365Tenant:TBSGROUPID",
+                  "id": "35a0a696-21c2-46aa-87c3-d17c25cdd57e",
+                  "value": "ALL_IN_ONE_ID",
+                  "type": "STRING",
+                  "action": "add"
+                },
+                {
+                  "name": "ManageIt365Tenant:MONTHLY_CHARGE",
+                  "id": "d30de616-d901-4e9d-91af-789bf8a519bb",
+                  "type": "NONE",
+                  "action": "add",
+                  "prices": [
+                    {
+                      "id": "5cc0387a-d8ba-4fd0-a37a-6d74edaf335d",
+                      "name": "365TenantMonthlyCharge",
+                      "adHocPaymentRequired": false,
+                      "priceAdjustment": {
+                        "netCharge": "15"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "name": "ManageIt365Tenant:SKU_NUMBER",
+                  "id": "06f9093c-e7cc-4df9-baac-dd8b51a8c5c2",
+                  "value": "P-M-IT-CLOUD-M365-TELUS",
+                  "type": "STRING",
+                  "action": "add"
+                },
+                {
+                  "name": "ManageIt365Tenant:QUANTITY",
+                  "id": "98d2ef7c-8610-4425-9fdb-9f4110c22331",
+                  "value": "15",
+                  "type": "NUMBER",
+                  "action": "add"
+                },
+                {
+                  "name": "ManageIt365Tenant:UNIT_PRICE",
+                  "id": "7e90bddf-f07e-4f35-8e02-0d748c49da8f",
+                  "value": "1.00",
+                  "type": "NUMBER",
+                  "action": "add"
+                },
+                {
+                  "name": "ManageIt365Tenant:UNIT_PRICE_WS",
+                  "id": "d0c2048b-453a-4182-8578-4442a4fbcf9a",
+                  "type": "NUMBER",
+                  "action": "add"
+                },
+                {
+                  "name": "ManageIt365Tenant:DESCRIPTION",
+                  "id": "1f8f45c3-68b7-45fa-9fd2-5c171776afe6",
+                  "type": "STRING",
+                  "action": "add"
+                },
+                {
+                  "name": "ManageIt365Tenant:SITE",
+                  "id": "e111f067-09e4-4476-96cf-b16729a457c6",
+                  "type": "STRING",
+                  "action": "add"
+                },
+                {
+                  "name": "ManageIt365Tenant:RT_CUSTOMER",
+                  "id": "4c3e7e1d-eeda-4e1d-ba92-33598dab56f6",
+                  "value": "Triton Environmental Consultants Ltd",
+                  "type": "STRING",
+                  "action": "add"
+                }
+              ],
+              "relatedParties": [
+                {
+                  "role": "SERVICE_PROVIDER",
+                  "name": "TELUS_UAT_WS"
+                }
+              ],
+              "cancelable": false,
+              "changeable": true,
+              "usageAdjustments": {
+              },
+              "capabilityId": "0305e9f3-2d08-4eb6-87e8-6d7ac5408ce3"
+            }
+          ],
+          "wholesale": false,
+          "wholesaleAgreement": false,
+          "relatedParties": [
+          ]
+        }
+      ],
+      "wholesale": false,
+      "wholesaleAgreement": false,
+      "relatedParties": [
+      ]
+    }
+  ],
+  "orderDate": "2023-03-30T15:20:50Z",
+  "parameters": {
+    "IS_ASSISTED_SALES": "true",
+    "budget_quote": "Yes",
+    "opi_num": "4455445"
+  }
+}

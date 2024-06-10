@@ -1,0 +1,96 @@
+config.define_string_list("to-run", args=True)
+config.define_string("tenant", args=False)
+config.define_bool("service-tests", args=False)
+config.define_bool("proxyMode", args=False)
+cfg = config.parse()
+tenant = cfg.get('tenant', "")
+resources = []
+resources += cfg.get('to-run', [])
+config.set_enabled_resources(resources)
+namespace = 'infonova-'+tenant
+serviceTests = cfg.get('service-tests', False)
+proxyMode = cfg.get('proxyMode', False)
+
+
+if not tenant:
+    fail("tenant is required. Add argument -- --tenant <tenant_name>")
+
+if not 'TILT_CONTEXT' in os.environ:
+    fail("Please configure TILT_CONTEXT with the name of the kubernetes context that should be allowed e.g. export TILT_CONTEXT=my.user@cluster.eu-west-1.eksctl.io")
+
+context=os.environ['TILT_CONTEXT']
+
+secret_settings ( disable_scrub = True )
+
+allow_k8s_contexts(context)
+default_registry('northamerica-northeast1-docker.pkg.dev/cto-bpintegration-np-4ea75a/applications/sales-bp-integration')
+
+current_namespace =  str(local("kubectl config view --minify --output 'jsonpath={..namespace}'"))
+if not current_namespace == namespace:
+    fail("Please switch namespace first: 'kubectl config set-context --current --namespace=" + namespace + "'")
+
+application_name = 'api'
+mockingValues = ''
+overrideTarget = ''
+
+local ('docker-compose -f tiltscripts/docker-compose.yaml build')
+
+#Switch application to point to mock
+if serviceTests or proxyMode:
+    application_name = application_name + '_proxy_target'
+    local('cat ../service-tests/ci/mocking-values/values-dev0x.yaml | sed "s/DEV0X/'+tenant.upper()+'/" | sed "s/dev0x/'+tenant+'/" > values-mocking-local.yaml')
+    mockingValues='-f  values-mocking-local.yaml '
+
+#Switch Infonova to point to mock
+if proxyMode:
+    local('cat values/values-dev0x-proxy.yaml | sed "s/DEV0X/'+tenant.upper()+'/" | sed "s/dev0x/'+tenant+'/" > values-proxy-local.yaml')
+    overrideTarget = '-f  values-proxy-local.yaml '
+
+apiDeps = []
+
+configDisabled = ''
+#only deploy config when no service tests
+if not serviceTests:
+    configDeps = []
+    config_name = 'config'
+    db_name = 'db'
+
+    if proxyMode:
+        configDeps = ['proxy-mode']
+        config_name = config_name + '_proxy_target'
+        configDisabled = '--set test-bpintegration-app.config.enabled=true'
+
+
+    apiDeps.append(config_name)
+    apiDeps.append(db_name)
+
+    docker_build('northamerica-northeast1-docker.pkg.dev/cto-bpintegration-np-4ea75a/applications/sales-bp-integration/test-bpintegration-app-config', '../config')
+    k8s_resource('telus-test-bpintegration-config', trigger_mode=TRIGGER_MODE_MANUAL, resource_deps=configDeps, new_name=config_name)
+
+    docker_build('northamerica-northeast1-docker.pkg.dev/cto-bpintegration-np-4ea75a/applications/sales-bp-integration/test-bpintegration-app-db-init', '../db')
+    k8s_resource('telus-test-bpintegration-db-init', trigger_mode=TRIGGER_MODE_MANUAL, resource_deps=configDeps, new_name=db_name)
+
+k8s_yaml(
+local('cat ../../../telus-project-config/project-config/dev/values-dev0x.yaml  | sed "s/DEV0X/'+tenant.upper()+'/" | sed "s/dev0x/'+tenant+'/" > values-local.yaml && '
+    +'helm dep up ../service-tests/ci/test-bpintegration-app-dev/ >/dev/null && '
+    +'helm template telus-test-bpintegration-tilt ../service-tests/ci/test-bpintegration-app-dev/ '
+    +'-f ../../../telus-project-config/project-config/dev/values-dev.yaml '
+    +'-f secrets://../../../telus-project-config/project-config/dev/values-dev.secrets.yaml '
+    +'-f secrets://../../../telus-project-config/project-config/dev/values-dev0x.secrets.yaml '
+    +'-f values-local.yaml '
+    +'--set test-bpintegration-app.app.debug=true '
+    +mockingValues
+    +overrideTarget
+    +configDisabled
+    +'--namespace='+namespace
+    )
+)
+
+
+k8s_resource('telus-test-bpintegration-api', trigger_mode=TRIGGER_MODE_MANUAL, resource_deps=apiDeps, new_name=application_name,  port_forwards=['5005:5005'])
+
+custom_build(
+  'northamerica-northeast1-docker.pkg.dev/cto-bpintegration-np-4ea75a/applications/sales-bp-integration/test-bpintegration-app',
+  'cd .. && mvn install -Pdocker, -Dimage=$EXPECTED_REF --projects app --also-make ',
+  deps=['../test-bpintegration-app/app/src'],
+  skips_local_docker=True, )

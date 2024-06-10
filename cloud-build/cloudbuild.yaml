@@ -1,0 +1,76 @@
+substitutions:
+  _IMAGE_NAME: test-bpintegration-app #replace this with the test-bpintegration name
+  _IMAGE_VERSION: $TAG_NAME #0.0.0
+  _DOCKER_REPO: northamerica-northeast1-docker.pkg.dev/cto-bpintegration-np-4ea75a/applications
+  _HELM_REPO_ID: cio-gke-devops-e4993356-kubernetes-manifests
+  _NAMESPACE: sales-bp-integration
+  _CHART_REPO: oci://northamerica-northeast1-docker.pkg.dev/cto-bpintegration-np-4ea75a/charts
+steps:
+#added
+- name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    ls -al -h
+    if [ -n "$TAG_NAME" ]; then
+      sed -i "s/0.0.0/$TAG_NAME/g" /workspace/test-bpintegration-app.yaml
+      sed -i "s/0.0.0/$TAG_NAME/g" /workspace/app/ci/test-bpintegration-app/Chart.yaml
+      
+    fi
+
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['cp', '/workspace/test-bpintegration-app.yaml', 'gs://deployment-files-automated']
+#added end
+- name: maven:3-openjdk-11
+  entrypoint: mvn
+  args:
+  - clean
+  - install
+  - -Pdocker
+  - -Dimage=${_DOCKER_REPO}/${_NAMESPACE}/${_IMAGE_NAME}:${_IMAGE_VERSION}
+  dir: app
+- name: gcr.io/cloud-builders/docker
+  id: Docker Build config
+  args:
+  - build
+  - -t
+  - ${_DOCKER_REPO}/${_NAMESPACE}/${_IMAGE_NAME}-config:${_IMAGE_VERSION}
+  - .
+  dir: app/config
+- name: gcr.io/cloud-builders/docker
+  id: Docker Build DB
+  args:
+  - build
+  - -t
+  - ${_DOCKER_REPO}/${_NAMESPACE}/${_IMAGE_NAME}-db-init:${_IMAGE_VERSION}
+  - .
+  dir: app/db
+- name: maven:3-openjdk-11
+  entrypoint: tar
+  args:
+  - cvzf
+  - ../${_IMAGE_NAME}-${_IMAGE_VERSION}.tgz
+  - .
+  dir: app/ci/test-bpintegration-app
+- name: gcr.io/cloud-builders/gsutil
+  args:
+  - cp
+  - -Z
+  - ${_IMAGE_NAME}-${_IMAGE_VERSION}.tgz
+  - gs://${_HELM_REPO_ID}/${_NAMESPACE}/
+  dir: app/ci
+- name: gcr.io/k8s-skaffold/skaffold:v1.38.0
+  id: Publish helm chart to artifact registry
+  entrypoint: /usr/local/bin/helm
+  args:
+  - push
+  - ${_IMAGE_NAME}-${_IMAGE_VERSION}.tgz
+  - ${_CHART_REPO}
+  dir: app/ci
+
+availableSecrets:
+  secretManager:
+images:
+- ${_DOCKER_REPO}/${_NAMESPACE}/${_IMAGE_NAME}-config:${_IMAGE_VERSION}
+- ${_DOCKER_REPO}/${_NAMESPACE}/${_IMAGE_NAME}-db-init:${_IMAGE_VERSION}

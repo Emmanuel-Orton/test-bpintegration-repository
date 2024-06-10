@@ -1,0 +1,54 @@
+{
+  "externalId": "1994391",
+  "orderItems": [{
+    "id": "7281698",
+    "service": {
+      "id": "1689d957-eb13-46a8-9bd0-040c6ecf695a",
+      "serviceCharacteristics": [{
+        "action": "add",
+        "id": "2f119474-b375-409d-8a0a-58e7dbfb4e27",
+        "name": "MonitorItDevice:FG_SOW_PO",
+        "type": "STRING",
+        "value": "77777"
+      }, {
+        "action": "add",
+        "id": "1e584437-1209-4878-9535-f07872dcdd3b",
+        "name": "MonitorItDevice:TELUS_MAT",
+        "type": "STRING",
+        "value": "JKL555"
+      }, {
+        "action": "add",
+        "id": "5e72bff1-fc26-450f-80e6-1123df72361f",
+        "name": "MonitorItDevice:TELUS_WBS",
+        "type": "STRING",
+        "value": "DDD258"
+      }],
+      "serviceIdentifier": "1193136809_2407935349154aba8b1af7dda722c3c0"
+    }
+  }, {
+    "id": "7281696",
+    "service": {
+      "id": "8f522bc0-2184-4c93-96d0-40ac1ac25af9",
+      "serviceCharacteristics": [{
+        "action": "add",
+        "id": "fa19b20a-a677-4c71-9465-13da714ecfb9",
+        "name": "ManageIt365Tenant:FG_SOW_PO",
+        "type": "STRING",
+        "value": "222222"
+      }, {
+        "action": "add",
+        "id": "0751072f-2123-4681-8ae9-b11cd240e1f6",
+        "name": "ManageIt365Tenant:TELUS_MAT",
+        "type": "STRING",
+        "value": "XYZ789"
+      }, {
+        "action": "add",
+        "id": "330a5a11-f413-4f56-b6bb-822509695f89",
+        "name": "ManageIt365Tenant:TELUS_WBS",
+        "type": "STRING",
+        "value": "Description 1234567890"
+      }],
+      "serviceIdentifier": "1193136809_9ae8026832674a06aca97340198176fb"
+    }
+  }]
+}

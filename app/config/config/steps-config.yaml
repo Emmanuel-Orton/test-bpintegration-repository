@@ -1,0 +1,65 @@
+config_steps:
+    #Targets
+    - { api: "infonova", type: "bulkUpdate", payload: "payloads/target_systems.json", endpoint: "configuration/v1/restClient/targets", tenant: "{{ tenant_name }}", keepExisting: true }
+    - { api: "infonova", type: "bulkUpdate", payload: "payloads/target_systems_ws.json", endpoint: "configuration/v1/restClient/targets", tenant: "{{ tenant_ws_name }}", keepExisting: true }
+    #Events
+    - { api: "infonova", type: "bulkUpdate", payload: "payloads/event_registrations.json", endpoint: "hub/v1/subscriptions", tenant: "{{ tenant_name }}", keepExisting: true }
+    - { api: "infonova", type: "bulkUpdate", payload: "payloads/event_registrations_ws.json", endpoint: "hub/v1/subscriptions", tenant: "{{ tenant_ws_name }}", keepExisting: true }
+
+    # Templates
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/labels/en", area: "i18n", tenant: "{{tenant_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/labels/fr", area: "i18n_fr", tenant: "{{tenant_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/labels/en", area: "i18n", tenant: "{{tenant_ws_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/labels/fr", area: "i18n_fr", tenant: "{{tenant_ws_name}}" }
+
+    # Drafdt order
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/draft_order_approval/en", area: "i18n", tenant: "{{tenant_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/draft_order_approval/fr", area: "i18n_fr", tenant: "{{tenant_name}}" }
+
+    # Workflow
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/workflow/en", area: "i18n", tenant: "{{tenant_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/workflow/fr", area: "i18n-fr", tenant: "{{tenant_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/workflow/en", area: "i18n", tenant: "{{tenant_ws_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/workflow/fr", area: "i18n-fr", tenant: "{{tenant_ws_name}}" }
+
+    #Tasks
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/tasks/elements", area: "ui", tenant: "{{tenant_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/tasks/elements", area: "ui", tenant: "{{tenant_ws_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/tasks/orderVerification", area: "ui", tenant: "{{tenant_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/tasks/retailSowCreation", area: "ui", tenant: "{{tenant_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/tasks/wsSowCreate", area: "ui", tenant: "{{tenant_ws_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/tasks/wsSowReview", area: "ui", tenant: "{{tenant_ws_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/tasks/wsSowApprove", area: "ui", tenant: "{{tenant_ws_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/tasks/wsSowUpdate", area: "ui", tenant: "{{tenant_ws_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/tasks/wsDafReview", area: "ui", tenant: "{{tenant_ws_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/tasks/wsDafUpdate", area: "ui", tenant: "{{tenant_ws_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/tasks/wsDafApprove", area: "ui", tenant: "{{tenant_ws_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/tasks/wsOrderServiceProvisioning", area: "ui", tenant: "{{tenant_ws_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/tasks/wsChangeOrderReview", area: "ui", tenant: "{{tenant_ws_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/tasks/wsChangeOrderPartnerApproval", area: "ui", tenant: "{{tenant_ws_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/tasks/wsCoDay2Review", area: "ui", tenant: "{{tenant_ws_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/tasks/wsCoDay2Initiate", area: "ui", tenant: "{{tenant_ws_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/tasks/wsCoDay2Finalize", area: "ui", tenant: "{{tenant_ws_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/tasks/retailCoCreation", area: "ui", tenant: "{{tenant_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/tasks/wsChangeOrderUpdate", area: "ui", tenant: "{{tenant_ws_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/tasks/retailOrderModification", area: "ui", tenant: "{{tenant_name}}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/tasks/wsCoDay2Update", area: "ui", tenant: "{{ tenant_ws_name }}" }
+    - { api: "infonova", type: "bulkUpdateTemplates", payload: "payloads/templates/tasks/retailCoDay2Creation", area: "ui", tenant: "{{tenant_name}}" }
+
+    - { api: "infonova", type: "bulkUpdate", payload: "payloads/tasks/definitions.json", endpoint: "tasks/v2/taskDefinitions", tenant: "{{ tenant_name }}", keepExisting: true }
+    - { api: "infonova", type: "bulkUpdate", payload: "payloads/tasks/definitions_ws.json", endpoint: "tasks/v2/taskDefinitions", tenant: "{{ tenant_ws_name }}", keepExisting: true }
+
+    - { api: "infonova", type: "bulkUpdate", payload: "payloads/clients/events_role.json", endpoint: "/authorization/v1/roles",  tenant: "{{ tenant_name }}", keepExisting: true }
+    - { api: "infonova", type: "bulkUpdate", payload: "payloads/clients/events_role.json", endpoint: "/authorization/v1/roles",  tenant: "{{ tenant_ws_name }}", keepExisting: true }
+    - { api: "infonova", type: "bulkUpdate", payload: "payloads/clients/events_workgroup.json", endpoint: "/authorization/v1/workGroups",  tenant: "{{ tenant_name }}", keepExisting: true }
+    - { api: "infonova", type: "bulkUpdate", payload: "payloads/clients/events_workgroup.json", endpoint: "/authorization/v1/workGroups",  tenant: "{{ tenant_ws_name }}", keepExisting: true }
+    - { api: "infonova-admin", type: "createClient", payload: "payloads/clients/events_client.json", tenantGroup: "{{ tenant_group_name }}", realm: "{{ realm_name }}", client: "telus_assisted_sales_events" }
+    - { api: "infonova", type: "bulkUpdate", payload: "payloads/clients/app_role.json", endpoint: "/authorization/v1/roles",  tenant: "{{ tenant_name }}", keepExisting: true }
+    - { api: "infonova", type: "bulkUpdate", payload: "payloads/clients/app_role.json", endpoint: "/authorization/v1/roles",  tenant: "{{ tenant_ws_name }}", keepExisting: true }
+    - { api: "infonova", type: "bulkUpdate", payload: "payloads/clients/app_workgroup.json", endpoint: "/authorization/v1/workGroups",  tenant: "{{ tenant_name }}", keepExisting: true }
+    - { api: "infonova", type: "bulkUpdate", payload: "payloads/clients/app_workgroup.json", endpoint: "/authorization/v1/workGroups",  tenant: "{{ tenant_ws_name }}", keepExisting: true }
+    - { api: "infonova-admin", type: "createClient", payload: "payloads/clients/app_client.json", tenantGroup: "{{ tenant_group_name }}", realm: "{{ realm_name }}", client: "telus_assisted_sales_app" }
+
+    # Operators
+    - { api: "infonova", type: "insertUpdate", payload: "payloads/operators/assisted_sales_workflow_operator.json", endpoint: "/users/v1/users", uniqueIdentifierField: "name", tenant: "{{ tenant_name }}" }
+    - { api: "infonova", type: "insertUpdate", payload: "payloads/operators/assisted_sales_workflow_operator.json", endpoint: "/users/v1/users", uniqueIdentifierField: "name", tenant: "{{ tenant_ws_name }}" }

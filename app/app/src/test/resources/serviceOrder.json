@@ -1,0 +1,205 @@
+{
+  "externalId": "1950915",
+  "state": "Completed",
+  "priority": 2,
+  "requestedStartDate": "2023-01-27T15:54:30Z",
+  "requestedCompletionDate": "2023-01-30T12:34:07Z",
+  "notificationContact": "cr6i",
+  "notes": [
+    {
+      "date": "2023-01-30T13:04:17Z",
+      "author": "cr6i"
+    }
+  ],
+  "relatedParties": [
+    {
+      "role": "SERVICE_PROVIDER",
+      "id": "SB_TELUS_ANDYROZMAN_WS",
+      "name": "SB_TELUS_ANDYROZMAN_WS"
+    },
+    {
+      "role": "TENANT",
+      "id": "SB_TELUS_ANDYROZMAN_WS",
+      "name": "SB_TELUS_ANDYROZMAN_WS"
+    },
+    {
+      "role": "CUSTOMER",
+      "id": "1191631660",
+      "name": "1191631660"
+    }
+  ],
+  "relatedOrder": {
+    "relationType": "reference",
+    "id": "7107819"
+  },
+  "orderItems": [
+    {
+      "id": "7107821",
+      "orderItemAction": "create",
+      "state": "Completed",
+      "service": {
+        "id": "672dd1d2-7faa-457a-9d61-23aa6d202f73",
+        "name": "MonitorItDevice",
+        "serviceIdentifier": "1191795598_fabfcf5c92dd48bf819c0c45fefd305b",
+        "action": "add",
+        "serviceCharacteristics": [
+          {
+            "name": "MonitorItDevice:TBSGROUPID",
+            "id": "3376ec9b-8a0d-47be-9462-f105af525cd3",
+            "value": "ALL_IN_ONE_ID",
+            "type": "STRING",
+            "action": "add"
+          },
+          {
+            "name": "MonitorItDevice:MONTHLY_CHARGE",
+            "id": "871d570f-a563-4cbe-9121-92bf10b5693c",
+            "value": "",
+            "previousValue": "",
+            "type": "NONE",
+            "action": "add"
+          },
+          {
+            "name": "MonitorItDevice:SKU_NUMBER",
+            "id": "d3a0aa76-165d-44ff-bb61-f7cbb8fb3e37",
+            "value": "P-MO-IT-DEVICE",
+            "type": "STRING",
+            "action": "add"
+          },
+          {
+            "name": "MonitorItDevice:QUANTITY",
+            "id": "c23c64f6-e335-49c8-85a2-35de124b7ff0",
+            "value": "5",
+            "type": "NUMBER",
+            "action": "add"
+          },
+          {
+            "name": "MonitorItDevice:UNIT_PRICE",
+            "id": "73d038f5-2e03-4ad0-8800-994a4e40d197",
+            "value": "1.00",
+            "type": "NUMBER",
+            "action": "add"
+          },
+          {
+            "name": "MonitorItDevice:UNIT_PRICE_WS",
+            "id": "89da7ef0-6275-498f-9a05-e328385534d9",
+            "value": "1.00",
+            "type": "NUMBER",
+            "action": "add"
+          },
+          {
+            "name": "MonitorItDevice:DESCRIPTION",
+            "id": "7fa04e9f-e450-445b-a9cf-58f378477bda",
+            "type": "STRING",
+            "action": "add"
+          },
+          {
+            "name": "MonitorItDevice:SITE",
+            "id": "612ea125-25a0-43bf-90d6-548aef67b98c",
+            "type": "STRING",
+            "action": "add"
+          }
+        ],
+        "relatedParties": [
+          {
+            "role": "SERVICE_PROVIDER",
+            "id": "SB_TELUS_ANDYROZMAN_WS",
+            "name": "SB_TELUS_ANDYROZMAN_WS"
+          }
+        ]
+      }
+    },
+    {
+      "id": "7107823",
+      "orderItemAction": "create",
+      "state": "Completed",
+      "service": {
+        "id": "216b6f3d-1e9c-4ce9-b320-61525133ff72",
+        "name": "SupportItAdvantageBlue",
+        "serviceIdentifier": "1191795598_f5ebcb194208456ea6b21b48d2b76877",
+        "action": "add",
+        "serviceCharacteristics": [
+          {
+            "name": "SupportItAdvantageBlue:TBSGROUPID",
+            "id": "b8e37ea1-7a25-4d56-b2b4-90553fdbcccf",
+            "value": "ALL_IN_ONE_ID",
+            "type": "STRING",
+            "action": "add"
+          },
+          {
+            "name": "SupportItAdvantageBlue:MONTHLY_CHARGE",
+            "id": "e6ec0b54-5c59-440f-9bc4-5116cb867bca",
+            "value": "",
+            "previousValue": "",
+            "type": "NONE",
+            "action": "add"
+          },
+          {
+            "name": "SupportItAdvantageBlue:SKU_NUMBER",
+            "id": "b4ca6213-f2ae-40f2-a9f8-2cbe65c0faf8",
+            "value": "P-CCHD-E",
+            "type": "STRING",
+            "action": "add"
+          },
+          {
+            "name": "SupportItAdvantageBlue:QUANTITY",
+            "id": "4ce3c7a1-7eef-40ac-8f03-46c2a4fb2d07",
+            "value": "3",
+            "type": "NUMBER",
+            "action": "add"
+          },
+          {
+            "name": "SupportItAdvantageBlue:UNIT_PRICE",
+            "id": "7f76a346-f446-4b78-8da5-eaa10afa0c44",
+            "value": "100",
+            "type": "NUMBER",
+            "action": "add"
+          },
+          {
+            "name": "SupportItAdvantageBlue:UNIT_PRICE_WS",
+            "id": "651ec73d-1b30-4fa0-8acc-4e6778230e7d",
+            "value": "240.00",
+            "type": "NUMBER",
+            "action": "add"
+          },
+          {
+            "name": "SupportItAdvantageBlue:DESCRIPTION",
+            "id": "9174d0b4-4943-4fae-bdf3-ac211814fa99",
+            "type": "STRING",
+            "action": "add"
+          },
+          {
+            "name": "SupportItAdvantageBlue:SITE",
+            "id": "107835b9-ba59-4a71-8beb-525a9ef10a82",
+            "type": "STRING",
+            "action": "add"
+          }
+        ],
+        "relatedParties": [
+          {
+            "role": "SERVICE_PROVIDER",
+            "id": "SB_TELUS_ANDYROZMAN_WS",
+            "name": "SB_TELUS_ANDYROZMAN_WS"
+          }
+        ]
+      }
+    }
+  ],
+  "relatedObjects": [
+    {
+      "type": "Order",
+      "id": "7107813",
+      "tenant": "SB_TELUS_ANDYROZMAN@EU01_INFONOVA",
+      "distance": 2,
+      "orderType": "ParentOrder",
+      "owner": "1191795598"
+    },
+    {
+      "type": "Order",
+      "id": "7107819",
+      "tenant": "SB_TELUS_ANDYROZMAN_WS@EU01_INFONOVA",
+      "distance": 1,
+      "orderType": "ParentOrder",
+      "owner": "1191631660"
+    }
+  ]
+}

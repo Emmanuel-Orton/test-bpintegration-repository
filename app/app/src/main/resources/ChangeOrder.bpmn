@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0h6tf3d" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.4.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="ChangeOrder" name="Change Order" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_0wmcrvl</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="coCreateOrderModificationTaskStep" name="Create Order Modification Task" camunda:delegateExpression="${createOrderModificationTaskStep}">
+      <bpmn:incoming>Flow_1qtz1ck</bpmn:incoming>
+      <bpmn:incoming>Flow_07psbo0</bpmn:incoming>
+      <bpmn:outgoing>Flow_1xxgj4o</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="coCreateWsCoReviewTaskStep" name="Create WS CO Review Task" camunda:delegateExpression="${createWsCoReviewTaskStep}">
+      <bpmn:incoming>Flow_1m06pka</bpmn:incoming>
+      <bpmn:incoming>Flow_0wmcrvl</bpmn:incoming>
+      <bpmn:incoming>Flow_1de3bmf</bpmn:incoming>
+      <bpmn:outgoing>Flow_0erj7ed</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_0milawz" name="resolution action">
+      <bpmn:incoming>Flow_1cumzga</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ne4k7g</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1uozv4l</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0erj7ed" sourceRef="coCreateWsCoReviewTaskStep" targetRef="coEventWsCoReviewTaskResolved" />
+    <bpmn:serviceTask id="coCreateCoUpdateTaskStep" name="Create WS Update CO Task " camunda:delegateExpression="${createCoUpdateTaskStep}">
+      <bpmn:incoming>Flow_0ne4k7g</bpmn:incoming>
+      <bpmn:incoming>Flow_10yknfp</bpmn:incoming>
+      <bpmn:incoming>Flow_01ryo9m</bpmn:incoming>
+      <bpmn:incoming>Flow_19hfbt7</bpmn:incoming>
+      <bpmn:outgoing>Flow_1kpepv7</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0ne4k7g" name="modify" sourceRef="Gateway_0milawz" targetRef="coCreateCoUpdateTaskStep">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${WF_TASK_RESOLUTION_ACTION=='modify'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:serviceTask id="coCreateWsCoApproveTaskStep" name="Create WS Approve CO Task" camunda:delegateExpression="${createWsCoApproveTaskStep}">
+      <bpmn:incoming>Flow_1wpk8w8</bpmn:incoming>
+      <bpmn:incoming>Flow_16b89yg</bpmn:incoming>
+      <bpmn:outgoing>Flow_1kpi20h</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1uozv4l" name="approved" sourceRef="Gateway_0milawz" targetRef="coCreateRetailCoCreateTaskStep">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${WF_TASK_RESOLUTION_ACTION=='approved'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:exclusiveGateway id="Gateway_1l0ve7b" name="resolution action">
+      <bpmn:incoming>Flow_0sw8p1z</bpmn:incoming>
+      <bpmn:outgoing>Flow_10yknfp</bpmn:outgoing>
+      <bpmn:outgoing>Flow_07psbo0</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1kpi20h" sourceRef="coCreateWsCoApproveTaskStep" targetRef="coEventWsCoApprovedTaskResolved" />
+    <bpmn:sequenceFlow id="Flow_10yknfp" name="modify" sourceRef="Gateway_1l0ve7b" targetRef="coCreateCoUpdateTaskStep">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${WF_TASK_RESOLUTION_ACTION=='modify'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1kpepv7" sourceRef="coCreateCoUpdateTaskStep" targetRef="coUpdateTaskResolved" />
+    <bpmn:intermediateCatchEvent id="coEventWsCoReviewTaskResolved" name="CO Review Task resolved">
+      <bpmn:incoming>Flow_0erj7ed</bpmn:incoming>
+      <bpmn:outgoing>Flow_1cumzga</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1co72z9" messageRef="Message_1lf4iod" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="Flow_1cumzga" sourceRef="coEventWsCoReviewTaskResolved" targetRef="Gateway_0milawz" />
+    <bpmn:intermediateCatchEvent id="coEventWsCoApprovedTaskResolved" name="CO WS Approved Task resolved">
+      <bpmn:incoming>Flow_1kpi20h</bpmn:incoming>
+      <bpmn:outgoing>Flow_0sw8p1z</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1bf4zyi" messageRef="Message_3uib7df" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="Flow_0sw8p1z" sourceRef="coEventWsCoApprovedTaskResolved" targetRef="Gateway_1l0ve7b" />
+    <bpmn:endEvent id="Event_07hyi9c">
+      <bpmn:incoming>Flow_1bebsab</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="coCreateRetailCoCreateTaskStep" name="Create RT CO Created Task" camunda:delegateExpression="${createRetailCoCreateTaskStep}">
+      <bpmn:incoming>Flow_1uozv4l</bpmn:incoming>
+      <bpmn:incoming>Flow_0iupgxm</bpmn:incoming>
+      <bpmn:outgoing>Flow_1rvudl0</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1rvudl0" sourceRef="coCreateRetailCoCreateTaskStep" targetRef="coEventRTCoCreatedTaskResolved" />
+    <bpmn:intermediateCatchEvent id="coEventRTCoCreatedTaskResolved" name="CO RT Co Created Task resolved">
+      <bpmn:incoming>Flow_1rvudl0</bpmn:incoming>
+      <bpmn:outgoing>Flow_05jlrao</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1f4vkcb" messageRef="Message_0l366uu" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="Flow_05jlrao" sourceRef="coEventRTCoCreatedTaskResolved" targetRef="Gateway_0mvon64" />
+    <bpmn:exclusiveGateway id="Gateway_0mvon64" name="resolution action">
+      <bpmn:incoming>Flow_05jlrao</bpmn:incoming>
+      <bpmn:outgoing>Flow_1wpk8w8</bpmn:outgoing>
+      <bpmn:outgoing>Flow_01ryo9m</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1wpk8w8" name="completed" sourceRef="Gateway_0mvon64" targetRef="coCreateWsCoApproveTaskStep">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${WF_TASK_RESOLUTION_ACTION=='completed'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_01ryo9m" name="modify" sourceRef="Gateway_0mvon64" targetRef="coCreateCoUpdateTaskStep">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${WF_TASK_RESOLUTION_ACTION=='modify'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:receiveTask id="coCreateCoUpdateTaskStep_retry" name="Wait for Retry">
+      <bpmn:incoming>Flow_1o53d5h</bpmn:incoming>
+      <bpmn:outgoing>Flow_19hfbt7</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:receiveTask id="coCreateWsCoApproveTaskStep_retry" name="Wait for Retry">
+      <bpmn:incoming>Flow_0m8hpf2</bpmn:incoming>
+      <bpmn:outgoing>Flow_16b89yg</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:receiveTask id="coCreateRetailCoCreateTaskStep_retry" name="Wait for Retry">
+      <bpmn:incoming>Flow_17bv6s2</bpmn:incoming>
+      <bpmn:outgoing>Flow_0iupgxm</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:receiveTask id="coCreateWsCoReviewTaskStep_retry" name="Wait for Retry">
+      <bpmn:incoming>Flow_05a3uvx</bpmn:incoming>
+      <bpmn:outgoing>Flow_1m06pka</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:receiveTask id="coCreateOrderModificationTaskStep_retry" name="Wait for Retry">
+      <bpmn:incoming>Flow_0lwmjpd</bpmn:incoming>
+      <bpmn:outgoing>Flow_1qtz1ck</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:boundaryEvent id="Event_1ll1lvh" attachedToRef="coCreateOrderModificationTaskStep">
+      <bpmn:outgoing>Flow_0lwmjpd</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_08ikmzx" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_1qtz1ck" sourceRef="coCreateOrderModificationTaskStep_retry" targetRef="coCreateOrderModificationTaskStep" />
+    <bpmn:boundaryEvent id="Event_1eit68p" attachedToRef="coCreateWsCoReviewTaskStep">
+      <bpmn:outgoing>Flow_05a3uvx</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1xkll06" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_05a3uvx" sourceRef="Event_1eit68p" targetRef="coCreateWsCoReviewTaskStep_retry" />
+    <bpmn:sequenceFlow id="Flow_0lwmjpd" sourceRef="Event_1ll1lvh" targetRef="coCreateOrderModificationTaskStep_retry" />
+    <bpmn:sequenceFlow id="Flow_1m06pka" sourceRef="coCreateWsCoReviewTaskStep_retry" targetRef="coCreateWsCoReviewTaskStep" />
+    <bpmn:boundaryEvent id="Event_14m54oa" attachedToRef="coCreateRetailCoCreateTaskStep">
+      <bpmn:outgoing>Flow_17bv6s2</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1hktt1c" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_17bv6s2" sourceRef="Event_14m54oa" targetRef="coCreateRetailCoCreateTaskStep_retry" />
+    <bpmn:sequenceFlow id="Flow_0iupgxm" sourceRef="coCreateRetailCoCreateTaskStep_retry" targetRef="coCreateRetailCoCreateTaskStep" />
+    <bpmn:boundaryEvent id="Event_0yn09u7" attachedToRef="coCreateCoUpdateTaskStep">
+      <bpmn:outgoing>Flow_1o53d5h</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_1gn66yx" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_1o53d5h" sourceRef="Event_0yn09u7" targetRef="coCreateCoUpdateTaskStep_retry" />
+    <bpmn:sequenceFlow id="Flow_19hfbt7" sourceRef="coCreateCoUpdateTaskStep_retry" targetRef="coCreateCoUpdateTaskStep" />
+    <bpmn:boundaryEvent id="Event_1eaxyex" attachedToRef="coCreateWsCoApproveTaskStep">
+      <bpmn:outgoing>Flow_0m8hpf2</bpmn:outgoing>
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_19mkyy7" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_0m8hpf2" sourceRef="Event_1eaxyex" targetRef="coCreateWsCoApproveTaskStep_retry" />
+    <bpmn:sequenceFlow id="Flow_16b89yg" sourceRef="coCreateWsCoApproveTaskStep_retry" targetRef="coCreateWsCoApproveTaskStep" />
+    <bpmn:sequenceFlow id="Flow_0wmcrvl" sourceRef="StartEvent_1" targetRef="coCreateWsCoReviewTaskStep" />
+    <bpmn:intermediateCatchEvent id="coUpdateTaskResolved" name="CO Update Task resolved">
+      <bpmn:incoming>Flow_1kpepv7</bpmn:incoming>
+      <bpmn:outgoing>Flow_1de3bmf</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1v8fdw2" messageRef="Message_03uqa64" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="Flow_1de3bmf" sourceRef="coUpdateTaskResolved" targetRef="coCreateWsCoReviewTaskStep" />
+    <bpmn:sequenceFlow id="Flow_07psbo0" name="completed" sourceRef="Gateway_1l0ve7b" targetRef="coCreateOrderModificationTaskStep">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${WF_TASK_RESOLUTION_ACTION=='completed'}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:intermediateCatchEvent id="coOrderModificationCreatedTaskResolved" name="CO Order Modification Created Task resolved">
+      <bpmn:incoming>Flow_1xxgj4o</bpmn:incoming>
+      <bpmn:outgoing>Flow_1bebsab</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1e0kcl5" messageRef="Message_2eo2o3u" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="Flow_1xxgj4o" sourceRef="coCreateOrderModificationTaskStep" targetRef="coOrderModificationCreatedTaskResolved" />
+    <bpmn:sequenceFlow id="Flow_1bebsab" sourceRef="coOrderModificationCreatedTaskResolved" targetRef="Event_07hyi9c" />
+    <bpmn:textAnnotation id="TextAnnotation_0hepeep">
+      <bpmn:text>Started by endpoint call</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1jb0qaz" sourceRef="StartEvent_1" targetRef="TextAnnotation_0hepeep" />
+  </bpmn:process>
+  <bpmn:message id="Message_1lf4iod" name="CO_review_task_resolved" />
+  <bpmn:message id="Message_3uib7df" name="CO_approved_task_resolved" />
+  <bpmn:message id="Message_0l366uu" name="CO_RT_co_created_task_resolved" />
+  <bpmn:message id="Message_2eo2o3u" name="CO_order_modification_created_task_resolved" />
+  <bpmn:message id="Message_03uqa64" name="CO_update_task_resolved" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="ChangeOrder">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="362" y="172" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_06d4xxb" bpmnElement="coCreateOrderModificationTaskStep">
+        <dc:Bounds x="330" y="1220" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_15k8vd6" bpmnElement="coCreateWsCoReviewTaskStep">
+        <dc:Bounds x="330" y="300" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0sxr1yo" bpmnElement="Gateway_0milawz" isMarkerVisible="true">
+        <dc:Bounds x="355" y="495" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="268" y="513" width="81" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0ibp9id" bpmnElement="coCreateCoUpdateTaskStep">
+        <dc:Bounds x="530" y="920" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1mc6xmn" bpmnElement="coCreateWsCoApproveTaskStep">
+        <dc:Bounds x="330" y="920" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0a74r24" bpmnElement="Gateway_1l0ve7b" isMarkerVisible="true">
+        <dc:Bounds x="355" y="1105" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="268" y="1123" width="81" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0wegp0d" bpmnElement="coEventWsCoReviewTaskResolved">
+        <dc:Bounds x="362" y="422" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="268" y="426" width="82" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1o4n9ae" bpmnElement="coEventWsCoApprovedTaskResolved">
+        <dc:Bounds x="362" y="1032" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="267" y="1036" width="87" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_07hyi9c_di" bpmnElement="Event_07hyi9c">
+        <dc:Bounds x="362" y="1472" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0flvd3c" bpmnElement="coCreateRetailCoCreateTaskStep">
+        <dc:Bounds x="330" y="600" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1kid6xc" bpmnElement="coEventRTCoCreatedTaskResolved">
+        <dc:Bounds x="362" y="722" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="279" y="726" width="65" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_17mteru" bpmnElement="Gateway_0mvon64" isMarkerVisible="true">
+        <dc:Bounds x="355" y="795" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="268" y="813" width="81" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0mqv440" bpmnElement="coCreateCoUpdateTaskStep_retry">
+        <dc:Bounds x="700" y="980" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0o8s9fj" bpmnElement="coCreateWsCoApproveTaskStep_retry">
+        <dc:Bounds x="160" y="920" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1xsxg7p" bpmnElement="coCreateRetailCoCreateTaskStep_retry">
+        <dc:Bounds x="160" y="600" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_12f6vv7" bpmnElement="coCreateWsCoReviewTaskStep_retry">
+        <dc:Bounds x="160" y="300" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0w1fs6u" bpmnElement="coCreateOrderModificationTaskStep_retry">
+        <dc:Bounds x="160" y="1220" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0lu8rb5" bpmnElement="coUpdateTaskResolved">
+        <dc:Bounds x="692" y="852" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="740" y="856" width="81" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0x88q65" bpmnElement="coOrderModificationCreatedTaskResolved">
+        <dc:Bounds x="362" y="1372" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="279" y="1363" width="65" height="53" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_0hepeep_di" bpmnElement="TextAnnotation_0hepeep">
+        <dc:Bounds x="420" y="80" width="100" height="41" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_07bh6kr_di" bpmnElement="Event_1eaxyex">
+        <dc:Bounds x="312" y="962" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0rxjszy_di" bpmnElement="Event_0yn09u7">
+        <dc:Bounds x="612" y="982" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0oqxqhx_di" bpmnElement="Event_14m54oa">
+        <dc:Bounds x="312" y="642" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1792jeh_di" bpmnElement="Event_1eit68p">
+        <dc:Bounds x="312" y="342" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1pfvnbg_di" bpmnElement="Event_1ll1lvh">
+        <dc:Bounds x="312" y="1262" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0erj7ed_di" bpmnElement="Flow_0erj7ed">
+        <di:waypoint x="380" y="380" />
+        <di:waypoint x="380" y="422" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ne4k7g_di" bpmnElement="Flow_0ne4k7g">
+        <di:waypoint x="405" y="520" />
+        <di:waypoint x="580" y="520" />
+        <di:waypoint x="580" y="920" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="476" y="502" width="33" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1uozv4l_di" bpmnElement="Flow_1uozv4l">
+        <di:waypoint x="380" y="545" />
+        <di:waypoint x="380" y="600" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="328" y="567" width="46" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1kpi20h_di" bpmnElement="Flow_1kpi20h">
+        <di:waypoint x="380" y="1000" />
+        <di:waypoint x="380" y="1032" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10yknfp_di" bpmnElement="Flow_10yknfp">
+        <di:waypoint x="405" y="1130" />
+        <di:waypoint x="580" y="1130" />
+        <di:waypoint x="580" y="1000" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="476" y="1112" width="33" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1kpepv7_di" bpmnElement="Flow_1kpepv7">
+        <di:waypoint x="630" y="960" />
+        <di:waypoint x="710" y="960" />
+        <di:waypoint x="710" y="888" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1cumzga_di" bpmnElement="Flow_1cumzga">
+        <di:waypoint x="380" y="458" />
+        <di:waypoint x="380" y="495" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0sw8p1z_di" bpmnElement="Flow_0sw8p1z">
+        <di:waypoint x="380" y="1068" />
+        <di:waypoint x="380" y="1105" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1rvudl0_di" bpmnElement="Flow_1rvudl0">
+        <di:waypoint x="380" y="680" />
+        <di:waypoint x="380" y="722" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05jlrao_di" bpmnElement="Flow_05jlrao">
+        <di:waypoint x="380" y="758" />
+        <di:waypoint x="380" y="795" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1wpk8w8_di" bpmnElement="Flow_1wpk8w8">
+        <di:waypoint x="380" y="845" />
+        <di:waypoint x="380" y="920" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="326" y="880" width="51" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_01ryo9m_di" bpmnElement="Flow_01ryo9m">
+        <di:waypoint x="405" y="820" />
+        <di:waypoint x="490" y="820" />
+        <di:waypoint x="490" y="960" />
+        <di:waypoint x="530" y="960" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="443" y="803" width="33" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1qtz1ck_di" bpmnElement="Flow_1qtz1ck">
+        <di:waypoint x="260" y="1250" />
+        <di:waypoint x="330" y="1250" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05a3uvx_di" bpmnElement="Flow_05a3uvx">
+        <di:waypoint x="312" y="360" />
+        <di:waypoint x="260" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0lwmjpd_di" bpmnElement="Flow_0lwmjpd">
+        <di:waypoint x="312" y="1280" />
+        <di:waypoint x="260" y="1280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1m06pka_di" bpmnElement="Flow_1m06pka">
+        <di:waypoint x="260" y="330" />
+        <di:waypoint x="330" y="330" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_17bv6s2_di" bpmnElement="Flow_17bv6s2">
+        <di:waypoint x="312" y="660" />
+        <di:waypoint x="260" y="660" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0iupgxm_di" bpmnElement="Flow_0iupgxm">
+        <di:waypoint x="260" y="630" />
+        <di:waypoint x="330" y="630" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1o53d5h_di" bpmnElement="Flow_1o53d5h">
+        <di:waypoint x="648" y="1000" />
+        <di:waypoint x="700" y="1000" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_19hfbt7_di" bpmnElement="Flow_19hfbt7">
+        <di:waypoint x="700" y="1040" />
+        <di:waypoint x="620" y="1040" />
+        <di:waypoint x="588" y="1000" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0m8hpf2_di" bpmnElement="Flow_0m8hpf2">
+        <di:waypoint x="312" y="980" />
+        <di:waypoint x="260" y="980" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_16b89yg_di" bpmnElement="Flow_16b89yg">
+        <di:waypoint x="260" y="950" />
+        <di:waypoint x="330" y="950" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0wmcrvl_di" bpmnElement="Flow_0wmcrvl">
+        <di:waypoint x="380" y="208" />
+        <di:waypoint x="380" y="300" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1de3bmf_di" bpmnElement="Flow_1de3bmf">
+        <di:waypoint x="710" y="852" />
+        <di:waypoint x="710" y="340" />
+        <di:waypoint x="430" y="340" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_07psbo0_di" bpmnElement="Flow_07psbo0">
+        <di:waypoint x="380" y="1155" />
+        <di:waypoint x="380" y="1220" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="394" y="1173" width="51" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1xxgj4o_di" bpmnElement="Flow_1xxgj4o">
+        <di:waypoint x="380" y="1300" />
+        <di:waypoint x="380" y="1372" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1bebsab_di" bpmnElement="Flow_1bebsab">
+        <di:waypoint x="380" y="1408" />
+        <di:waypoint x="380" y="1472" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_1jb0qaz_di" bpmnElement="Association_1jb0qaz">
+        <di:waypoint x="392" y="177" />
+        <di:waypoint x="439" y="121" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

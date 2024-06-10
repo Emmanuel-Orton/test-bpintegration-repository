@@ -1,0 +1,70 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet id="provisioning_order_items" author="assisted_sales">
+        <comment>Wholesale Service Order Items</comment>
+        <createTable
+                schemaName="assisted_sales"
+                tableName="PROVISIONING_ORDER_ITEMS">
+            <column name="ID" type="BIGSERIAL">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="RETAIL_ORDER_ID"  type="BIGINT"/>
+            <column name="RETAIL_BILLING_ACCOUNT_ID"  type="BIGINT"/>
+            <column name="OPI_NUMBER"  type="VARCHAR"/>
+            <column name="WHOLESALE_ORDER_ID"  type="BIGINT"/>
+            <column name="WHOLESALE_BILLING_ACCOUNT_ID"  type="BIGINT"/>
+
+            <column name="WHOLESALE_SERVICE_OFFER"  type="VARCHAR"/>
+            <column name="WHOLESALE_SERVICE"  type="VARCHAR"/>
+            <column name="WHOLESALE_SERVICE_ORDER_ID"  type="VARCHAR"/>
+            <column name="DAF_WORKFLOW_ID"  type="VARCHAR"/>
+            <column name="DAF_STATUS"  type="VARCHAR"/>
+
+            <column name="created" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated" type="TIMESTAMP WITHOUT TIME ZONE" />
+            <column name="DELETE_AFTER" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="assisted_sales" id="add-column-service-provisioning-id">
+        <comment>Service Provisioning Id (Provisioning ID on UI and externalId in service order)</comment>
+        <addColumn tableName="PROVISIONING_ORDER_ITEMS"
+                   schemaName="assisted_sales">
+            <column name="SERVICE_PROVISIONING_ID" type="BIGINT" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="assisted_sales" id="add-column-tenant">
+        <comment>Tenant</comment>
+        <addColumn tableName="PROVISIONING_ORDER_ITEMS"
+                   schemaName="assisted_sales">
+            <column name="TENANT" type="VARCHAR" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="assisted_sales" id="add-column-taskId">
+        <comment>Task Id</comment>
+        <addColumn tableName="PROVISIONING_ORDER_ITEMS"
+                   schemaName="assisted_sales">
+            <column name="TASK_ID" type="BIGINT" />
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="assisted_sales" id="add-columns-for-quantities-and-activation-dates">
+        <comment>Order Quantity, Requested Quantity, Requested Activation Date and Earliest Activation Date</comment>
+        <addColumn tableName="PROVISIONING_ORDER_ITEMS"
+                   schemaName="assisted_sales">
+            <column name="ORDER_QUANTITY" type="BIGINT"/>
+            <column name="REQUESTED_QUANTITY" type="BIGINT"/>
+            <column name="REQUESTED_ACTIVATION_DATE" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="EARLIEST_ACTIVATION_DATE" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

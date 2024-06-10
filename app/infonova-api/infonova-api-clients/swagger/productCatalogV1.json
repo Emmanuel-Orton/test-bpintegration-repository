@@ -1,0 +1,5620 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Infonova API Swagger",
+    "version": ""
+  },
+  "host": "localhost:9700",
+  "basePath": "/r6-api",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+    "/{tenant}/productCatalog/v1/barringConfiguration": {
+      "get": {
+        "tags": [
+          "Product Catalog v1"
+        ],
+        "summary": "GET /productCatalog/v1/barringConfiguration",
+        "description": "GET /productCatalog/v1/barringConfiguration",
+        "operationId": "getProductCatalogV1BarringConfiguration",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ProductofferingV1DomainBarringConfigurationList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/productCatalog/v1/barringConfiguration/{name}": {
+      "get": {
+        "tags": [
+          "Product Catalog v1"
+        ],
+        "summary": "GET /productCatalog/v1/barringConfiguration/{name}",
+        "description": "GET /productCatalog/v1/barringConfiguration/{name}",
+        "operationId": "getProductCatalogV1BarringConfigurationName",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ProductofferingV1DomainBarringConfiguration"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/productCatalog/v1/channels": {
+      "put": {
+        "tags": [
+          "Product Catalog v1"
+        ],
+        "summary": "PUT /productCatalog/v1/channels",
+        "description": "PUT /productCatalog/v1/channels",
+        "operationId": "putProductCatalogV1Channels",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "keepExisting",
+            "in": "query",
+            "description": "If the keepExisting parameter is set to false, the not referenced objects will be deleted",
+            "required": true,
+            "type": "boolean",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProductofferingV1DomainProductOfferingChannelAssignments"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/productCatalog/v1/channels/{channel}": {
+      "get": {
+        "tags": [
+          "Product Catalog v1"
+        ],
+        "summary": "GET /productCatalog/v1/channels/{channel}",
+        "description": "GET /productCatalog/v1/channels/{channel}",
+        "operationId": "getProductCatalogV1ChannelsChannel",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "channel",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ProductofferingV1DomainProductOfferingChannelAssignmentList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/productCatalog/v1/productOfferingAttachments": {
+      "get": {
+        "tags": [
+          "Product Catalog v1"
+        ],
+        "summary": "GET /productCatalog/v1/productOfferingAttachments",
+        "description": "GET /productCatalog/v1/productOfferingAttachments",
+        "operationId": "getProductCatalogV1ProductOfferingAttachments",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search query. Supported properties are productOffering.",
+            "required": false,
+            "type": "string",
+            "format": "Lucene syntax is not supported",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ProductofferingV1DomainProductOfferingAttachments"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/productCatalog/v1/productOfferingCharacteristicGroups/{name}": {
+      "get": {
+        "tags": [
+          "Product Catalog v1"
+        ],
+        "summary": "GET /productCatalog/v1/productOfferingCharacteristicGroups/{name}",
+        "description": "GET /productCatalog/v1/productOfferingCharacteristicGroups/{name}",
+        "operationId": "getProductCatalogV1ProductOfferingCharacteristicGroupsName",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ProductofferingV1DomainProductOfferingCharacteristicGroup"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/productCatalog/v1/productOfferingGroups/{name}": {
+      "get": {
+        "tags": [
+          "Product Catalog v1"
+        ],
+        "summary": "GET /productCatalog/v1/productOfferingGroups/{name}",
+        "description": "GET /productCatalog/v1/productOfferingGroups/{name}",
+        "operationId": "getProductCatalogV1ProductOfferingGroupsName",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ProductofferingV1DomainProductOfferingGroup"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/productCatalog/v1/productOfferingTariffModels/{name}": {
+      "get": {
+        "tags": [
+          "Product Catalog v1"
+        ],
+        "summary": "GET /productCatalog/v1/productOfferingTariffModels/{name}",
+        "description": "GET /productCatalog/v1/productOfferingTariffModels/{name}",
+        "operationId": "getProductCatalogV1ProductOfferingTariffModelsName",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ProductofferingV1DomainProductOfferingTariffModel"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/productCatalog/v1/productOfferings": {
+      "get": {
+        "tags": [
+          "Product Catalog v1"
+        ],
+        "summary": "GET /productCatalog/v1/productOfferings",
+        "description": "GET /productCatalog/v1/productOfferings",
+        "operationId": "getProductCatalogV1ProductOfferings",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "Filter properties",
+            "required": false,
+            "type": "array",
+            "allowEmptyValue": false,
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Search query. Supported properties are productOffering.",
+            "required": false,
+            "type": "string",
+            "format": "Lucene syntax is not supported",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ProductofferingV1DomainProductOfferingList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/productCatalog/v1/productOfferings/{name}": {
+      "get": {
+        "tags": [
+          "Product Catalog v1"
+        ],
+        "summary": "GET /productCatalog/v1/productOfferings/{name}",
+        "description": "GET /productCatalog/v1/productOfferings/{name}",
+        "operationId": "getProductCatalogV1ProductOfferingsName",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ProductofferingV1DomainProductOffering"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/productCatalog/v1/productOfferings/{productOffering}/channels": {
+      "get": {
+        "tags": [
+          "Product Catalog v1"
+        ],
+        "summary": "GET /productCatalog/v1/productOfferings/{productOffering}/channels",
+        "description": "GET /productCatalog/v1/productOfferings/{productOffering}/channels",
+        "operationId": "getProductCatalogV1ProductOfferingsProductOfferingChannels",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "productOffering",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ProductofferingV1DomainProductOfferingChannelAssignmentList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Product Catalog v1"
+        ],
+        "summary": "PUT /productCatalog/v1/productOfferings/{productOffering}/channels",
+        "description": "PUT /productCatalog/v1/productOfferings/{productOffering}/channels",
+        "operationId": "putProductCatalogV1ProductOfferingsProductOfferingChannels",
+        "consumes": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "productOffering",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "keepExisting",
+            "in": "query",
+            "description": "If the keepExisting parameter is set to false, the not referenced objects will be deleted",
+            "required": true,
+            "type": "boolean",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProductofferingV1DomainProductOfferingChannelAssignments"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/productCatalog/v1/productOfferings/{productOffering}/channels/{channel}": {
+      "delete": {
+        "tags": [
+          "Product Catalog v1"
+        ],
+        "summary": "DELETE /productCatalog/v1/productOfferings/{productOffering}/channels/{channel}",
+        "description": "DELETE /productCatalog/v1/productOfferings/{productOffering}/channels/{channel}",
+        "operationId": "deleteProductCatalogV1ProductOfferingsProductOfferingChannelsChannel",
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "productOffering",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "channel",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Request-Id",
+            "in": "header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/productCatalog/v1/productOfferings/{productOffering}/documents/{id}/download": {
+      "get": {
+        "tags": [
+          "Product Catalog v1"
+        ],
+        "summary": "GET /productCatalog/v1/productOfferings/{productOffering}/documents/{id}/download",
+        "description": "GET /productCatalog/v1/productOfferings/{productOffering}/documents/{id}/download",
+        "operationId": "getProductCatalogV1ProductOfferingsProductOfferingDocumentsIdDownload",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "productOffering",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "type": "file"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/productCatalog/v1/productOfferings/{productOffering}/summary": {
+      "get": {
+        "tags": [
+          "Product Catalog v1"
+        ],
+        "summary": "GET /productCatalog/v1/productOfferings/{productOffering}/summary",
+        "description": "GET /productCatalog/v1/productOfferings/{productOffering}/summary",
+        "operationId": "getProductCatalogV1ProductOfferingsProductOfferingSummary",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "productOffering",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Can contain an ISO-8601 date to retrieve the state of the product offering at this point in time.",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ProductofferingV1SummaryDomainProductOfferingSummary"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/productCatalog/v1/ratingEngines": {
+      "get": {
+        "tags": [
+          "Product Catalog v1"
+        ],
+        "summary": "GET /productCatalog/v1/ratingEngines",
+        "description": "GET /productCatalog/v1/ratingEngines",
+        "operationId": "getProductCatalogV1RatingEngines",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ChargespecificationsV1DomainRatingEngineList"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/productCatalog/v1/ratingEngines/{name}": {
+      "get": {
+        "tags": [
+          "Product Catalog v1"
+        ],
+        "summary": "GET /productCatalog/v1/ratingEngines/{name}",
+        "description": "GET /productCatalog/v1/ratingEngines/{name}",
+        "operationId": "getProductCatalogV1RatingEnginesName",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ChargespecificationsV1DomainRatingEngine"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/productCatalog/v1/resourceSpecificationGroupTariffModels/{name}": {
+      "get": {
+        "tags": [
+          "Product Catalog v1"
+        ],
+        "summary": "GET /productCatalog/v1/resourceSpecificationGroupTariffModels/{name}",
+        "description": "GET /productCatalog/v1/resourceSpecificationGroupTariffModels/{name}",
+        "operationId": "getProductCatalogV1ResourceSpecificationGroupTariffModelsName",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ProductofferingV1DomainResourceSpecificationGroupTariffModel"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/productCatalog/v1/resourceSpecificationGroups/{name}": {
+      "get": {
+        "tags": [
+          "Product Catalog v1"
+        ],
+        "summary": "GET /productCatalog/v1/resourceSpecificationGroups/{name}",
+        "description": "GET /productCatalog/v1/resourceSpecificationGroups/{name}",
+        "operationId": "getProductCatalogV1ResourceSpecificationGroupsName",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ProductofferingV1DomainResourceSpecificationGroup"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/productCatalog/v1/rules/customerTypeRestriction/{name}": {
+      "get": {
+        "tags": [
+          "Product Catalog v1"
+        ],
+        "summary": "GET /productCatalog/v1/rules/customerTypeRestriction/{name}",
+        "description": "GET /productCatalog/v1/rules/customerTypeRestriction/{name}",
+        "operationId": "getProductCatalogV1RulesCustomerTypeRestrictionName",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ProductofferingV1DomainCustomerTypeRestrictionRule"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/productCatalog/v1/rules/numberOfSameProductOfferings/{name}": {
+      "get": {
+        "tags": [
+          "Product Catalog v1"
+        ],
+        "summary": "GET /productCatalog/v1/rules/numberOfSameProductOfferings/{name}",
+        "description": "GET /productCatalog/v1/rules/numberOfSameProductOfferings/{name}",
+        "operationId": "getProductCatalogV1RulesNumberOfSameProductOfferingsName",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ProductofferingV1DomainNumberOfSameProductOfferingsRule"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/productCatalog/v1/rules/script/{name}": {
+      "get": {
+        "tags": [
+          "Product Catalog v1"
+        ],
+        "summary": "GET /productCatalog/v1/rules/script/{name}",
+        "description": "GET /productCatalog/v1/rules/script/{name}",
+        "operationId": "getProductCatalogV1RulesScriptName",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ProductofferingV1DomainScriptRule"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/{tenant}/productCatalog/v1/rules/upDowngradeProductOffering/{name}": {
+      "get": {
+        "tags": [
+          "Product Catalog v1"
+        ],
+        "summary": "GET /productCatalog/v1/rules/upDowngradeProductOffering/{name}",
+        "description": "GET /productCatalog/v1/rules/upDowngradeProductOffering/{name}",
+        "operationId": "getProductCatalogV1RulesUpDowngradeProductOfferingName",
+        "produces": [
+          "application/json",
+          "application/vnd.infonova.r6+json"
+        ],
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/ProductofferingV1DomainUpDowngradeProductOfferingRule"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "422": {
+            "description": "Validation error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/CommonsDomainModelMessageAware"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentialAuthentication": [
+
+            ]
+          },
+          {
+            "oauth2ResourceOwnerPasswordCredentialAuthentication": [
+
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "BusinessrulesV1DomainCalculationReference": {
+      "type": "object",
+      "properties": {
+        "calculationName": {
+          "type": "string"
+        },
+        "calculationType": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "referenceName": {
+          "type": "string"
+        }
+      }
+    },
+    "ChargespecificationsV1DomainRatingEngine": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "resourcePath": {
+          "type": "string"
+        },
+        "targetSystem": {
+          "type": "string"
+        }
+      }
+    },
+    "ChargespecificationsV1DomainRatingEngineList": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargespecificationsV1DomainRatingEngine"
+          }
+        }
+      }
+    },
+    "ChargesummaryV1DomainChargeTotals": {
+      "type": "object",
+      "properties": {
+        "bindingPeriodTerminationChargeTotal": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainCurrencySum"
+          }
+        },
+        "depositTotal": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainCurrencySum"
+          }
+        },
+        "instalmentTotal": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainFrequencySum"
+          }
+        },
+        "onceOnlyTotal": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainCurrencySum"
+          }
+        },
+        "recurringTotal": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainFrequencySum"
+          }
+        },
+        "terminationTotal": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainCurrencySum"
+          }
+        }
+      }
+    },
+    "ChargesummaryV1DomainCurrencySum": {
+      "type": "object",
+      "properties": {
+        "currency": {
+          "type": "string"
+        },
+        "excludedAmountSum": {
+          "type": "string",
+          "format": "number"
+        },
+        "includedAmountSum": {
+          "type": "string",
+          "format": "number"
+        },
+        "taxSummaries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainTaxInformation"
+          }
+        }
+      }
+    },
+    "ChargesummaryV1DomainDiscountCharge": {
+      "type": "object",
+      "properties": {
+        "adjustedEndDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "billText": {
+          "type": "string"
+        },
+        "billingEngine": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "frequencyMonths": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "incremental": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "prorated": {
+          "type": "boolean"
+        },
+        "prorationCondition": {
+          "type": "string"
+        },
+        "prorationMode": {
+          "type": "string"
+        },
+        "sourceScopeAttribute": {
+          "type": "string"
+        },
+        "sourceScopeValueType": {
+          "type": "string"
+        },
+        "sourceScopes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "targetScopes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "tieringLevels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainDiscountTieringLevel"
+          }
+        },
+        "type": {
+          "type": "string"
+        },
+        "validityPeriod": {
+          "type": "string"
+        }
+      }
+    },
+    "ChargesummaryV1DomainDiscountChargeSummary": {
+      "type": "object",
+      "properties": {
+        "charges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainDiscountCharge"
+          }
+        }
+      }
+    },
+    "ChargesummaryV1DomainDiscountTieringLevel": {
+      "type": "object",
+      "properties": {
+        "unitsMax": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "unitsMin": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "value": {
+          "type": "string",
+          "format": "number"
+        }
+      }
+    },
+    "ChargesummaryV1DomainFrequencySum": {
+      "type": "object",
+      "properties": {
+        "currencySums": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainCurrencySum"
+          }
+        },
+        "frequency": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "ChargesummaryV1DomainFundCharge": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "string",
+          "format": "number"
+        },
+        "assignmentType": {
+          "type": "string"
+        },
+        "billText": {
+          "type": "string"
+        },
+        "billingAccount": {
+          "type": "string"
+        },
+        "billingEngine": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "excludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "fundDisplayName": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "includedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "loyaltyPoints": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "originalExcludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "originalIncludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "overrider": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOverrider"
+        },
+        "previousExcludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "previousIncludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "taxInformation": {
+          "$ref": "#/definitions/ChargesummaryV1DomainTaxInformation"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "ChargesummaryV1DomainFundChargeSummary": {
+      "type": "object",
+      "properties": {
+        "charges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainFundCharge"
+          }
+        }
+      }
+    },
+    "ChargesummaryV1DomainInstalmentCharge": {
+      "type": "object",
+      "properties": {
+        "billText": {
+          "type": "string"
+        },
+        "billingEngine": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "excludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "excludedTotalAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "frequencyMonths": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "includedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "includedTotalAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "loyaltyPoints": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "numberOfInitialPayments": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "numberOfPayments": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "originalExcludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "originalIncludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "overrider": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOverrider"
+        },
+        "payRemainderOnTermination": {
+          "type": "boolean"
+        },
+        "previousExcludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "previousIncludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "taxInformation": {
+          "$ref": "#/definitions/ChargesummaryV1DomainTaxInformation"
+        }
+      }
+    },
+    "ChargesummaryV1DomainInstalmentChargeSummary": {
+      "type": "object",
+      "properties": {
+        "charges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainInstalmentCharge"
+          }
+        },
+        "frequencySums": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainFrequencySum"
+          }
+        }
+      }
+    },
+    "ChargesummaryV1DomainOnceOnlyAllowanceCharge": {
+      "type": "object",
+      "properties": {
+        "allowanceAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "assignmentType": {
+          "type": "string"
+        },
+        "billText": {
+          "type": "string"
+        },
+        "billTypeGroup": {
+          "type": "string"
+        },
+        "billingEngine": {
+          "type": "string"
+        },
+        "carryOverMonths": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "dynamic": {
+          "type": "boolean"
+        },
+        "excludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "fundDisplayName": {
+          "type": "string"
+        },
+        "includedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "limit": {
+          "type": "boolean"
+        },
+        "loyaltyPoints": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "measuringUnit": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "originalAllowanceAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "originalExcludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "originalIncludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "overrider": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOverrider"
+        },
+        "previousExcludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "previousIncludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ratingEngine": {
+          "type": "string"
+        },
+        "shareable": {
+          "type": "boolean"
+        },
+        "sharedWithSubAccounts": {
+          "type": "boolean"
+        },
+        "sharingAllowed": {
+          "type": "boolean"
+        },
+        "taxInformation": {
+          "$ref": "#/definitions/ChargesummaryV1DomainTaxInformation"
+        },
+        "topUp": {
+          "type": "boolean"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "ChargesummaryV1DomainOnceOnlyAllowanceChargeSummary": {
+      "type": "object",
+      "properties": {
+        "charges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyAllowanceCharge"
+          }
+        },
+        "currencySums": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainCurrencySum"
+          }
+        }
+      }
+    },
+    "ChargesummaryV1DomainOnceOnlyCharge": {
+      "type": "object",
+      "properties": {
+        "assignmentType": {
+          "type": "string"
+        },
+        "billText": {
+          "type": "string"
+        },
+        "billingEngine": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "excludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "fundDisplayName": {
+          "type": "string"
+        },
+        "includedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "loyaltyPoints": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "originalExcludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "originalIncludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "overrider": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOverrider"
+        },
+        "previousExcludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "previousIncludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "taxInformation": {
+          "$ref": "#/definitions/ChargesummaryV1DomainTaxInformation"
+        }
+      }
+    },
+    "ChargesummaryV1DomainOnceOnlyChargeSummary": {
+      "type": "object",
+      "properties": {
+        "charges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyCharge"
+          }
+        },
+        "currencySums": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainCurrencySum"
+          }
+        }
+      }
+    },
+    "ChargesummaryV1DomainOverrider": {
+      "type": "object",
+      "properties": {
+        "appliedToCharge": {
+          "type": "boolean"
+        },
+        "billText": {
+          "type": "string"
+        },
+        "excludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "includedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "name": {
+          "type": "string"
+        },
+        "taxInformation": {
+          "$ref": "#/definitions/ChargesummaryV1DomainTaxInformation"
+        },
+        "validityPeriod": {
+          "type": "string"
+        }
+      }
+    },
+    "ChargesummaryV1DomainRecurringAllowanceCharge": {
+      "type": "object",
+      "properties": {
+        "adjustedEndDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "adjustmentEndDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "adjustmentType": {
+          "type": "string"
+        },
+        "allowanceAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "billText": {
+          "type": "string"
+        },
+        "billTypeGroup": {
+          "type": "string"
+        },
+        "billingEngine": {
+          "type": "string"
+        },
+        "carryOverMonths": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "chargeInAdvanceMonths": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "dynamic": {
+          "type": "boolean"
+        },
+        "excludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "frequencyMonths": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "includedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "limit": {
+          "type": "boolean"
+        },
+        "loyaltyPoints": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "measuringUnit": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "originalAllowanceAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "originalExcludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "originalIncludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "overrider": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOverrider"
+        },
+        "previousExcludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "previousIncludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "priority": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "prorated": {
+          "type": "boolean"
+        },
+        "prorationCondition": {
+          "type": "string"
+        },
+        "prorationMode": {
+          "type": "string"
+        },
+        "quantified": {
+          "type": "boolean"
+        },
+        "ratingEngine": {
+          "type": "string"
+        },
+        "shareable": {
+          "type": "boolean"
+        },
+        "sharedWithSubAccounts": {
+          "type": "boolean"
+        },
+        "sharingAllowed": {
+          "type": "boolean"
+        },
+        "taxInformation": {
+          "$ref": "#/definitions/ChargesummaryV1DomainTaxInformation"
+        },
+        "tieredCharges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainTieredCharge"
+          }
+        },
+        "topUp": {
+          "type": "boolean"
+        },
+        "type": {
+          "type": "string"
+        },
+        "validityPeriod": {
+          "type": "string"
+        }
+      }
+    },
+    "ChargesummaryV1DomainRecurringAllowanceChargeSummary": {
+      "type": "object",
+      "properties": {
+        "charges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainRecurringAllowanceCharge"
+          }
+        },
+        "frequencySums": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainFrequencySum"
+          }
+        }
+      }
+    },
+    "ChargesummaryV1DomainRecurringCharge": {
+      "type": "object",
+      "properties": {
+        "adjustedEndDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "adjustmentEndDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "adjustmentType": {
+          "type": "string"
+        },
+        "billText": {
+          "type": "string"
+        },
+        "billingEngine": {
+          "type": "string"
+        },
+        "chargeInAdvanceMonths": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "excludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "frequencyMonths": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "includedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "loyaltyPoints": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "originalExcludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "originalIncludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "overrider": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOverrider"
+        },
+        "previousExcludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "previousIncludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "prorated": {
+          "type": "boolean"
+        },
+        "prorationCondition": {
+          "type": "string"
+        },
+        "prorationMode": {
+          "type": "string"
+        },
+        "quantified": {
+          "type": "boolean"
+        },
+        "taxInformation": {
+          "$ref": "#/definitions/ChargesummaryV1DomainTaxInformation"
+        },
+        "validityPeriod": {
+          "type": "string"
+        }
+      }
+    },
+    "ChargesummaryV1DomainRecurringChargeSummary": {
+      "type": "object",
+      "properties": {
+        "charges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainRecurringCharge"
+          }
+        },
+        "frequencySums": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainFrequencySum"
+          }
+        }
+      }
+    },
+    "ChargesummaryV1DomainTaxInformation": {
+      "type": "object",
+      "properties": {
+        "externalTaxCalculated": {
+          "type": "boolean"
+        },
+        "taxAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "taxRate": {
+          "type": "string",
+          "format": "number"
+        },
+        "taxType": {
+          "type": "string"
+        },
+        "taxableAmount": {
+          "type": "string",
+          "format": "number"
+        }
+      }
+    },
+    "ChargesummaryV1DomainTerminationCharge": {
+      "type": "object",
+      "properties": {
+        "billText": {
+          "type": "string"
+        },
+        "bindingMonths": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "contractEndDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "excludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "excludedFixedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "gracePeriodMonths": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "includedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "includedFixedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "loyaltyPoints": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "originalExcludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "originalExcludedFixedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "originalIncludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "originalIncludedFixedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "overrider": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOverrider"
+        },
+        "previousExcludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "previousIncludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "taxInformation": {
+          "$ref": "#/definitions/ChargesummaryV1DomainTaxInformation"
+        },
+        "tieredCharges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainTieredCharge"
+          }
+        }
+      }
+    },
+    "ChargesummaryV1DomainTerminationChargeSummary": {
+      "type": "object",
+      "properties": {
+        "charges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainTerminationCharge"
+          }
+        },
+        "currencySums": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainCurrencySum"
+          }
+        }
+      }
+    },
+    "ChargesummaryV1DomainTieredCharge": {
+      "type": "object",
+      "properties": {
+        "excludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "includedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "unitsMax": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "unitsMin": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "ChargesummaryV1DomainUsageCharge": {
+      "type": "object",
+      "properties": {
+        "billText": {
+          "type": "string"
+        },
+        "billType": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainUsageChargeItem"
+          }
+        },
+        "measuringUnit": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "ratingFunction": {
+          "type": "string"
+        },
+        "taxRate": {
+          "type": "string",
+          "format": "number"
+        }
+      }
+    },
+    "ChargesummaryV1DomainUsageChargeItem": {
+      "type": "object",
+      "properties": {
+        "profiles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainUsageProfile"
+          }
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        },
+        "weeklyTimeTable": {
+          "type": "string"
+        }
+      }
+    },
+    "ChargesummaryV1DomainUsageChargeSummary": {
+      "type": "object",
+      "properties": {
+        "charges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainUsageCharge"
+          }
+        }
+      }
+    },
+    "ChargesummaryV1DomainUsageProfile": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "segments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChargesummaryV1DomainUsageSegment"
+          }
+        },
+        "stepInterval": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "type": {
+          "type": "string"
+        },
+        "validityPeriod": {
+          "type": "string"
+        }
+      }
+    },
+    "ChargesummaryV1DomainUsageSegment": {
+      "type": "object",
+      "properties": {
+        "basicCharge": {
+          "type": "string",
+          "format": "number"
+        },
+        "chargePerUnit": {
+          "type": "string",
+          "format": "number"
+        },
+        "connectionCharge": {
+          "type": "string",
+          "format": "number"
+        },
+        "unitsMax": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "unitsMin": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "CommonsDomainModelArgument": {
+      "type": "object",
+      "properties": {
+        "argument": {
+          "type": "string"
+        },
+        "argumentDescription": {
+          "type": "string"
+        },
+        "argumentDisplayName": {
+          "type": "string"
+        },
+        "argumentKey": {
+          "type": "string"
+        },
+        "subMessages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelMessage"
+          }
+        },
+        "templateVariable": {
+          "type": "string"
+        }
+      }
+    },
+    "CommonsDomainModelConfigurationAttribute": {
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "CommonsDomainModelLink": {
+      "type": "object",
+      "properties": {
+        "href": {
+          "type": "string"
+        },
+        "templated": {
+          "type": "boolean"
+        }
+      }
+    },
+    "CommonsDomainModelMessage": {
+      "type": "object",
+      "properties": {
+        "args": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelArgument"
+          }
+        },
+        "key": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "messageTemplate": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "CommonsDomainModelMessageAware": {
+      "type": "object",
+      "properties": {
+        "logId": {
+          "type": "string"
+        },
+        "messages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelMessage"
+          }
+        }
+      }
+    },
+    "CommonsTimeInterval": {
+      "type": "object",
+      "properties": {
+        "end": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "start": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "PartyV1DomainContactMedium": {
+      "type": "object",
+      "properties": {
+        "contactMedium": {
+          "type": "string"
+        },
+        "contactType": {
+          "type": "string"
+        },
+        "emailAddress": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "postalAddress": {
+          "type": "string"
+        },
+        "preferred": {
+          "type": "boolean"
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "role": {
+          "type": "string"
+        },
+        "telephoneNumber": {
+          "$ref": "#/definitions/PartyV1DomainTelephoneNumber"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Email",
+            "TelephoneNumber",
+            "PostalAddress",
+            "Other"
+          ]
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "PartyV1DomainRelatedParty": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/CommonsDomainModelLink"
+          }
+        },
+        "contactMedium": {
+          "$ref": "#/definitions/PartyV1DomainContactMedium"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "party": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "role": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "PartyV1DomainTelephoneNumber": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "Mobile",
+            "FixedLine"
+          ]
+        }
+      }
+    },
+    "ProductofferingV1DomainBarringConfiguration": {
+      "type": "object",
+      "properties": {
+        "barringLevels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainBarringLevel"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainBarringConfigurationList": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainBarringConfiguration"
+          }
+        }
+      }
+    },
+    "ProductofferingV1DomainBarringLevel": {
+      "type": "object",
+      "properties": {
+        "barringLevelReferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainBarringLevelReference"
+          }
+        },
+        "debtCollectionBarringAllowed": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "level": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "nonDebtCollectionBarringAllowed": {
+          "type": "boolean"
+        },
+        "serviceSpecificationBarringLevelReferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainServiceSpecificationBarringLevelReference"
+          }
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainBarringLevelReference": {
+      "type": "object",
+      "properties": {
+        "barringConfiguration": {
+          "type": "string"
+        },
+        "barringLevel": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainBindingPeriodAction": {
+      "type": "object",
+      "properties": {
+        "daysBeforeExpiration": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "ProductofferingV1DomainCompletenessStateBehaviour": {
+      "type": "object",
+      "properties": {
+        "terminateWhenBroken": {
+          "type": "boolean"
+        },
+        "terminateWhenComplete": {
+          "type": "boolean"
+        },
+        "terminateWhenInProgress": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ProductofferingV1DomainCustomerTypeRestrictionRule": {
+      "type": "object",
+      "properties": {
+        "customerType": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainNumberOfSameProductOfferingsRule": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "numberOfSameProductOfferings": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainProductInstanceNameSource": {
+      "type": "object",
+      "properties": {
+        "service": {
+          "type": "string"
+        },
+        "serviceCharacteristic": {
+          "type": "string"
+        },
+        "serviceProvider": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "ServiceIdentifier",
+            "ServiceCharacteristicValue"
+          ]
+        }
+      }
+    },
+    "ProductofferingV1DomainProductOffering": {
+      "type": "object",
+      "properties": {
+        "allowReUseOfBaseProductOfferings": {
+          "type": "boolean"
+        },
+        "billText": {
+          "type": "string"
+        },
+        "bundle": {
+          "type": "boolean"
+        },
+        "capabilityEvaluationScope": {
+          "type": "string",
+          "enum": [
+            "Product",
+            "BillingAccount"
+          ]
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "configurationAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelConfigurationAttribute"
+          }
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainProductOfferingDependency"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "excludeFromBillingIfNoChargesArePresent": {
+          "type": "boolean"
+        },
+        "internalName": {
+          "type": "string"
+        },
+        "massOrderable": {
+          "type": "boolean"
+        },
+        "massOrderingAllowed": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "orderableStandAlone": {
+          "type": "boolean"
+        },
+        "productCode": {
+          "type": "string"
+        },
+        "productInstanceNameSource": {
+          "$ref": "#/definitions/ProductofferingV1DomainProductInstanceNameSource"
+        },
+        "productOfferingCharacteristicGroupReferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainProductOfferingCharacteristicGroupReference"
+          }
+        },
+        "productOfferingGroupReferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainProductOfferingGroupReference"
+          }
+        },
+        "productOfferingParameterSet": {
+          "$ref": "#/definitions/ProductofferingV1DomainProductOfferingParameterSet"
+        },
+        "productOfferingReferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainProductOfferingReference"
+          }
+        },
+        "productOfferingRuleReferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainProductOfferingRuleReference"
+          }
+        },
+        "productOfferingTariffModelReferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainProductOfferingTariffModelReference"
+          }
+        },
+        "relatedParties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainRelatedParty"
+          }
+        },
+        "resourceSpecificationGroupReferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainResourceSpecificationGroupReference"
+          }
+        },
+        "serviceSpecificationReferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainServiceSpecificationReference"
+          }
+        },
+        "state": {
+          "type": "string"
+        },
+        "tariffModel": {
+          "type": "string"
+        },
+        "template": {
+          "type": "string"
+        },
+        "termsAndConditions": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        },
+        "wholesale": {
+          "type": "boolean"
+        },
+        "wholesaleProductOfferingCharacteristicRelationships": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainWholesaleProductOfferingCharacteristicRelationship"
+          }
+        }
+      }
+    },
+    "ProductofferingV1DomainProductOfferingAttachment": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainProductOfferingAttachments": {
+      "type": "object",
+      "properties": {
+        "attachments": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/ProductofferingV1DomainProductOfferingAttachment"
+            }
+          }
+        }
+      }
+    },
+    "ProductofferingV1DomainProductOfferingChannelAssignment": {
+      "type": "object",
+      "properties": {
+        "channel": {
+          "type": "string"
+        },
+        "productOffering": {
+          "type": "string"
+        }
+      }
+    },
+    "ProductofferingV1DomainProductOfferingChannelAssignmentList": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainProductOfferingChannelAssignment"
+          }
+        }
+      }
+    },
+    "ProductofferingV1DomainProductOfferingChannelAssignments": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainProductOfferingChannelAssignment"
+          }
+        }
+      }
+    },
+    "ProductofferingV1DomainProductOfferingCharacteristic": {
+      "type": "object",
+      "properties": {
+        "changeable": {
+          "type": "boolean"
+        },
+        "configurationAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelConfigurationAttribute"
+          }
+        },
+        "defaultActive": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "displayOrder": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "mandatory": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainProductOfferingCharacteristicBindingPeriod": {
+      "type": "object",
+      "properties": {
+        "actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainBindingPeriodAction"
+          }
+        },
+        "chargeSpecification": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "string",
+          "format": "period"
+        },
+        "durationAdjustmentAllowed": {
+          "type": "boolean"
+        },
+        "mandatory": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "productOfferingCharacteristic": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "terminationChargeCalculationReference": {
+          "$ref": "#/definitions/BusinessrulesV1DomainCalculationReference"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainProductOfferingCharacteristicGroup": {
+      "type": "object",
+      "properties": {
+        "activateWithProduct": {
+          "type": "boolean"
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "productOfferingCharacteristics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainProductOfferingCharacteristic"
+          }
+        },
+        "single": {
+          "type": "boolean"
+        },
+        "state": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainProductOfferingCharacteristicGroupReference": {
+      "type": "object",
+      "properties": {
+        "changeable": {
+          "type": "boolean"
+        },
+        "chargeOnTermination": {
+          "type": "boolean"
+        },
+        "completenessStateBehaviour": {
+          "$ref": "#/definitions/ProductofferingV1DomainCompletenessStateBehaviour"
+        },
+        "createForProduct": {
+          "type": "boolean"
+        },
+        "defaultActive": {
+          "type": "boolean"
+        },
+        "displayOrder": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "maxNumberOfInstances": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minNumberOfInstances": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "supportsConcurrentChanges": {
+          "type": "boolean"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainProductOfferingCharacteristicPriceGuarantee": {
+      "type": "object",
+      "properties": {
+        "chargeSpecification": {
+          "type": "string"
+        },
+        "chargeSpecificationFilter": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "string",
+          "format": "period"
+        },
+        "mandatory": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "productOfferingCharacteristic": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainProductOfferingCharacteristicTariff": {
+      "type": "object",
+      "properties": {
+        "chargeSpecification": {
+          "type": "string"
+        },
+        "parentChargeSpecification": {
+          "type": "string"
+        },
+        "productOfferingCharacteristic": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        },
+        "validityPeriod": {
+          "type": "string"
+        },
+        "validityPeriodAdjustmentAllowed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ProductofferingV1DomainProductOfferingDependency": {
+      "type": "object",
+      "properties": {
+        "dependencyType": {
+          "type": "string"
+        },
+        "inherited": {
+          "type": "boolean"
+        },
+        "source": {
+          "type": "string"
+        },
+        "sourceInverted": {
+          "type": "boolean"
+        },
+        "sourceType": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        },
+        "targetType": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainProductOfferingGroup": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "productOfferingReferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainProductOfferingGroupMember"
+          }
+        }
+      }
+    },
+    "ProductofferingV1DomainProductOfferingGroupMember": {
+      "type": "object",
+      "properties": {
+        "default": {
+          "type": "boolean"
+        },
+        "displayOrder": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "productOffering": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainProductOfferingGroupReference": {
+      "type": "object",
+      "properties": {
+        "displayOrder": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "maxNumberOfInstances": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minNumberOfInstances": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "productOfferingGroup": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainProductOfferingList": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainProductOffering"
+          }
+        }
+      }
+    },
+    "ProductofferingV1DomainProductOfferingParameterDefinition": {
+      "type": "object",
+      "properties": {
+        "changeSource": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "hint": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "readPermission": {
+          "type": "string"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "searchable": {
+          "type": "boolean"
+        },
+        "transient": {
+          "type": "boolean"
+        },
+        "validationRegex": {
+          "type": "string"
+        },
+        "writePermission": {
+          "type": "string"
+        }
+      }
+    },
+    "ProductofferingV1DomainProductOfferingParameterSet": {
+      "type": "object",
+      "properties": {
+        "productOfferingParameterDefinitions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainProductOfferingParameterDefinition"
+          }
+        },
+        "strictValidation": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ProductofferingV1DomainProductOfferingReference": {
+      "type": "object",
+      "properties": {
+        "displayOrder": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "maxNumberOfInstances": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minNumberOfInstances": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "productOffering": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainProductOfferingRuleReference": {
+      "type": "object",
+      "properties": {
+        "rule": {
+          "type": "string"
+        },
+        "ruleType": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainProductOfferingTariffModel": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "productOfferingCharacteristicBindingPeriods": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainProductOfferingCharacteristicBindingPeriod"
+          }
+        },
+        "productOfferingCharacteristicPriceGuarantees": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainProductOfferingCharacteristicPriceGuarantee"
+          }
+        },
+        "productOfferingCharacteristicTariffs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainProductOfferingCharacteristicTariff"
+          }
+        },
+        "resourceSpecificationGroupBindingPeriods": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainResourceSpecificationGroupBindingPeriod"
+          }
+        },
+        "resourceSpecificationGroupPriceGuarantees": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainResourceSpecificationGroupPriceGuarantee"
+          }
+        },
+        "resourceSpecificationGroupTariffs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainResourceSpecificationGroupTariff"
+          }
+        },
+        "serviceSpecificationBindingPeriods": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainServiceSpecificationBindingPeriod"
+          }
+        },
+        "serviceSpecificationCharacteristicBindingPeriods": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainServiceSpecificationCharacteristicBindingPeriod"
+          }
+        },
+        "serviceSpecificationCharacteristicPriceGuarantees": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainServiceSpecificationCharacteristicPriceGuarantee"
+          }
+        },
+        "serviceSpecificationCharacteristicTariffs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainServiceSpecificationCharacteristicTariff"
+          }
+        },
+        "serviceSpecificationCharacteristicValueBindingPeriods": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainServiceSpecificationCharacteristicValueBindingPeriod"
+          }
+        },
+        "serviceSpecificationCharacteristicValuePriceGuarantees": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainServiceSpecificationCharacteristicValuePriceGuarantee"
+          }
+        },
+        "serviceSpecificationCharacteristicValueTariffs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainServiceSpecificationCharacteristicValueTariff"
+          }
+        },
+        "serviceSpecificationPriceGuarantees": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainServiceSpecificationPriceGuarantee"
+          }
+        },
+        "serviceSpecificationTariffs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainServiceSpecificationTariff"
+          }
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainProductOfferingTariffModelReference": {
+      "type": "object",
+      "properties": {
+        "state": {
+          "type": "string"
+        },
+        "tariffModel": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainResourceSpecificationGroup": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "resourceSpecificationReferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainResourceSpecificationReference"
+          }
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainResourceSpecificationGroupBindingPeriod": {
+      "type": "object",
+      "properties": {
+        "actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainBindingPeriodAction"
+          }
+        },
+        "chargeSpecification": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "string",
+          "format": "period"
+        },
+        "durationAdjustmentAllowed": {
+          "type": "boolean"
+        },
+        "mandatory": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "resourceSpecificationGroup": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "terminationChargeCalculationReference": {
+          "$ref": "#/definitions/BusinessrulesV1DomainCalculationReference"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainResourceSpecificationGroupPriceGuarantee": {
+      "type": "object",
+      "properties": {
+        "chargeSpecification": {
+          "type": "string"
+        },
+        "chargeSpecificationFilter": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "string",
+          "format": "period"
+        },
+        "mandatory": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "resourceSpecificationGroup": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainResourceSpecificationGroupReference": {
+      "type": "object",
+      "properties": {
+        "assignedFunds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "autoFulfillRequiredCapabilities": {
+          "type": "boolean"
+        },
+        "changeable": {
+          "type": "boolean"
+        },
+        "defaultActive": {
+          "type": "boolean"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "displayOrder": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "maxNumberOfInstances": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minNumberOfInstances": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "resourceSpecificationGroup": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainResourceSpecificationGroupTariff": {
+      "type": "object",
+      "properties": {
+        "resourceSpecificationGroup": {
+          "type": "string"
+        },
+        "resourceSpecificationGroupTariffModel": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        },
+        "validityPeriod": {
+          "type": "string"
+        },
+        "validityPeriodAdjustmentAllowed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ProductofferingV1DomainResourceSpecificationGroupTariffModel": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "resourceSpecificationTariffs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainResourceSpecificationTariff"
+          }
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainResourceSpecificationReference": {
+      "type": "object",
+      "properties": {
+        "default": {
+          "type": "boolean"
+        },
+        "displayOrder": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "resourceProvider": {
+          "type": "string"
+        },
+        "resourceSpecification": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        },
+        "wholesaleProductOffering": {
+          "type": "string"
+        },
+        "wholesaleProvider": {
+          "type": "string"
+        }
+      }
+    },
+    "ProductofferingV1DomainResourceSpecificationTariff": {
+      "type": "object",
+      "properties": {
+        "chargeSpecification": {
+          "type": "string"
+        },
+        "resourceProvider": {
+          "type": "string"
+        },
+        "resourceSpecification": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        },
+        "wholesaleProductOffering": {
+          "type": "string"
+        },
+        "wholesaleProvider": {
+          "type": "string"
+        }
+      }
+    },
+    "ProductofferingV1DomainScriptRule": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "scriptName": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainServiceSpecificationAllowanceReference": {
+      "type": "object",
+      "properties": {
+        "allowance": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string",
+          "format": "number"
+        },
+        "quota": {
+          "type": "string",
+          "format": "number"
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainServiceSpecificationBarringLevelReference": {
+      "type": "object",
+      "properties": {
+        "serviceProvider": {
+          "type": "string"
+        },
+        "serviceSpecificationBarringConfiguration": {
+          "type": "string"
+        },
+        "serviceSpecificationBarringLevel": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainServiceSpecificationBindingPeriod": {
+      "type": "object",
+      "properties": {
+        "actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainBindingPeriodAction"
+          }
+        },
+        "chargeSpecification": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "string",
+          "format": "period"
+        },
+        "durationAdjustmentAllowed": {
+          "type": "boolean"
+        },
+        "mandatory": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "serviceProvider": {
+          "type": "string"
+        },
+        "serviceSpecification": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "terminationChargeCalculationReference": {
+          "$ref": "#/definitions/BusinessrulesV1DomainCalculationReference"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainServiceSpecificationCharacteristicBindingPeriod": {
+      "type": "object",
+      "properties": {
+        "actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainBindingPeriodAction"
+          }
+        },
+        "chargeSpecification": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "string",
+          "format": "period"
+        },
+        "durationAdjustmentAllowed": {
+          "type": "boolean"
+        },
+        "mandatory": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "serviceProvider": {
+          "type": "string"
+        },
+        "serviceSpecification": {
+          "type": "string"
+        },
+        "serviceSpecificationCharacteristic": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "terminationChargeCalculationReference": {
+          "$ref": "#/definitions/BusinessrulesV1DomainCalculationReference"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainServiceSpecificationCharacteristicPriceGuarantee": {
+      "type": "object",
+      "properties": {
+        "chargeSpecification": {
+          "type": "string"
+        },
+        "chargeSpecificationFilter": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "string",
+          "format": "period"
+        },
+        "mandatory": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "serviceProvider": {
+          "type": "string"
+        },
+        "serviceSpecification": {
+          "type": "string"
+        },
+        "serviceSpecificationCharacteristic": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainServiceSpecificationCharacteristicReference": {
+      "type": "object",
+      "properties": {
+        "available": {
+          "type": "boolean"
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "changeable": {
+          "type": "boolean"
+        },
+        "defaultActive": {
+          "type": "boolean"
+        },
+        "defaultValue": {
+          "type": "string"
+        },
+        "displayOrder": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "mandatory": {
+          "type": "boolean"
+        },
+        "maxNumberOfInstances": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minNumberOfInstances": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "serviceSpecificationCharacteristic": {
+          "type": "string"
+        },
+        "serviceSpecificationCharacteristicValueReferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainServiceSpecificationCharacteristicValueReference"
+          }
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        },
+        "valueChangeable": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ProductofferingV1DomainServiceSpecificationCharacteristicTariff": {
+      "type": "object",
+      "properties": {
+        "chargeSpecification": {
+          "type": "string"
+        },
+        "parentChargeSpecification": {
+          "type": "string"
+        },
+        "serviceProvider": {
+          "type": "string"
+        },
+        "serviceSpecification": {
+          "type": "string"
+        },
+        "serviceSpecificationCharacteristic": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        },
+        "validityPeriod": {
+          "type": "string"
+        },
+        "validityPeriodAdjustmentAllowed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ProductofferingV1DomainServiceSpecificationCharacteristicValueBindingPeriod": {
+      "type": "object",
+      "properties": {
+        "actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainBindingPeriodAction"
+          }
+        },
+        "chargeSpecification": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "string",
+          "format": "period"
+        },
+        "durationAdjustmentAllowed": {
+          "type": "boolean"
+        },
+        "mandatory": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "serviceProvider": {
+          "type": "string"
+        },
+        "serviceSpecification": {
+          "type": "string"
+        },
+        "serviceSpecificationCharacteristic": {
+          "type": "string"
+        },
+        "serviceSpecificationCharacteristicValue": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "terminationChargeCalculationReference": {
+          "$ref": "#/definitions/BusinessrulesV1DomainCalculationReference"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainServiceSpecificationCharacteristicValuePriceGuarantee": {
+      "type": "object",
+      "properties": {
+        "chargeSpecification": {
+          "type": "string"
+        },
+        "chargeSpecificationFilter": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "string",
+          "format": "period"
+        },
+        "mandatory": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "serviceProvider": {
+          "type": "string"
+        },
+        "serviceSpecification": {
+          "type": "string"
+        },
+        "serviceSpecificationCharacteristic": {
+          "type": "string"
+        },
+        "serviceSpecificationCharacteristicValue": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainServiceSpecificationCharacteristicValueReference": {
+      "type": "object",
+      "properties": {
+        "available": {
+          "type": "boolean"
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "ProductofferingV1DomainServiceSpecificationCharacteristicValueTariff": {
+      "type": "object",
+      "properties": {
+        "chargeSpecification": {
+          "type": "string"
+        },
+        "parentChargeSpecification": {
+          "type": "string"
+        },
+        "serviceProvider": {
+          "type": "string"
+        },
+        "serviceSpecification": {
+          "type": "string"
+        },
+        "serviceSpecificationCharacteristic": {
+          "type": "string"
+        },
+        "serviceSpecificationCharacteristicValue": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        },
+        "validityPeriod": {
+          "type": "string"
+        },
+        "validityPeriodAdjustmentAllowed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ProductofferingV1DomainServiceSpecificationPriceGuarantee": {
+      "type": "object",
+      "properties": {
+        "chargeSpecification": {
+          "type": "string"
+        },
+        "chargeSpecificationFilter": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "string",
+          "format": "period"
+        },
+        "mandatory": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "serviceProvider": {
+          "type": "string"
+        },
+        "serviceSpecification": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainServiceSpecificationReference": {
+      "type": "object",
+      "properties": {
+        "autoFulfillRequiredCapabilities": {
+          "type": "boolean"
+        },
+        "changeable": {
+          "type": "boolean"
+        },
+        "chargeUsage": {
+          "type": "boolean"
+        },
+        "defaultActive": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "displayOrder": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "maxNumberOfInstances": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minNumberOfInstances": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "serviceProvider": {
+          "type": "string"
+        },
+        "serviceSpecification": {
+          "type": "string"
+        },
+        "serviceSpecificationAllowanceReferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainServiceSpecificationAllowanceReference"
+          }
+        },
+        "serviceSpecificationCharacteristicReferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainServiceSpecificationCharacteristicReference"
+          }
+        },
+        "serviceSpecificationReferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainServiceSpecificationReference"
+          }
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        },
+        "wholesaleProductOffering": {
+          "type": "string"
+        },
+        "wholesaleProvider": {
+          "type": "string"
+        }
+      }
+    },
+    "ProductofferingV1DomainServiceSpecificationTariff": {
+      "type": "object",
+      "properties": {
+        "chargeSpecification": {
+          "type": "string"
+        },
+        "parentChargeSpecification": {
+          "type": "string"
+        },
+        "serviceProvider": {
+          "type": "string"
+        },
+        "serviceSpecification": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        },
+        "validityPeriod": {
+          "type": "string"
+        },
+        "validityPeriodAdjustmentAllowed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ProductofferingV1DomainUpDowngradeProductOfferingRule": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "productOffering": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "terminationChargeHandling": {
+          "type": "string"
+        },
+        "terminationChargeTaxExcludedAmount": {
+          "type": "string",
+          "format": "number"
+        },
+        "upDowngradeFeeName": {
+          "type": "string"
+        },
+        "upgrade": {
+          "type": "boolean"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1DomainWholesaleProductOfferingCharacteristicRelationship": {
+      "type": "object",
+      "properties": {
+        "productOfferingCharacteristic": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        },
+        "wholesaleProductOffering": {
+          "type": "string"
+        },
+        "wholesaleProductOfferingCharacteristic": {
+          "type": "string"
+        },
+        "wholesaleProvider": {
+          "type": "string"
+        }
+      }
+    },
+    "ProductofferingV1SummaryDomainProductOfferingCharacteristicGroupSummary": {
+      "type": "object",
+      "properties": {
+        "activateWithProduct": {
+          "type": "boolean"
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "changeable": {
+          "type": "boolean"
+        },
+        "chargeOnTermination": {
+          "type": "boolean"
+        },
+        "completenessStateBehaviour": {
+          "$ref": "#/definitions/ProductofferingV1DomainCompletenessStateBehaviour"
+        },
+        "createForProduct": {
+          "type": "boolean"
+        },
+        "defaultActive": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "displayOrder": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "maxNumberOfInstances": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minNumberOfInstances": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "productOfferingCharacteristics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1SummaryDomainProductOfferingCharacteristicSummary"
+          }
+        },
+        "single": {
+          "type": "boolean"
+        },
+        "state": {
+          "type": "string"
+        },
+        "supportsConcurrentChanges": {
+          "type": "boolean"
+        },
+        "type": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1SummaryDomainProductOfferingCharacteristicSummary": {
+      "type": "object",
+      "properties": {
+        "bindingPeriodTerminationCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyChargeSummary"
+        },
+        "bindingPeriods": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainProductOfferingCharacteristicBindingPeriod"
+          }
+        },
+        "changeable": {
+          "type": "boolean"
+        },
+        "configurationAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelConfigurationAttribute"
+          }
+        },
+        "defaultActive": {
+          "type": "boolean"
+        },
+        "deposits": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyChargeSummary"
+        },
+        "description": {
+          "type": "string"
+        },
+        "discounts": {
+          "$ref": "#/definitions/ChargesummaryV1DomainDiscountChargeSummary"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "fundCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainFundChargeSummary"
+        },
+        "instalmentCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainInstalmentChargeSummary"
+        },
+        "mandatory": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "onceOnlyAllowanceCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyAllowanceChargeSummary"
+        },
+        "onceOnlyCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyChargeSummary"
+        },
+        "priceGuarantees": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainProductOfferingCharacteristicPriceGuarantee"
+          }
+        },
+        "recurringAllowanceCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainRecurringAllowanceChargeSummary"
+        },
+        "recurringCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainRecurringChargeSummary"
+        },
+        "state": {
+          "type": "string"
+        },
+        "terminationCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainTerminationChargeSummary"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1SummaryDomainProductOfferingGroupSummary": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "maxNumberOfInstances": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minNumberOfInstances": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "productOfferings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1SummaryDomainProductOfferingSummary"
+          }
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1SummaryDomainProductOfferingSummary": {
+      "type": "object",
+      "properties": {
+        "billText": {
+          "type": "string"
+        },
+        "bindingPeriodTerminationCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyChargeSummary"
+        },
+        "bundle": {
+          "type": "boolean"
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "characteristicGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1SummaryDomainProductOfferingCharacteristicGroupSummary"
+          }
+        },
+        "configurationAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelConfigurationAttribute"
+          }
+        },
+        "default": {
+          "type": "boolean"
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainProductOfferingDependency"
+          }
+        },
+        "deposits": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyChargeSummary"
+        },
+        "description": {
+          "type": "string"
+        },
+        "discounts": {
+          "$ref": "#/definitions/ChargesummaryV1DomainDiscountChargeSummary"
+        },
+        "fundCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainFundChargeSummary"
+        },
+        "instalmentCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainInstalmentChargeSummary"
+        },
+        "internalName": {
+          "type": "string"
+        },
+        "massOrderingAllowed": {
+          "type": "boolean"
+        },
+        "maxNumberOfInstances": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minNumberOfInstances": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "onceOnlyAllowanceCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyAllowanceChargeSummary"
+        },
+        "onceOnlyCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyChargeSummary"
+        },
+        "productCode": {
+          "type": "string"
+        },
+        "productOfferingGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1SummaryDomainProductOfferingGroupSummary"
+          }
+        },
+        "productOfferingParameterSet": {
+          "$ref": "#/definitions/ProductofferingV1DomainProductOfferingParameterSet"
+        },
+        "productOfferingRuleReferences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainProductOfferingRuleReference"
+          }
+        },
+        "productOfferings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1SummaryDomainProductOfferingSummary"
+          }
+        },
+        "recurringAllowanceCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainRecurringAllowanceChargeSummary"
+        },
+        "recurringCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainRecurringChargeSummary"
+        },
+        "relatedParties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PartyV1DomainRelatedParty"
+          }
+        },
+        "resourceSpecificationGroups": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1SummaryDomainResourceSpecificationGroupSummary"
+          }
+        },
+        "serviceSpecifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1SummaryDomainServiceSpecificationSummary"
+          }
+        },
+        "state": {
+          "type": "string"
+        },
+        "tariffModel": {
+          "type": "string"
+        },
+        "template": {
+          "type": "string"
+        },
+        "terminationCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainTerminationChargeSummary"
+        },
+        "termsAndConditions": {
+          "type": "string"
+        },
+        "totals": {
+          "$ref": "#/definitions/ChargesummaryV1DomainChargeTotals"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        },
+        "wholesale": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ProductofferingV1SummaryDomainResourceCharacteristicSummary": {
+      "type": "object",
+      "properties": {
+        "changeable": {
+          "type": "boolean"
+        },
+        "defaultValue": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "displayOrder": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "searchable": {
+          "type": "boolean"
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        },
+        "valueMandatory": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ProductofferingV1SummaryDomainResourceSpecificationGroupSummary": {
+      "type": "object",
+      "properties": {
+        "assignedFunds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "autoFulfillRequiredCapabilities": {
+          "type": "boolean"
+        },
+        "bindingPeriods": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainResourceSpecificationGroupBindingPeriod"
+          }
+        },
+        "changeable": {
+          "type": "boolean"
+        },
+        "defaultActive": {
+          "type": "boolean"
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "maxNumberOfInstances": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minNumberOfInstances": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "priceGuarantees": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainResourceSpecificationGroupPriceGuarantee"
+          }
+        },
+        "resourceSpecifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1SummaryDomainResourceSpecificationSummary"
+          }
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1SummaryDomainResourceSpecificationSummary": {
+      "type": "object",
+      "properties": {
+        "bindingPeriodTerminationCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyChargeSummary"
+        },
+        "characteristics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1SummaryDomainResourceCharacteristicSummary"
+          }
+        },
+        "default": {
+          "type": "boolean"
+        },
+        "deposits": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyChargeSummary"
+        },
+        "discounts": {
+          "$ref": "#/definitions/ChargesummaryV1DomainDiscountChargeSummary"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "displayOrder": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "fundCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainFundChargeSummary"
+        },
+        "instalmentCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainInstalmentChargeSummary"
+        },
+        "name": {
+          "type": "string"
+        },
+        "onceOnlyAllowanceCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyAllowanceChargeSummary"
+        },
+        "onceOnlyCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyChargeSummary"
+        },
+        "recurringAllowanceCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainRecurringAllowanceChargeSummary"
+        },
+        "recurringCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainRecurringChargeSummary"
+        },
+        "resourceProvider": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "terminationCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainTerminationChargeSummary"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        },
+        "wholesaleProductOffering": {
+          "type": "string"
+        },
+        "wholesaleProvider": {
+          "type": "string"
+        }
+      }
+    },
+    "ProductofferingV1SummaryDomainServiceSpecificationAllowanceSummary": {
+      "type": "object",
+      "properties": {
+        "allowance": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string",
+          "format": "number"
+        },
+        "quota": {
+          "type": "string",
+          "format": "number"
+        },
+        "state": {
+          "type": "string"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        }
+      }
+    },
+    "ProductofferingV1SummaryDomainServiceSpecificationCharacteristicSummary": {
+      "type": "object",
+      "properties": {
+        "available": {
+          "type": "boolean"
+        },
+        "bindingPeriodTerminationCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyChargeSummary"
+        },
+        "bindingPeriods": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainServiceSpecificationCharacteristicBindingPeriod"
+          }
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "changeable": {
+          "type": "boolean"
+        },
+        "configurationAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelConfigurationAttribute"
+          }
+        },
+        "defaultActive": {
+          "type": "boolean"
+        },
+        "defaultValue": {
+          "type": "string"
+        },
+        "deliveryAddress": {
+          "type": "boolean"
+        },
+        "deposits": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyChargeSummary"
+        },
+        "discounts": {
+          "$ref": "#/definitions/ChargesummaryV1DomainDiscountChargeSummary"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "displayOrder": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "fundCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainFundChargeSummary"
+        },
+        "groupIdentifier": {
+          "type": "boolean"
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "instalmentCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainInstalmentChargeSummary"
+        },
+        "mandatory": {
+          "type": "boolean"
+        },
+        "maxNumberOfInstances": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minNumberOfInstances": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "onceOnlyAllowanceCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyAllowanceChargeSummary"
+        },
+        "onceOnlyCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyChargeSummary"
+        },
+        "priceGuarantees": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainServiceSpecificationCharacteristicPriceGuarantee"
+          }
+        },
+        "readOnly": {
+          "type": "boolean"
+        },
+        "recurringAllowanceCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainRecurringAllowanceChargeSummary"
+        },
+        "recurringCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainRecurringChargeSummary"
+        },
+        "searchable": {
+          "type": "boolean"
+        },
+        "serviceAddress": {
+          "type": "boolean"
+        },
+        "serviceIdentifier": {
+          "type": "boolean"
+        },
+        "serviceSpecificationCharacteristicValues": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1SummaryDomainServiceSpecificationCharacteristicValueSummary"
+          }
+        },
+        "state": {
+          "type": "string"
+        },
+        "supportsConcurrentChanges": {
+          "type": "boolean"
+        },
+        "terminationCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainTerminationChargeSummary"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        },
+        "validationRule": {
+          "type": "string"
+        },
+        "validationRuleErrorMessage": {
+          "type": "string"
+        },
+        "valueChangeable": {
+          "type": "boolean"
+        },
+        "valueMandatory": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ProductofferingV1SummaryDomainServiceSpecificationCharacteristicValueSummary": {
+      "type": "object",
+      "properties": {
+        "available": {
+          "type": "boolean"
+        },
+        "bindingPeriodTerminationCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyChargeSummary"
+        },
+        "bindingPeriods": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainServiceSpecificationCharacteristicValueBindingPeriod"
+          }
+        },
+        "configurationAttributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommonsDomainModelConfigurationAttribute"
+          }
+        },
+        "deposits": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyChargeSummary"
+        },
+        "description": {
+          "type": "string"
+        },
+        "discounts": {
+          "$ref": "#/definitions/ChargesummaryV1DomainDiscountChargeSummary"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "displayOrder": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "fundCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainFundChargeSummary"
+        },
+        "instalmentCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainInstalmentChargeSummary"
+        },
+        "onceOnlyAllowanceCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyAllowanceChargeSummary"
+        },
+        "onceOnlyCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyChargeSummary"
+        },
+        "priceGuarantees": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainServiceSpecificationCharacteristicValuePriceGuarantee"
+          }
+        },
+        "recurringAllowanceCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainRecurringAllowanceChargeSummary"
+        },
+        "recurringCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainRecurringChargeSummary"
+        },
+        "state": {
+          "type": "string"
+        },
+        "terminationCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainTerminationChargeSummary"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "ProductofferingV1SummaryDomainServiceSpecificationSummary": {
+      "type": "object",
+      "properties": {
+        "bindingPeriodTerminationCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyChargeSummary"
+        },
+        "bindingPeriods": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainServiceSpecificationBindingPeriod"
+          }
+        },
+        "changeable": {
+          "type": "boolean"
+        },
+        "chargeUsage": {
+          "type": "boolean"
+        },
+        "defaultActive": {
+          "type": "boolean"
+        },
+        "deposits": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyChargeSummary"
+        },
+        "description": {
+          "type": "string"
+        },
+        "discounts": {
+          "$ref": "#/definitions/ChargesummaryV1DomainDiscountChargeSummary"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "displayOrder": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "fundCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainFundChargeSummary"
+        },
+        "instalmentCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainInstalmentChargeSummary"
+        },
+        "maxNumberOfInstances": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minNumberOfInstances": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": "string"
+        },
+        "onceOnlyAllowanceCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyAllowanceChargeSummary"
+        },
+        "onceOnlyCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainOnceOnlyChargeSummary"
+        },
+        "priceGuarantees": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1DomainServiceSpecificationPriceGuarantee"
+          }
+        },
+        "recurringAllowanceCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainRecurringAllowanceChargeSummary"
+        },
+        "recurringCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainRecurringChargeSummary"
+        },
+        "serviceProvider": {
+          "type": "string"
+        },
+        "serviceSpecificationAllowances": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1SummaryDomainServiceSpecificationAllowanceSummary"
+          }
+        },
+        "serviceSpecificationCharacteristics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1SummaryDomainServiceSpecificationCharacteristicSummary"
+          }
+        },
+        "serviceSpecifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductofferingV1SummaryDomainServiceSpecificationSummary"
+          }
+        },
+        "state": {
+          "type": "string"
+        },
+        "terminationCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainTerminationChargeSummary"
+        },
+        "usageCharges": {
+          "$ref": "#/definitions/ChargesummaryV1DomainUsageChargeSummary"
+        },
+        "validFor": {
+          "$ref": "#/definitions/CommonsTimeInterval"
+        },
+        "wholesaleProductOffering": {
+          "type": "string"
+        },
+        "wholesaleProvider": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "oauth2ClientCredentialAuthentication": {
+      "type": "oauth2",
+      "description": "Client credentials flow configuration for the Infonova Keycloak.",
+      "flow": "application",
+      "tokenUrl": ""
+    },
+    "oauth2ResourceOwnerPasswordCredentialAuthentication": {
+      "type": "oauth2",
+      "description": "Resource Owner Password Credentials flow configuration for the Infonova Keycloak.",
+      "flow": "password",
+      "tokenUrl": ""
+    }
+  },
+  "tags": [
+    {
+      "name": "Product Catalog v1",
+      "externalDocs": {
+        "description": "Further documentation",
+        "url": "http://localhost:9700/r6-api/docs/product-offering-impl/index.html"
+      }
+    }
+  ]
+}

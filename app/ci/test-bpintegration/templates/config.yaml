@@ -1,0 +1,66 @@
+{{- with .Values.config }}
+  {{- if .enabled}}
+  {{- if .secretenabled}}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: secret-{{ $.Chart.Name }}-tool-config{{ $.Values.global.env }}
+  namespace: {{ $.Release.Namespace }}
+  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    "helm.sh/hook": post-upgrade,post-install
+    "helm.sh/hook-weight": "-10"
+    "helm.sh/hook-delete-policy": "before-hook-creation"
+type: Opaque
+data:
+  tool-config.yaml: |-
+    {{ tpl ($.Files.Get "tool-config/tool-config.yaml") $ | b64enc }}
+  variables.yaml: |-
+    {{ tpl ($.Files.Get "tool-config/variables.yaml") $ | b64enc }}
+  {{- end }}
+  {{- if .jobenabled}}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: telus-test-bpintegration-config{{ $.Values.global.env }}
+  namespace: {{ $.Release.Namespace }}
+  labels:
+    type: telus-test-bpintegration-config{{ $.Values.global.env }}
+  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    "helm.sh/hook": post-upgrade,post-install
+    "helm.sh/hook-weight": "-5"
+    "helm.sh/hook-delete-policy": "before-hook-creation"
+
+spec:
+  template:
+    metadata:
+      name: telus-test-bpintegration-config{{ $.Values.global.env }}
+      labels:
+        type: telus-test-bpintegration-config{{ $.Values.global.env }}
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: installer
+          image: "{{ $.Values.global.repository }}/test-bpintegration-app-config:{{ $.Chart.Version }}"
+          imagePullPolicy: Always
+          volumeMounts:
+            - mountPath: /opt/config/tool-config.yaml
+              name: tool-config
+              subPath: tool-config.yaml
+            - mountPath: /opt/config/variables.yaml
+              name: tool-config
+              subPath: variables.yaml
+      volumes:
+        - name: tool-config
+          secret:
+            secretName: secret-{{ $.Chart.Name }}-tool-config{{ $.Values.global.env }}
+      imagePullSecrets:
+        - name: regcred
+  backoffLimit: 0
+  {{- end }}
+  {{- end }}
+  {{- end }}

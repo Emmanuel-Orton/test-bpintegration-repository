@@ -1,0 +1,18 @@
+apis:
+    - name: infonova
+      authType: oauth2
+      tokenUrl: {{ $.Values.global.infonova.keycloakUrl | default $.Values.global.infonova.url }}/auth/realms/{{ $.Values.global.infonova_tenant.realm }}/protocol/openid-connect/token
+      clientId: {{ $.Values.global.infonova.deployment.client }}
+      clientSecret: {{ $.Values.global.infonova.deployment.secret }}
+      apiUrl: {{ $.Values.global.infonova.url }}/r6-api
+    - name: infonova-admin
+      authType: oauth2
+      tokenUrl: {{ $.Values.global.infonova.keycloakUrl | default $.Values.global.infonova.url }}/auth/realms/master/protocol/openid-connect/token
+      clientId: {{ $.Values.global.infonova.admin.client }}
+      clientSecret: {{ $.Values.global.infonova.admin.secret }}
+      username: {{ $.Values.global.infonova.admin.username }}
+      password: {{ $.Values.global.infonova.admin.password }}
+      apiUrl: {{ $.Values.global.infonova.url }}/r6-admin
+logging:
+    requests_oauthlib.oauth2_session: INFO
+    urllib3.connectionpool: INFO
